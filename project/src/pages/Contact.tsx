@@ -24,7 +24,7 @@ const Contact = () => {
 
   const contactInfo = [
     { icon: Mail, label: 'Email', value: 'itsissachar@gmail.com' },
-    { icon: MapPin, label: 'Location', value: 'San Francisco, CA' }
+    { icon: MapPin, label: 'Location', value: 'Nairobi, KE' }
   ];
 
   const socialLinks = [
