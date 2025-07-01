@@ -58,7 +58,7 @@ const Home = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-           Isaac 
+           Hello 
           </h1>
           
           <div className="text-2xl md:text-3xl text-gray-300 mb-8 h-12 flex items-center justify-center">
