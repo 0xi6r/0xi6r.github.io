@@ -41,7 +41,7 @@ const Contact = () => {
             <h1 className="text-4xl font-bold text-white mb-4">Get In Touch</h1>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6"></div>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Ready to discuss cybersecurity challenges or potential collaborations? Let's connect.
+              Want to connect? reach out.
             </p>
           </div>
 
@@ -51,8 +51,8 @@ const Contact = () => {
               <div>
                 <h2 className="text-2xl font-bold text-white mb-6">Let's Talk Security</h2>
                 <p className="text-gray-400 mb-8 leading-relaxed">
-                  Whether you need a security consultation, want to discuss research collaboration, 
-                  or have questions about cybersecurity best practices, I'm here to help.
+                  Whether you need a security consultation, want to discuss research/ opportunity/ collaboration, 
+                  or have any questions, reach out.
                 </p>
               </div>
 
