@@ -6,10 +6,12 @@ const Home = () => {
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const titles = [
-    'Hacker (ethical)',
+    'Security Engineer',
+    'Security Researcher',
+    'bug bounty hunter',
+    'Security Evangelist',
     'Penetration Tester', 
-    'Security Consultant',
-    'InfoSec Specialist'
+    'Security Consultant'
   ];
 
   useEffect(() => {
@@ -79,13 +81,13 @@ const Home = () => {
               to="/contact"
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
             >
-              Get In Touch
+             Let's connect 
             </Link>
             <Link 
-              to="/projects"
+              to="/blog?post=interests"
               className="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
             >
-              Download Resume 
+              My Interests 
             </Link>
           </div>
           

@@ -23,12 +23,11 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'itsissachar@gmail.com' },
+    { icon: Mail, label: 'email', value: '0xi6r@tutamail.com' },
     { icon: MapPin, label: 'Location', value: 'Nairobi, KE' }
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: 'linkedin.com/0xi6r', label: 'LinkedIn' },
     { icon: Twitter, href: 'https://x.com/0xi6r', label: 'Twitter' },
     { icon: Github, href: 'https://github.com/0xi6r', label: 'GitHub' }
   ];
