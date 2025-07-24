@@ -23,15 +23,17 @@ const About = () => {
               <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 text-white shadow-xl">
                 <h2 className="text-2xl font-bold mb-6 text-cyan-400">Summary</h2>
                 <p className="text-gray-300 mb-6 leading-relaxed">
-                I'm an offensive security researcher with hands-on experience in vulnerability research and penetration testing. 
-                I focus on identifying and helping mitigate potential entry points that threat actors could exploit, with the goal 
-                of improving the overall security posture of my clients.
+                My name is Isaac, a 23-year-old offensive security researcher specializing in vulnerability research, penetration testing, and red team operations. I focus on identifying and exploiting security vulnerabilities, 
+                developing EDR evasion techniques, and providing comprehensive mitigation strategies for potential attack vectors 
+                that threat actors could leverage. My primary objective is to enhance the overall security posture of organizations 
+                through advanced offensive security methodologies and strategic risk assessment
                 </p>
                 <p className="text-gray-300 mb-6 leading-relaxed">
                   I hold multiple industry certifications including OSCP, and CEH.
                 </p>
                 <p className="text-gray-300 leading-relaxed">
-                  When I'm not hunting for vulnerabilities, I contribute to open-source security tools and touching more grass to keep a balanced perspective.
+                  When I'm not hunting for vulnerabilities, I contribute to open-source security tools and prioritize maintaining a healthy work-life balance through outdoor activities and 
+                  personal pursuits that provide fresh perspective and mental clarity; touching more grass to keep a balanced perspective.
                 </p>
               </div>
             </div>
@@ -60,20 +62,20 @@ const About = () => {
           <div className="space-y-8">
             {[
               {
-                year: '2020 - Present',
-                title: 'Senior Security Researcher',
-                company: 'CyberSec Labs',
-                description: 'Leading vulnerability research initiatives and developing advanced security testing methodologies.'
+                year: '2025 - Present',
+                title: 'Freelance Security Researcher',
+                company: 'N/A',
+                description: 'Independent cybersecurity researcher specializing in vulnerability research, penetration testing, and red team assessments. I help organizations identify and remediate security weaknesses before ...'
               },
               {
-                year: '2018 - 2020',
+                year: '3rd April 2024 - 2025',
                 title: 'Penetration Tester',
                 company: 'SecureNet Solutions',
-                description: 'Conducted comprehensive security assessments for Fortune 500 companies and government agencies.'
+                description: 'Conducted comprehensive security assessments for various companies and government agencies.'
               },
               {
-                year: '2016 - 2018',
-                title: 'Security Analyst',
+                year: '5th May - 20th August (2023)',
+                title: 'Intern Security Analyst',
                 company: 'TechGuard Inc.',
                 description: 'Analyzed security incidents and developed incident response procedures for enterprise clients.'
               }

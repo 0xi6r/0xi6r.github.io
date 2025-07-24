@@ -36,17 +36,17 @@ const Home = () => {
     {
       title: 'Vulnerability Research',
       description: 'Discovering and analyzing security vulnerabilities in modern systems',
-      link: '/projects'
+      link: '/blog?post=whatIdo'
     },
     {
       title: 'Security Consulting',
       description: 'Helping organizations strengthen their security posture',
-      link: '/about'
+      link: '/blog?post=whatIdo'
     },
     {
       title: 'Research Publications',
       description: 'Contributing to the cybersecurity knowledge base',
-      link: '/publications'
+      link: '/blog?post=whatIdo'
     }
   ];
 
