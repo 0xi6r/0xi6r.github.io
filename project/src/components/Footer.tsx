@@ -1,6 +1,7 @@
 import React from 'react';
 import { Shield, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Logo from './0xi6r.svg';
 
 const Footer = () => {
   return (
@@ -10,7 +11,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <img src='0xi6r.svg' className="w-8 h-8" />
+              <img src={Logo} className="w-8 h-8" alt="0xi6r" />
               <span className="text-white font-bold text-xl">0xi6r</span>
             </div>
             <p className="text-gray-400 mb-4">
