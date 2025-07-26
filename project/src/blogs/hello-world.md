@@ -1,24 +1,26 @@
 ---
 title: "Welcome to My Blog!"
-date: "2024-01-10"
-excerpt: "Hello world! This is my very first blog post. Learn about what you can expect from this blog and my journey in web development."
+date: "2024-11-10"
+excerpt: "Hello world! This is my very first blog post. Learn about what you can expect from this blog and my journey in cybersecurity."
 ---
 
 # Welcome to My Blog!
 
 Hello and welcome! 👋
 
-I'm excited to share my thoughts, experiences, and learnings about web development, technology, and everything in between.
+I'm excited to share my thoughts, experiences, and learnings about infosec, emerging tech, and everything in between.
 
 ## What You Can Expect
 
 This blog will cover a variety of topics including:
 
-- **React and Frontend Development**
-- **TypeScript best practices**
-- **Web Performance Optimization**
-- **UI/UX Design principles**
+- **Web Security Research**
+- **Low level dev & Exploitation**
+- **Malware Development, Research & analysis**
+- **C2 Development & tutorials**
 - **Personal projects and experiments**
+- **Cyber geopolitics**
+- **Privacy (encryption & obfuscation)**
 
 ## My Background
 
@@ -31,25 +33,26 @@ I'm a passionate web developer who loves creating beautiful, functional, and per
 
 ## Why I Started This Blog
 
-> "The best way to learn is to teach others."
+> "The best way to learn is to show others how you do it."
 
 I started this blog to:
 
 1. **Document my learning journey**
 2. **Share useful tips and tricks**
-3. **Connect with other developers**
+3. **Connect with other researchers and developers**
 4. **Give back to the community**
+5. **Make a dent on the Internet**
 
 ## What's Coming Next
 
 In upcoming posts, you can expect:
 
-- Deep dives into React patterns
-- TypeScript tips and tricks
-- Performance optimization techniques
+- Deep dives into web, API & binary exploitation
+- low level development ( I usse C btw)
+- Malware dev techniques
 - Project walkthroughs and tutorials
 
-## Let's Connect!
+## [Let's Connect!](https://x.com/0xi6r)
 
 I'd love to hear from you! Feel free to reach out if you have:
 
