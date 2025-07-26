@@ -53,6 +53,7 @@ const Footer = () => {
           <p className="text-gray-400 text-sm">
             Security is a people problem wearing a technical costume.
           </p>
+          <p> made with ❤️ by Isaac </p>
         </div>
       </div>
     </footer>
