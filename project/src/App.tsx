@@ -10,6 +10,7 @@ import Terms from './pages/Terms';
 import RedTeamServices from './pages/RedTeamServices';
 import SecurityConsulting from './pages/SecurityConsulting';
 import PenetrationTesting from './pages/PenetrationTesting';
+import PrivacyPolicy from './pages/PrivacyPolicy'
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
           <Route path='/Terms' element={<Terms />} />
           <Route path='/RedTeamServices' element={<RedTeamServices />} />
           <Route path='/SecurityConsulting' element={<SecurityConsulting />} />
-          <Route path='PenetrationTesting' element ={<PenetrationTesting />} />
+          <Route path='/PenetrationTesting' element ={<PenetrationTesting />} />
+          <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
           <Route path='*' element={<NotFound />} />
 
         </Routes>
