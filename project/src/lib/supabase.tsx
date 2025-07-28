@@ -1,6 +1,35 @@
-import { createClient } from '@supabase/supabase-js'
+// lib/supabase.ts
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+// Define the expected environment variables
+interface SupabaseConfig {
+  url: string
+  anonKey: string
+}
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// Function to get and validate environment variables
+const getSupabaseConfig = (): SupabaseConfig => {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  if (!url) {
+    throw new Error(
+      'REACT_APP_SUPABASE_URL is not defined. Please add it to your .env file.'
+    )
+  }
+
+  if (!anonKey) {
+    throw new Error(
+      'REACT_APP_SUPABASE_ANON_KEY is not defined. Please add it to your .env file.'
+    )
+  }
+
+  return { url, anonKey }
+}
+
+// Create and export the Supabase client
+const config = getSupabaseConfig()
+export const supabase: SupabaseClient = createClient(config.url, config.anonKey)
+
+// Export config for debugging purposes (optional)
+export const supabaseConfig = config
