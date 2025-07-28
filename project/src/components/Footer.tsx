@@ -134,13 +134,13 @@ const Footer = () => {
             
             {/* Social Links */}
             <div className="flex space-x-4 mb-6">
-              <a href="https://linkedin.com/in/your-profile" className="text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="https://linkedin.com/in/isaacogina" className="text-gray-400 hover:text-cyan-400 transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://twitter.com/your-handle" className="text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="https://twitter.com/0xi6r" className="text-gray-400 hover:text-cyan-400 transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="https://github.com/your-username" className="text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="https://github.com/0xi6r" className="text-gray-400 hover:text-cyan-400 transition-colors">
                 <Github className="w-5 h-5" />
               </a>
             </div>
@@ -157,10 +157,8 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li><Link to="/PenetrationTesting" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Penetration Testing</Link></li>
-              <li><Link to="/vulnerability-assessment" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Vulnerability Assessment</Link></li>
               <li><Link to="/SecurityConsulting" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Security Consulting</Link></li>
               <li><Link to="/RedTeamServices" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Red Team Operations</Link></li>
-              <li><Link to="/security-training" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Security Training</Link></li>
             </ul>
           </div>
 
