@@ -187,7 +187,7 @@ const Footer = () => {
                 <span className="text-sm">Nairobi, Kenya</span>
               </div>
             </div>
-          </div>
+          
         </div>
 
         {/* Bottom Section */}
