@@ -125,7 +125,7 @@ const Footer = () => {
               
               <p className="text-xs text-gray-500 mt-2">
                 No spam, unsubscribe anytime. Read our{' '}
-                <Link to="/privacy-policy" className="text-cyan-400 hover:underline">
+                <Link to="/PrivacyPolicy" className="text-cyan-400 hover:underline">
                   privacy policy
                 </Link>
                 .
