@@ -11,6 +11,7 @@ import RedTeamServices from './pages/RedTeamServices';
 import SecurityConsulting from './pages/SecurityConsulting';
 import PenetrationTesting from './pages/PenetrationTesting';
 import PrivacyPolicy from './pages/PrivacyPolicy'
+import EthicalOath from './pages/EthicalOath';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path='/RedTeamServices' element={<RedTeamServices />} />
           <Route path='/SecurityConsulting' element={<SecurityConsulting />} />
           <Route path='/PenetrationTesting' element ={<PenetrationTesting />} />
+          <Route path='/EthicalOath' element ={<EthicalOath />} />
           <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
           <Route path='*' element={<NotFound />} />
 
