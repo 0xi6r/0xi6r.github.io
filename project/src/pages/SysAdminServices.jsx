@@ -76,12 +76,9 @@ const SysAdminServices = () => (
         <li>Clear communication, fast response, and data-driven decisions</li>
         <li>Absolutely no vendor lock-in: you own your infra and your destiny</li>
       </ul>
-      <a
-        href="/contact"
-        className="inline-block bg-gradient-to-r from-cyan-500 to-blue-700 px-7 py-3 text-white font-semibold rounded-lg hover:scale-105 hover:from-cyan-600 hover:to-blue-800 shadow transition transform duration-300"
-      >
-        Book a Consultation Now
-      </a>
+
+      <Link to="/contact" className="inline-block bg-gradient-to-r from-cyan-500 to-blue-700 px-7 py-3 text-white font-semibold rounded-lg hover:scale-105 hover:from-cyan-600 hover:to-blue-800 shadow transition transform duration-300">Book a Consultation Now</Link>
+      
     </section>
   </div>
 );
