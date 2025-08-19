@@ -12,6 +12,7 @@ import SecurityConsulting from './pages/SecurityConsulting';
 import PenetrationTesting from './pages/PenetrationTesting';
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import EthicalOath from './pages/EthicalOath';
+import SysAdminServices from './pages/SysAdminServices';
 import NotFound from './pages/NotFound';
 
 function App() {
