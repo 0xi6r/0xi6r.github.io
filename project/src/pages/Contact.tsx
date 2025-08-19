@@ -6,19 +6,44 @@ const Contact = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setSubmitting(true);
+    setSuccess(null);
+    setError(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || 'Something went wrong.');
+      } else {
+        setSuccess('thank you for reaching out, I will contact you back ASAP');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      }
+    } catch (err) {
+      setError('Failed to send message. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -50,7 +75,7 @@ const Contact = () => {
               <div>
                 <h2 className="text-2xl font-bold text-white mb-6">Let's Talk Security</h2>
                 <p className="text-gray-400 mb-8 leading-relaxed">
-                  Whether you need a security consultation, want to discuss research/ opportunity/ collaboration, 
+                  Whether you need a security consultation, want to discuss research/opportunity/collaboration,
                   or have any questions, reach out.
                 </p>
               </div>
@@ -156,12 +181,31 @@ const Contact = () => {
                   ></textarea>
                 </div>
 
+                {/* Success/Error messages */}
+                {success && (
+                  <div className="text-green-400 bg-green-900/20 border border-green-700 rounded-md p-3 mb-2 text-center">
+                    {success}
+                  </div>
+                )}
+                {error && (
+                  <div className="text-red-400 bg-red-900/20 border border-red-800 rounded-md p-3 mb-2 text-center">
+                    {error}
+                  </div>
+                )}
+
                 <button
                   type="submit"
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 px-8 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                  disabled={submitting}
                 >
-                  Send Message
-                  <Send className="w-5 h-5 ml-2" />
+                  {submitting ? (
+                    <span className="animate-spin mr-2 w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="w-5 h-5 ml-2" />
+                    </>
+                  )}
                 </button>
               </form>
             </div>
@@ -169,14 +213,13 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ Section - unchanged */}
       <section className="py-20 bg-gray-100">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto"></div>
           </div>
-
           <div className="space-y-6">
             {[
               {
