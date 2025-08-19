@@ -31,6 +31,7 @@ function App() {
           <Route path='/PenetrationTesting' element ={<PenetrationTesting />} />
           <Route path='/EthicalOath' element ={<EthicalOath />} />
           <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
+          <Route path='/SysAdminServices' element={<SysAdminServices/>} />
           <Route path='*' element={<NotFound />} />
 
         </Routes>
