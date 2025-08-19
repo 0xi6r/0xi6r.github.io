@@ -38,7 +38,7 @@ export default async function handler(req, res) {
 
     // Send welcome email
     await resend.emails.send({
-      from: 'isaac@yourdomain.com', // must be verified with Resend
+      from: '0xi6r@tutamail.com', // must be verified with Resend
       to: email,
       subject: 'Welcome to Security Insights Newsletter!',
       html: `
