@@ -11,44 +11,35 @@ const Footer = () => {
   const [error, setError] = useState('');
 
   const handleNewsletterSubmit = async (e) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setIsLoading(true);
-    setError('');
-
-    try {
-      const { data, error } = await supabase
-        .from('newsletter_subscriptions')
-        .insert([
-          {
-            email: email.toLowerCase().trim(),
-            source: 'footer_signup',
-            user_agent: navigator.userAgent,
-          }
-        ])
-        .select();
-
-      if (error) {
-        if (error.code === '23505') {
-          setError('This email is already subscribed.');
-        } else {
-          setError('Something went wrong. Please try again later.');
-          console.error('Supabase error:', error);
-        }
-      } else {
-        setIsSubscribed(true);
-        setEmail('');
-        console.log('Subscribed:', data);
-        setTimeout(() => setIsSubscribed(false), 5000);
-      }
-    } catch (err) {
-      setError('Network error. Please try again.');
-      console.error(err);
-    } finally {
-      setIsLoading(false);
+  e.preventDefault();
+  if (!email) return;
+    
+  setIsLoading(true);
+  setError('');
+  try {
+    const res = await fetch('/api/newsletter', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email.trim().toLowerCase(),
+        user_agent: navigator.userAgent,
+        source: 'footer_signup',
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setError(data.error || 'Something went wrong. Please try again.');
+    } else {
+      setIsSubscribed(true);
+      setEmail('');
+      setTimeout(() => setIsSubscribed(false), 5000);
     }
-  };
+  } catch (err) {
+    setError('Network error. Please check your connection and try again.');
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <footer className="bg-black text-white py-12 w-full">
