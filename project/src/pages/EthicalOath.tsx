@@ -14,7 +14,6 @@ const EthicalOath = () => {
     'why-i-take-oath': useRef(null),
     'principles': useRef(null),
     'application': useRef(null),
-    'conclusion': useRef(null),
   };
   const [activeSection, setActiveSection] = useState(sections[0].id);
 
@@ -124,10 +123,6 @@ const EthicalOath = () => {
             If you have questions or wish to discuss this oath or my approach, please <a href="mailto:ethics@0xi6r.com" className="underline">contact me</a> directly.
           </p>
         </section>
-
-        <footer className="mt-12 mb-2 text-sm text-center text-gray-700">
-          &copy; 2025 Isaac Mwangi (0xi6r) &mdash; Ethical Oath page. All rights reserved.
-        </footer>
       </main>
 
       {/* Side Menu: only grayscale, arrows, no color, no hover except for white on active */}
