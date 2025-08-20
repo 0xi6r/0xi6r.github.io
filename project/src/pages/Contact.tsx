@@ -83,7 +83,7 @@ const Contact = () => {
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center mr-4">
+                    <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mr-4">
                       <info.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
