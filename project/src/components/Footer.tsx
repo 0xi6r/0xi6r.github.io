@@ -102,6 +102,21 @@ const Footer = () => {
               <li><Link to="/EthicalOath" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Oath</Link></li>
             </ul>
 
+            {/* Contact Info */}
+            <div className="space-y-2">
+              <div className="flex items-center text-gray-400">
+                <Mail className="w-4 h-4 mr-2 text-cyan-400" />
+                <a href="mailto:0xi6r@tutamail.com" className="text-sm hover:text-cyan-400 transition-colors">
+                  0xi6r@tutamail.com
+                </a>
+              </div>
+              <div className="flex items-center text-gray-400">
+                <MapPin className="w-4 h-4 mr-2 text-cyan-400" />
+                <span className="text-sm">Nairobi, Kenya</span>
+              </div>
+            </div>
+          </div>
+
           {/* Newsletter → Dedicated Column */}
           <div>
             <h4 className="text-white font-semibold mb-4">Security Insights Newsletter</h4>
