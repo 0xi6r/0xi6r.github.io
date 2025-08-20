@@ -1,11 +1,11 @@
 import React from 'react';
-import { Shield, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 const PrivacyPolicy = () => (
   <div className="min-h-screen bg-black text-gray-200 pt-16 pb-20 flex justify-center items-start">
     <div className="w-full max-w-2xl bg-black rounded-2xl shadow-lg p-8 border border-black mx-2">
       <div className="flex items-center mb-4">
-        <Shield className="w-7 h-7 text-cyan-400 mr-2" />
+       
         <h1 className="text-3xl font-bold text-white">Privacy Policy</h1>
       </div>
 
