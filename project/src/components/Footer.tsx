@@ -159,7 +159,10 @@ const Footer = () => {
             </p>
           </div>
 
-            {/* Contact Info */}
+        </div>
+
+
+          {/* Contact Info */}
             <div className="space-y-2">
               <div className="flex items-center text-gray-400">
                 <Mail className="w-4 h-4 mr-2 text-cyan-400" />
@@ -173,8 +176,6 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
-        </div>
 
         {/* === Bottom Footer === */}
         <div className="border-t border-gray-800 mt-10 pt-8 text-center">
