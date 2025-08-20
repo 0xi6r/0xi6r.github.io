@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
-// Services as before
 const services = [
   { name: "Penetration Testing", href: "/PenetrationTesting" },
   { name: "Security Consulting", href: "/SecurityConsulting" },
@@ -59,9 +58,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      window.scrollY > 50 ? 'bg-gray-900/95 backdrop-blur-md shadow-lg' : 'bg-black'
-    }`}>
+    <nav className="fixed top-0 w-full z-50 bg-black shadow transition-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-2">
@@ -103,7 +100,6 @@ const Navigation = () => {
                   if (['Enter', ' ', 'ArrowDown'].includes(e.key)) {
                     e.preventDefault();
                     setServiceOpen(true);
-                    // Focus first menu item
                     setTimeout(() => {
                       dropdownRef.current?.querySelector('a')?.focus();
                     }, 10);
@@ -129,7 +125,7 @@ const Navigation = () => {
                       <li key={srv.href} role="none">
                         <Link
                           to={srv.href}
-                          className="block px-6 py-3 text-gray-300 hover:bg-cyan-900/80 hover:text-white text-base transition-colors duration-200"
+                          className="block px-6 py-3 text-gray-300 hover:bg-gray-800 hover:text-white text-base transition-colors duration-200"
                           tabIndex={0}
                           role="menuitem"
                           onClick={() => setServiceOpen(false)}
@@ -159,7 +155,7 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-900/95 backdrop-blur-md rounded-lg mt-2">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-black rounded-lg mt-2 shadow">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -198,7 +194,7 @@ const Navigation = () => {
                       <li key={srv.href} role="none">
                         <Link
                           to={srv.href}
-                          className="block px-3 py-2 text-gray-300 hover:bg-cyan-900/80 hover:text-white transition-colors duration-200"
+                          className="block px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200"
                           role="menuitem"
                           onClick={() => {
                             setIsOpen(false);
