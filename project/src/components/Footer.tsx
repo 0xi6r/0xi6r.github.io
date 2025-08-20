@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Shield, Mail, MapPin, Linkedin, Twitter, Github, Send, AlertCircle, CheckCircle } from 'lucide-react';
+import { Shield, Linkedin, Twitter, Github, Send, AlertCircle, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { supabase } from '../lib/supabase';
 import Logo from './0xi6r.svg';
 
 const Footer = () => {
@@ -11,42 +10,40 @@ const Footer = () => {
   const [error, setError] = useState('');
 
   const handleNewsletterSubmit = async (e) => {
-  e.preventDefault();
-  if (!email) return;
-    
-  setIsLoading(true);
-  setError('');
-  try {
-    const res = await fetch('/api/newsletter', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: email.trim().toLowerCase(),
-        user_agent: navigator.userAgent,
-        source: 'footer_signup',
-      }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setError(data.error || 'Something went wrong. Please try again.');
-    } else {
-      setIsSubscribed(true);
-      setEmail('');
-      setTimeout(() => setIsSubscribed(false), 5000);
+    e.preventDefault();
+    if (!email) return;
+    setIsLoading(true);
+    setError('');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email.trim().toLowerCase(),
+          user_agent: navigator.userAgent,
+          source: 'footer_signup',
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || 'Something went wrong. Please try again.');
+      } else {
+        setIsSubscribed(true);
+        setEmail('');
+        setTimeout(() => setIsSubscribed(false), 5000);
+      }
+    } catch (err) {
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setIsLoading(false);
     }
-  } catch (err) {
-    setError('Network error. Please check your connection and try again.');
-  } finally {
-    setIsLoading(false);
-  }
-};
+  };
 
   return (
     <footer className="bg-black text-white py-12 w-full">
       <div className="w-full px-8">
         {/* === Top Footer Grid === */}
         <div className="grid md:grid-cols-4 gap-10">
-          
           {/* Brand/About */}
           <div>
             <div className="flex items-center space-x-3 mb-4">
@@ -87,12 +84,10 @@ const Footer = () => {
               <li><Link to="/SecurityConsulting" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Security Consulting</Link></li>
               <li><Link to="/RedTeamServices" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Red Team Operations</Link></li>
               <li><Link to="/SysAdminServices" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">System Administration &amp; TI</Link></li>
-
-              
             </ul>
           </div>
 
-          {/* Quick Links & Contact */}
+          {/* Quick Links (no contact or location) */}
           <div>
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 mb-6">
@@ -101,20 +96,6 @@ const Footer = () => {
               <li><Link to="/contact" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Contact</Link></li>
               <li><Link to="/EthicalOath" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Oath</Link></li>
             </ul>
-
-            {/* Contact Info */}
-            <div className="space-y-2">
-              <div className="flex items-center text-gray-400">
-                <Mail className="w-4 h-4 mr-2 text-cyan-400" />
-                <a href="mailto:0xi6r@tutamail.com" className="text-sm hover:text-cyan-400 transition-colors">
-                  0xi6r@tutamail.com
-                </a>
-              </div>
-              <div className="flex items-center text-gray-400">
-                <MapPin className="w-4 h-4 mr-2 text-cyan-400" />
-                <span className="text-sm">Nairobi, Kenya</span>
-              </div>
-            </div>
           </div>
 
           {/* Newsletter → Dedicated Column */}
@@ -123,7 +104,6 @@ const Footer = () => {
             <p className="text-gray-400 text-sm mb-4">
               Get weekly updates on vulnerabilities, security trends, and pentesting techniques.
             </p>
-            
             {isSubscribed ? (
               <div className="flex items-center space-x-2 text-green-400 text-sm bg-green-900/20 p-3 rounded-md border border-green-800">
                 <CheckCircle className="w-4 h-4" />
@@ -156,7 +136,6 @@ const Footer = () => {
                     )}
                   </button>
                 </form>
-
                 {error && (
                   <div className="flex items-center space-x-2 text-red-400 text-sm mt-2 bg-red-900/20 p-3 rounded-md border border-red-800">
                     <AlertCircle className="w-4 h-4" />
@@ -165,7 +144,6 @@ const Footer = () => {
                 )}
               </>
             )}
-
             <p className="text-xs text-gray-500 mt-2">
               No spam. Unsubscribe anytime. Read our{' '}
               <Link to="/PrivacyPolicy" className="text-cyan-400 hover:underline">
@@ -173,7 +151,6 @@ const Footer = () => {
               </Link>.
             </p>
           </div>
-
         </div>
 
         {/* === Bottom Footer === */}
