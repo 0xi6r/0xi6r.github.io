@@ -161,22 +161,6 @@ const Footer = () => {
 
         </div>
 
-
-          {/* Contact Info */}
-            <div className="space-y-2">
-              <div className="flex items-center text-gray-400">
-                <Mail className="w-4 h-4 mr-2 text-cyan-400" />
-                <a href="mailto:0xi6r@tutamail.com" className="text-sm hover:text-cyan-400 transition-colors">
-                  0xi6r@tutamail.com
-                </a>
-              </div>
-              <div className="flex items-center text-gray-400">
-                <MapPin className="w-4 h-4 mr-2 text-cyan-400" />
-                <span className="text-sm">Nairobi, Kenya</span>
-              </div>
-            </div>
-          </div>
-
         {/* === Bottom Footer === */}
         <div className="border-t border-gray-800 mt-10 pt-8 text-center">
           <p className="text-gray-400 text-base italic mb-4 font-light">
