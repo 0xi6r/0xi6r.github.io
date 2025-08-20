@@ -45,10 +45,10 @@ const SysAdminServices = () => (
   <div className="min-h-screen bg-black pt-16 pb-28">
     <section className="max-w-4xl mx-auto text-center px-6 py-14">
       <h1 className="bg-gradient-to-br from-cyan-400 to-purple-600 bg-clip-text text-transparent text-5xl font-extrabold mb-8 animate-fade-in">
-        System Admin &amp Threat Intelligence
+        System Admin &amp; Threat Intelligence
       </h1>
       <p className="text-lg text-gray-300 mb-6">
-        Supercharge your infrastructure with a Linux power user trusted by security-conscious organizations. 
+        Supercharge your infrastructure with a Linux power user trusted by security-conscious individuals. 
         I transform complex, underperforming, or vulnerable systems into agile, resilient, attack-ready foundations.
       </p>
       <p className="text-gray-400 text-md mb-10">
