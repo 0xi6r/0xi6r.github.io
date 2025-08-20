@@ -1,5 +1,7 @@
 import React from 'react';
 import { Terminal, Shield, Cloud, Server, Activity, Search, Layers, Monitor } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
 
 const highlights = [
   {
