@@ -7,7 +7,7 @@ const services = [
   { name: "Penetration Testing", href: "/PenetrationTesting" },
   { name: "Security Consulting", href: "/SecurityConsulting" },
   { name: "Red Team Operations", href: "/RedTeamServices" },
-  { name: "System Administration & Threat Intelligence", href: "/sysadmin-services" }
+  { name: "System Administration & Threat Intelligence", href: "/SysAdminServices" }
 ];
 
 const navItems = [
