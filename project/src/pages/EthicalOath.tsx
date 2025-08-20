@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 
 const sections = [
   { id: 'what-is-oath', title: 'What Is the Ethical Hacker’s Oath?' },
@@ -16,57 +16,16 @@ const EthicalOath = () => {
     'application': useRef(null),
     'conclusion': useRef(null),
   };
-  const [activeSection, setActiveSection] = useState(sections[0].id);
 
-  // Adjust: for sticky menu, calculate offset so it never covers the bottom/footer
-  const [mainBottom, setMainBottom] = useState(0);
-  const mainRef = useRef(null);
-
-  useEffect(() => {
-    const updateBottom = () => {
-      if (mainRef.current) {
-        const rect = mainRef.current.getBoundingClientRect();
-        setMainBottom(window.scrollY + rect.bottom);
-      }
-    };
-    window.addEventListener('resize', updateBottom);
-    updateBottom();
-    return () => window.removeEventListener('resize', updateBottom);
-  }, []);
-
-  // Active section highlight on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const offsets = sections.map(sec => ({
-        id: sec.id,
-        top: sectionRefs[sec.id].current
-          ? sectionRefs[sec.id].current.getBoundingClientRect().top
-          : Infinity
-      }));
-      const threshold = 80;
-      const current =
-        offsets
-          .filter(sec => sec.top - threshold < 1)
-          .slice(-1)[0] || offsets;
-      setActiveSection(current.id);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Compute menu lower position to avoid covering footer.
-  // Sidebar stops being sticky X px before bottom of main
-  const sidebarStyles = {
-    position: 'sticky',
-    top: '8rem', // below navbar
-    maxHeight: `calc(100vh - 8rem - 2.5rem)`, // Give breathing room at page bottom
-    overflowY: 'auto',
+  // Scroll into view when side menu is clicked
+  const scrollToSection = (id) => {
+    sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <div className="min-h-screen bg-black text-gray-100 pt-16 pb-20 flex justify-center items-start">
-      <main className="w-full max-w-2xl mx-auto px-4" ref={mainRef}>
-        {/* Oath Title */}
+    <div className="min-h-screen bg-black text-gray-100 pt-16 pb-20 flex flex-col lg:flex-row justify-center items-start">
+      {/* Main Oath Content */}
+      <main className="w-full max-w-2xl mx-auto px-4">
         <section className="mb-12">
           <h1 className="text-4xl font-bold mb-2 text-white">Ethical Hacker's Oath</h1>
           <div className="text-md text-gray-500 mb-8">Updated: August 20, 2025</div>
@@ -75,7 +34,7 @@ const EthicalOath = () => {
           </p>
         </section>
 
-        <section ref={sectionRefs[sections[0].id]} id={sections.id} className="mb-12">
+        <section ref={sectionRefs['what-is-oath']} id="what-is-oath" className="mb-12">
           <h2 className="text-2xl font-semibold mb-4 text-white">What Is the Ethical Hacker’s Oath?</h2>
           <p className="mb-4 text-gray-300">
             The oath is a declaration of core values for cybersecurity professionals. It establishes a code of conduct that emphasizes protecting users and systems, responsibly disclosing vulnerabilities, respecting privacy and confidentiality, and never abusing knowledge or access for personal gain or to knowingly cause harm.
@@ -85,7 +44,7 @@ const EthicalOath = () => {
           </p>
         </section>
 
-        <section ref={sectionRefs[sections[1].id]} id={sections[1].id} className="mb-12">
+        <section ref={sectionRefs['why-i-take-oath']} id="why-i-take-oath" className="mb-12">
           <h2 className="text-2xl font-semibold mb-4 text-white">Why I Take This Oath</h2>
           <p className="mb-4 text-gray-300">
             Trust is fundamental to cybersecurity. By formally embracing the ethical hacker’s oath, I demonstrate to clients, colleagues, and the broader community that my work is governed by principles—beyond technical skill and curiosity. This commitment reassures those who rely on my expertise that their systems, data, and users are treated with the utmost care and respect.
@@ -95,7 +54,7 @@ const EthicalOath = () => {
           </p>
         </section>
 
-        <section ref={sectionRefs[sections[2].id]} id={sections[2].id} className="mb-12">
+        <section ref={sectionRefs['principles']} id="principles" className="mb-12">
           <h2 className="text-2xl font-semibold mb-4 text-white">My Ethical Principles</h2>
           <ul className="ml-6 mb-4 text-gray-300 list-decimal space-y-2">
             <li>
@@ -119,7 +78,7 @@ const EthicalOath = () => {
           </p>
         </section>
 
-        <section ref={sectionRefs[sections[3].id]} id={sections[3].id} className="mb-12">
+        <section ref={sectionRefs['application']} id="application" className="mb-12">
           <h2 className="text-2xl font-semibold mb-4 text-white">Applying the Oath in My Work</h2>
           <p className="mb-4 text-gray-300">
             In every penetration test, system audit, or investigation I conduct, the oath is my benchmark for action. I seek clear client consent, define scope transparently, and document findings thoroughly and truthfully. Sensitive details are never disclosed beyond those with a legitimate need to know.
@@ -132,7 +91,7 @@ const EthicalOath = () => {
           </p>
         </section>
 
-        <section ref={sectionRefs[sections[4].id]} id={sections[4].id} className="mb-16">
+        <section ref={sectionRefs['conclusion']} id="conclusion" className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-white">Conclusion</h2>
           <p className="text-gray-300 mb-2">
             The ethical hacker's oath is my assurance—to you and myself—that every project I undertake is handled with the highest standards of responsibility. Ethical standards do not hinder progress; they build lasting trust and security.
@@ -143,22 +102,19 @@ const EthicalOath = () => {
         </section>
       </main>
 
-      {/* Sticky Side Menu, does NOT cover footer. */}
-      <aside className="hidden lg:flex flex-col ml-6" style={{ minWidth: '18rem' }}>
-        <nav style={sidebarStyles} className="bg-black border border-gray-700 rounded-xl shadow-lg p-4 space-y-2">
+      {/* Right-side non-sticky menu */}
+      <aside className="w-full max-w-xs mx-auto lg:ml-6 lg:mr-0 mt-10 lg:mt-0 flex-shrink-0">
+        <nav className="bg-black border border-gray-700 rounded-xl shadow-lg p-4 space-y-2">
           <h3 className="text-gray-400 text-base font-semibold mb-2">On This Page</h3>
           <ul>
             {sections.map((sec) => (
               <li key={sec.id}>
                 <button
-                  className={`w-full text-left px-3 py-2 rounded-lg transition-colors duration-200 text-base flex items-center justify-between
-                    ${
-                      activeSection === sec.id
-                        ? 'bg-gray-800 text-white font-semibold'
-                        : 'text-gray-400'
-                    }`}
+                  className={`
+                    w-full text-left px-3 py-2 rounded-lg transition-colors duration-200 text-base flex items-center justify-between
+                    text-gray-400 hover:bg-gray-800 hover:text-white
+                  `}
                   onClick={() => scrollToSection(sec.id)}
-                  aria-current={activeSection === sec.id ? "section" : undefined}
                 >
                   <span>{sec.title}</span>
                   <span className="ml-2 text-white text-base">{'→'}</span>
