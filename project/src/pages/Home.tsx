@@ -36,7 +36,7 @@ const Home = () => {
     {
       title: 'Vulnerability Research',
       description: 'Discovering and analyzing security vulnerabilities in modern systems',
-      link: '/blog?post=whatIdo'
+      link: '/VulnResearch'
     },
     {
       title: 'Security Consulting',
