@@ -238,14 +238,14 @@ const Blog: React.FC = () => {
         {selectedPost ? (
           <div className="animate-fade-in">
             <button 
-              className="mb-8 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-100 rounded-md transition-colors duration-200 flex items-center gap-2 border border-gray-600"
+              className="mb-8 px-4 py-2 bg-black hover:bg-gray-600 text-gray-100 rounded-md transition-colors duration-200 flex items-center gap-2 border border-gray-600"
               onClick={handleBackToList}
               type="button"
             >
               <span>←</span> Back to Blog
             </button>
             
-            <article className="bg-gray-800 border border-gray-700 rounded-lg p-8 shadow-xl">
+            <article className="bg-black border border-gray-700 rounded-lg p-8 shadow-xl">
               <header className="mb-8 pb-6 border-b border-gray-700">
                 <h1 className="text-4xl font-bold mb-3 text-gray-100 leading-tight">
                   {selectedPost.title}
