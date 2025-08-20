@@ -32,10 +32,13 @@ const EthicalOath = () => {
           ? sectionRefs[sec.id].current.getBoundingClientRect().top
           : Infinity
       }));
-      const threshold = 60;
+      const threshold = 80;
+      // The first section whose top is > threshold is the next section;
+      // highlight the last one above.
       const current =
-        offsets.find(sec => sec.top > threshold) ||
-        offsets[offsets.length - 1];
+        offsets
+          .filter(sec => sec.top - threshold < 1)
+          .slice(-1)[0] || offsets;
       setActiveSection(current.id);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -48,7 +51,7 @@ const EthicalOath = () => {
         {/* Oath Title */}
         <section className="mb-12">
           <h1 className="text-4xl font-bold mb-2 text-white">Ethical Hacker's Oath</h1>
-          <div className="text-md text-gray-400 mb-8">Updated: August 20, 2025</div>
+          <div className="text-md text-gray-500 mb-8">Updated: August 20, 2025</div>
           <p className="text-lg text-gray-300 mb-6">
             As technology becomes more central to modern life, cybersecurity specialists play a critical role in protecting individuals, organizations, and infrastructure from harm. The “Ethical Hacker’s Oath” is a personal and professional pledge to operate with integrity, responsibility, and respect for law and human well-being in all information security activities.
           </p>
@@ -117,8 +120,8 @@ const EthicalOath = () => {
           <p className="text-gray-300 mb-2">
             The ethical hacker's oath is my assurance—to you and myself—that every project I undertake is handled with the highest standards of responsibility. Ethical standards do not hinder progress; they build lasting trust and security.
           </p>
-          <p className="text-gray-400">
-            If you have questions or wish to discuss this oath or my approach, please <a href="mailto:ethics@0xi6r.com" className="underline text-cyan-300 hover:text-cyan-200">contact me</a> directly.
+          <p className="text-gray-500">
+            If you have questions or wish to discuss this oath or my approach, please <a href="mailto:ethics@0xi6r.com" className="underline">contact me</a> directly.
           </p>
         </section>
 
@@ -127,23 +130,25 @@ const EthicalOath = () => {
         </footer>
       </main>
 
-      {/* Side Menu */}
-      <aside className="hidden lg:block fixed right-10 top-32 w-64">
-        <nav className="bg-gray-900 border border-gray-800 rounded-xl shadow-lg p-4 space-y-2">
-          <h3 className="text-gray-300 text-lg font-semibold mb-2">Sections</h3>
+      {/* Side Menu: only grayscale, arrows, no color, no hover except for white on active */}
+      <aside className="hidden lg:flex flex-col fixed right-10 top-32 w-72 max-h-[80vh] overflow-y-auto">
+        <nav className="bg-black border border-gray-700 rounded-xl shadow-lg p-4 space-y-2">
+          <h3 className="text-gray-400 text-base font-semibold mb-2">On This Page</h3>
           <ul>
             {sections.map((sec) => (
               <li key={sec.id}>
                 <button
-                  className={`w-full text-left px-3 py-2 rounded-lg transition-colors duration-200 text-base 
+                  className={`w-full text-left px-3 py-2 rounded-lg transition-colors duration-200 text-base flex items-center justify-between
                     ${
                       activeSection === sec.id
-                        ? 'bg-gray-800 text-cyan-300 font-semibold'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                        ? 'bg-gray-800 text-white font-semibold'
+                        : 'text-gray-400'
                     }`}
                   onClick={() => scrollToSection(sec.id)}
+                  aria-current={activeSection === sec.id ? "section" : undefined}
                 >
-                  {sec.title}
+                  <span>{sec.title}</span>
+                  <span className="ml-2 text-white text-base">{'→'}</span>
                 </button>
               </li>
             ))}
