@@ -14,15 +14,27 @@ const EthicalOath = () => {
     'why-i-take-oath': useRef(null),
     'principles': useRef(null),
     'application': useRef(null),
+    'conclusion': useRef(null),
   };
   const [activeSection, setActiveSection] = useState(sections[0].id);
 
-  // Scroll into view when side menu is clicked
-  const scrollToSection = (id) => {
-    sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // Adjust: for sticky menu, calculate offset so it never covers the bottom/footer
+  const [mainBottom, setMainBottom] = useState(0);
+  const mainRef = useRef(null);
 
-  // Track active section on scroll
+  useEffect(() => {
+    const updateBottom = () => {
+      if (mainRef.current) {
+        const rect = mainRef.current.getBoundingClientRect();
+        setMainBottom(window.scrollY + rect.bottom);
+      }
+    };
+    window.addEventListener('resize', updateBottom);
+    updateBottom();
+    return () => window.removeEventListener('resize', updateBottom);
+  }, []);
+
+  // Active section highlight on scroll
   useEffect(() => {
     const handleScroll = () => {
       const offsets = sections.map(sec => ({
@@ -32,8 +44,6 @@ const EthicalOath = () => {
           : Infinity
       }));
       const threshold = 80;
-      // The first section whose top is > threshold is the next section;
-      // highlight the last one above.
       const current =
         offsets
           .filter(sec => sec.top - threshold < 1)
@@ -44,9 +54,18 @@ const EthicalOath = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Compute menu lower position to avoid covering footer.
+  // Sidebar stops being sticky X px before bottom of main
+  const sidebarStyles = {
+    position: 'sticky',
+    top: '8rem', // below navbar
+    maxHeight: `calc(100vh - 8rem - 2.5rem)`, // Give breathing room at page bottom
+    overflowY: 'auto',
+  };
+
   return (
     <div className="min-h-screen bg-black text-gray-100 pt-16 pb-20 flex justify-center items-start">
-      <main className="w-full max-w-2xl mx-auto px-4">
+      <main className="w-full max-w-2xl mx-auto px-4" ref={mainRef}>
         {/* Oath Title */}
         <section className="mb-12">
           <h1 className="text-4xl font-bold mb-2 text-white">Ethical Hacker's Oath</h1>
@@ -56,7 +75,6 @@ const EthicalOath = () => {
           </p>
         </section>
 
-        {/* Oath Content with Anchor Links */}
         <section ref={sectionRefs[sections[0].id]} id={sections.id} className="mb-12">
           <h2 className="text-2xl font-semibold mb-4 text-white">What Is the Ethical Hacker’s Oath?</h2>
           <p className="mb-4 text-gray-300">
@@ -125,9 +143,9 @@ const EthicalOath = () => {
         </section>
       </main>
 
-      {/* Side Menu: only grayscale, arrows, no color, no hover except for white on active */}
-      <aside className="hidden lg:flex flex-col fixed right-10 top-32 w-72 max-h-[80vh] overflow-y-auto">
-        <nav className="bg-black border border-gray-700 rounded-xl shadow-lg p-4 space-y-2">
+      {/* Sticky Side Menu, does NOT cover footer. */}
+      <aside className="hidden lg:flex flex-col ml-6" style={{ minWidth: '18rem' }}>
+        <nav style={sidebarStyles} className="bg-black border border-gray-700 rounded-xl shadow-lg p-4 space-y-2">
           <h3 className="text-gray-400 text-base font-semibold mb-2">On This Page</h3>
           <ul>
             {sections.map((sec) => (
