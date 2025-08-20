@@ -1,26 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Shield } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+
+const services = [
+  { name: "Penetration Testing", href: "/PenetrationTesting" },
+  { name: "Security Consulting", href: "/SecurityConsulting" },
+  { name: "Red Team Operations", href: "/RedTeamServices" },
+  { name: "System Administration & Threat Intelligence", href: "/sysadmin-services" }
+];
+
+const navItems = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Blog', href: '/blog' },
+];
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [serviceOpen, setServiceOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
-  ];
 
   const isActive = (href: string) => {
     if (href === '/' && location.pathname === '/') return true;
@@ -39,7 +44,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8 items-center">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -53,6 +58,38 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
+
+            {/* Services Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setServiceOpen(true)}
+              onMouseLeave={() => setServiceOpen(false)}
+            >
+              <button
+                className={`flex items-center font-medium transition-colors duration-200
+                  ${serviceOpen ? 'text-cyan-400' : 'text-gray-300 hover:text-cyan-400'}`}
+                type="button"
+              >
+                Services <ChevronDown className="ml-1 w-4 h-4" />
+              </button>
+              {serviceOpen && (
+                <div className="absolute left-0 mt-2 w-64 bg-black border border-gray-800 rounded-lg shadow-xl z-50">
+                  <ul className="py-2">
+                    {services.map((srv) => (
+                      <li key={srv.href}>
+                        <Link
+                          to={srv.href}
+                          className="block px-6 py-3 text-gray-300 hover:bg-cyan-900/80 hover:text-white text-base transition-colors duration-200"
+                          onClick={() => setServiceOpen(false)}
+                        >
+                          {srv.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -84,6 +121,34 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
+              {/* Mobile Services Dropdown */}
+              <div>
+                <button
+                  className="w-full flex items-center justify-between px-3 py-2 font-medium transition-colors duration-200 text-gray-300 hover:text-cyan-400 focus:outline-none"
+                  onClick={() => setServiceOpen(!serviceOpen)}
+                >
+                  Services
+                  <ChevronDown className={`ml-1 w-4 h-4 transform transition-transform duration-200 ${serviceOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {serviceOpen && (
+                  <ul className="mt-1 ml-2">
+                    {services.map((srv) => (
+                      <li key={srv.href}>
+                        <Link
+                          to={srv.href}
+                          className="block px-3 py-2 text-gray-300 hover:bg-cyan-900/80 hover:text-white transition-colors duration-200"
+                          onClick={() => {
+                            setIsOpen(false);
+                            setServiceOpen(false);
+                          }}
+                        >
+                          {srv.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
           </div>
         )}
