@@ -50,7 +50,7 @@ const EthicalOath = () => {
 
   return (
     <div className="min-h-screen bg-black text-gray-200 pt-16 pb-20 flex justify-center items-start">
-      <div className="w-full max-w-2xl bg-gray-900 rounded-2xl shadow-lg p-8 border border-gray-800 mx-2">
+      <div className="w-full max-w-2xl bg-black rounded-2xl shadow-lg p-8 border border-black mx-2">
         {/* Header */}
         <div className="flex flex-col items-center mb-8">
           <Shield className="w-10 h-10 text-cyan-400 mb-3" />
