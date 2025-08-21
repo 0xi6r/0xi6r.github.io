@@ -483,11 +483,11 @@ const RedTeamServices = () => {
               </div>
             </div>
             
-            <button className="w-full bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center group">
+            <link to="/contact" className="w-full bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center group">
               <Mail className="w-5 h-5 mr-2" />
               Contact for Enterprise Consultation
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </link>
           </div>
         </div>
       </section>
