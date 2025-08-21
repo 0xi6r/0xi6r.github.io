@@ -44,24 +44,6 @@ const RedTeamServices = () => {
       description: "Industry-standard framework for adversary tactics, techniques, and procedures",
       icon: Target,
       color: "text-red-400"
-    },
-    {
-      name: "NIST Cybersecurity Framework",
-      description: "Comprehensive approach to managing cybersecurity risk",
-      icon: Shield,
-      color: "text-blue-400"
-    },
-    {
-      name: "PTES (Penetration Testing Execution Standard)",
-      description: "Structured methodology for penetration testing engagements",
-      icon: FileText,
-      color: "text-green-400"
-    },
-    {
-      name: "OWASP Testing Guide",
-      description: "Web application security testing methodology",
-      icon: Globe,
-      color: "text-purple-400"
     }
   ];
 
@@ -70,7 +52,6 @@ const RedTeamServices = () => {
     { category: "Exploitation", tools: ["Metasploit", "Cobalt Strike", "Empire", "BloodHound", "Impacket"], icon: Zap },
     { category: "Post-Exploitation", tools: ["Mimikatz", "PowerShell Empire", "Covenant", "Sliver", "PoshC2"], icon: Lock },
     { category: "Social Engineering", tools: ["SET", "Gophish", "King Phisher", "Evilginx2", "Modlishka"], icon: Users },
-    { category: "Physical Security", tools: ["Proxmark3", "HackRF", "Flipper Zero", "USB Rubber Ducky", "WiFi Pineapple"], icon: Wifi },
     { category: "Reporting", tools: ["Dradis", "Faraday", "PlexTrac", "GhostWriter", "Serpico"], icon: FileText }
   ];
 
@@ -93,8 +74,7 @@ const RedTeamServices = () => {
       activities: [
         "Phishing campaign execution",
         "Web application exploitation",
-        "Network service exploitation",
-        "Physical security assessment"
+        "Network service exploitation"
       ]
     },
     {
