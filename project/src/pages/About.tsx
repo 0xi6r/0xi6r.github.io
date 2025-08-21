@@ -3,10 +3,10 @@ import { Shield, Award, Users, Clock } from 'lucide-react';
 
 const About = () => {
   const stats = [
-    { icon: Shield, label: 'Years Experience', value: '2+' },
-    { icon: Award, label: 'Certifications', value: '3' },
-    { icon: Users, label: 'Companies Secured', value: '50+' },
-    { icon: Clock, label: 'Vulnerabilities Found', value: '200+' },
+    { icon: Shield, label: 'Years Experience', value: '1+' },
+    { icon: Award, label: 'Certifications', value: '2 (active)' },
+    { icon: Users, label: 'Companies Secured', value: '10+' },
+    { icon: Clock, label: 'Vulnerabilities Found', value: '50+' },
   ];
 
   return (
@@ -29,7 +29,7 @@ const About = () => {
                 through advanced offensive security methodologies and strategic risk assessment
                 </p>
                 <p className="text-gray-300 mb-6 leading-relaxed">
-                  I hold multiple industry certifications including OSCP, and CEH.
+                  I hold industry certifications including OSCP, and CEH.
                 </p>
                 <p className="text-gray-300 leading-relaxed">
                   When I'm not hunting for vulnerabilities, I contribute to open-source security tools and prioritize maintaining a healthy work-life balance through outdoor activities and 
