@@ -101,7 +101,7 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Security Insights Newsletter</h4>
             <p className="text-gray-400 text-sm mb-4">
-              Get weekly updates on vulnerabilities, security trends, and pentesting techniques.
+              Get weekly updates on vulnerabilities, security trends, and pentesting & red teaming techniques.
             </p>
             {isSubscribed ? (
               <div className="flex items-center space-x-2 text-green-400 text-sm bg-green-900/20 p-3 rounded-md border border-green-800">
@@ -144,7 +144,7 @@ const Footer = () => {
               </>
             )}
             <p className="text-xs text-gray-500 mt-2">
-              No spam. Unsubscribe anytime. Read our{' '}
+              No spam. Unsubscribe anytime. Read my{' '}
               <Link to="/PrivacyPolicy" className="text-cyan-400 hover:underline">
                 privacy policy
               </Link>.
