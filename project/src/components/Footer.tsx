@@ -72,7 +72,7 @@ const Footer = () => {
             {/* Certifications */}
             <div className="flex items-center space-x-2 text-sm text-gray-400">
               <Shield className="w-4 h-4 text-cyan-400" />
-              <span>OSCP | CEH | OSEP (ACTIVE)</span>
+              <span>OSCP | CEH | OSEP (active)</span>
             </div>
           </div>
 
@@ -165,9 +165,9 @@ const Footer = () => {
               Terms of Service
             </Link>
             <span className="text-gray-600">|</span>
-            <a href="/sitemap.xml" className="text-gray-400 hover:text-cyan-400 transition-colors">
+            <Link to="/sitemap" className="text-gray-400 hover:text-cyan-400 transition-colors">
               Sitemap
-            </a>
+            </Link>
           </div>
         </div>
       </div>
