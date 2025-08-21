@@ -44,7 +44,7 @@ const highlights = [
 const SysAdminServices = () => (
   <div className="min-h-screen bg-black pt-16 pb-28">
     <section className="max-w-4xl mx-auto text-center px-6 py-14">
-      <h1 className="bg-gradient-to-br from-cyan-400 to-purple-600 bg-clip-text text-transparent text-5xl font-extrabold mb-8 animate-fade-in">
+      <h1 className="bg-white bg-clip-text text-transparent text-5xl font-extrabold mb-8 animate-fade-in">
         System Admin &amp; Threat Intelligence
       </h1>
       <p className="text-lg text-gray-300 mb-6">
