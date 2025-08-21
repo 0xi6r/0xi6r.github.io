@@ -72,7 +72,7 @@ const Footer = () => {
             {/* Certifications */}
             <div className="flex items-center space-x-2 text-sm text-gray-400">
               <Shield className="w-4 h-4 text-cyan-400" />
-              <span>OSCP | CEH | OSEP (ongoing)</span>
+              <span>OSCP | CEH | OSEP (ACTIVE)</span>
             </div>
           </div>
 
@@ -158,7 +158,7 @@ const Footer = () => {
             "Security is a people problem wearing a technical costume."
           </p>
           <div className="text-gray-400 text-sm mb-4">
-            © 2024 0xi6r. All rights reserved. | Made with ❤️ by Isaac
+            © 2025 0xi6r. All rights reserved. | Made with ❤️ by Isaac
           </div>
           <div className="flex items-center justify-center space-x-4 text-sm">
             <Link to="/Terms" className="text-gray-400 hover:text-cyan-400 transition-colors">
