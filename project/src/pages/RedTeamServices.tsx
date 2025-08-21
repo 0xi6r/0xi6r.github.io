@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { 
   Shield, 
@@ -12,26 +12,16 @@ import {
   Zap, 
   FileText, 
   ArrowRight, 
-  Play, 
   ChevronDown, 
   ChevronUp,
-  Globe,
-  Server,
-  Smartphone,
-  Wifi,
-  Database,
-  Code,
-  Mail,
-  Phone
+  Mail
 } from 'lucide-react';
 
 const RedTeamServices = () => {
-  const [activeTab, setActiveTab] = useState('overview');
   const [expandedFAQ, setExpandedFAQ] = useState(null);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   // Smooth scroll to section
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -126,23 +116,23 @@ const RedTeamServices = () => {
   const faqs = [
     {
       question: "How is Red Team testing different from traditional penetration testing?",
-      answer: "Red Team operations simulate real-world adversaries with longer engagement periods (months vs days), broader scope including physical and social engineering, and focus on business impact rather than just technical vulnerabilities. While penetration testing identifies vulnerabilities, Red Team exercises test your organization's entire security posture including people, processes, and technology."
+      answer: "Red Team operations simulate real-world adversaries with longer engagement periods (months vs days), broader scope including physical and social engineering, and focus on business impact and detection/response testing.",
     },
     {
       question: "What legal protections are in place during Red Team engagements?",
-      answer: "All Red Team activities are conducted under comprehensive legal frameworks including detailed Rules of Engagement (ROE), signed authorization letters, liability insurance, and compliance with local and international laws. We work closely with your legal team to ensure all activities are properly authorized and documented."
+      answer: "All Red Team activities are conducted under comprehensive legal frameworks including detailed Rules of Engagement (ROE), signed authorization letters, liability insurance, and compliance with applicable laws.",
     },
     {
       question: "How do you ensure business operations aren't disrupted?",
-      answer: "We implement strict safeguards including 24/7 communication channels, predefined escalation procedures, business-hours-only testing for critical systems, and immediate rollback capabilities. Our team coordinates closely with your operations team to minimize any potential impact."
+      answer: "We implement strict safeguards including 24/7 communication channels, predefined escalation procedures, business-hours-only testing for critical systems, and immediate rollback capabilities.",
     },
     {
       question: "What happens to the data and access gained during the engagement?",
-      answer: "All data accessed during the engagement is handled according to strict confidentiality agreements. Screenshots and evidence are collected only as necessary for reporting, all access is documented and revoked at engagement completion, and any extracted data is securely destroyed according to your data retention policies."
+      answer: "All data accessed during the engagement is handled according to strict confidentiality agreements. Screenshots and evidence are collected only as necessary for reporting, all access is removed after engagement.",
     },
     {
       question: "How do you measure the success of a Red Team engagement?",
-      answer: "Success is measured against predefined objectives including time to detection, response effectiveness, business impact simulation, and security control bypass rates. We provide detailed metrics on detection capabilities, response times, and overall security maturity improvements."
+      answer: "Success is measured against predefined objectives including time to detection, response effectiveness, business impact simulation, and security control bypass rates. We provide detailed reports and recommendations.",
     }
   ];
 
@@ -256,7 +246,7 @@ const RedTeamServices = () => {
         </div>
       </section>
 
-          {/* Methodology Section */}
+      {/* Methodology Section */}
       <section id="methodology" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -269,16 +259,16 @@ const RedTeamServices = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {methodologies.map((methodology, index) => {
               const IconComponent = methodology.icon;
+              // FIX: JSX string interpolation and className syntax
               return (
                 <div key={index} className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-red-500/50 transition-all duration-300">
-                  <IconComponent className={w-8 h-8 ${methodology.color} mb-4} />
+                  <IconComponent className={`w-8 h-8 ${methodology.color} mb-4`} />
                   <h3 className="text-lg font-semibold text-white mb-2">{methodology.name}</h3>
                   <p className="text-sm text-gray-400">{methodology.description}</p>
                 </div>
               );
             })}
           </div>
-
 
           {/* Engagement Phases */}
           <div className="space-y-8">
