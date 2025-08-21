@@ -6,10 +6,9 @@ const Home = () => {
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const titles = [
-    'Security Engineer',
+    'Red Teamer'
     'Security Researcher',
     'bug bounty hunter',
-    'Security Evangelist',
     'Penetration Tester', 
     'Security Consultant'
   ];
@@ -39,9 +38,9 @@ const Home = () => {
       link: '/VulnResearch'
     },
     {
-      title: 'Security Consulting',
-      description: 'Helping organizations strengthen their security posture',
-      link: '/blog?post=whatIdo'
+      title: 'APT Simulation',
+      description: 'Helping organizations strengthen their security posture against advanced adversaries',
+      link: '/RedTeamServices'
     },
     {
       title: 'Research Publications',
