@@ -29,7 +29,7 @@ const About = () => {
                 through advanced offensive security methodologies and strategic risk assessment
                 </p>
                 <p className="text-gray-300 mb-6 leading-relaxed">
-                  I hold industry certifications including OSCP, and CEH.
+                  I'm actively pursuing multiple industry certifications including OSCP, OSEP, ...
                 </p>
                 <p className="text-gray-300 leading-relaxed">
                   When I'm not hunting for vulnerabilities, I contribute to open-source security tools and prioritize maintaining a healthy work-life balance through outdoor activities and 
