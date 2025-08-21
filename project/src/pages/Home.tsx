@@ -6,7 +6,7 @@ const Home = () => {
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const titles = [
-    'Red Teamer'
+    'Red Teamer',
     'Security Researcher',
     'bug bounty hunter',
     'Penetration Tester', 
