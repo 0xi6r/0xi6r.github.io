@@ -51,6 +51,42 @@ const About = () => {
         </div>
       </section>
 
+      // start of edit
+      {/* Features Section */}
+      <section className="py-20 bg-gray-100">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">What I Do</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-6"></div>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Specializing in cutting-edge cybersecurity research and practical security solutions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
+                <Link 
+                  to={feature.link}
+                  className="flex items-center text-cyan-600 hover:text-cyan-700 transition-colors font-medium"
+                >
+                  Learn More
+                  <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+      
+
       {/* Experience Timeline */}
       <section className="py-20 bg-black-900">
         <div className="max-w-4xl mx-auto px-4">
