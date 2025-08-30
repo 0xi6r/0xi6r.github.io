@@ -9,6 +9,27 @@ const About = () => {
     { icon: Clock, label: 'Vulnerabilities Found', value: '50+' },
   ];
 
+
+
+  // feature 
+  const features = [
+    {
+      title: 'Vulnerability Research',
+      description: 'Discovering and analyzing security vulnerabilities in modern systems',
+      link: '/VulnResearch'
+    },
+    {
+      title: 'APT Simulation',
+      description: 'Helping organizations strengthen their security posture against advanced adversaries',
+      link: '/RedTeamServices'
+    },
+    {
+      title: 'Research Publications',
+      description: 'Contributing to the cybersecurity knowledge base',
+      link: '/blog?post=whatIdo'
+    }
+  ];
+
   return (
     <div className="min-h-screen pt-20 bg-black">
       <section className="py-20 bg-black-100">
