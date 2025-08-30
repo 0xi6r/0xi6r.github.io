@@ -9,9 +9,6 @@ const About = () => {
     { icon: Clock, label: 'Vulnerabilities Found', value: '50+' },
   ];
 
-
-
-  // feature 
   const features = [
     {
       title: 'Vulnerability Research',
@@ -72,7 +69,6 @@ const About = () => {
         </div>
       </section>
 
-      // start of edit
       {/* Features Section */}
       <section className="py-20 bg-gray-100">
         <div className="max-w-6xl mx-auto px-4">
