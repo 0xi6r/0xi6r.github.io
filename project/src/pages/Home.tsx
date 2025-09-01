@@ -92,7 +92,7 @@ const HomePage = () => {
     <div className="min-h-screen pt-20 bg-black">
       {/* Hero/Latest Post Section */}
       <section className="py-20 bg-black">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-2xl mx-auto px-4">
           {/* Latest Post */}
           <div className="mb-12">
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-cyan-500/10 transition-shadow duration-300">
