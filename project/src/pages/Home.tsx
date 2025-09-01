@@ -92,7 +92,7 @@ const HomePage = () => {
     <div className="min-h-screen pt-20 bg-black">
       {/* Hero/Latest Post Section */}
       <section className="py-20 bg-black">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-3xl mx-auto px-4">
           {/* Latest Post */}
           <div className="mb-12">
             <div className="flex items-center mb-8">
