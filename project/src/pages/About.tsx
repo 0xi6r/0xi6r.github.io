@@ -100,7 +100,7 @@ const About = () => {
       </section>
 
       {/* Experience Timeline */}
-      <section className="py-20 bg-gray-800">
+      {/* to be updated later  <section className="py-20 bg-gray-800">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Professional Experience</h2>
@@ -139,7 +139,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
