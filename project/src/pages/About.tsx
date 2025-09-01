@@ -30,7 +30,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen pt-20 bg-black">
-      <section className="py-20 bg-gray-900">
+      <section className="py-20 bg-black">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold text-white mb-4">Whoami?</h1>
