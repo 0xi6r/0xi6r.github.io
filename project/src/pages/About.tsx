@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Award, Users, Clock } from 'lucide-react';
+import { Shield, Award, Users, Clock, ArrowRight } from 'lucide-react';
 
 const About = () => {
   const stats = [
@@ -30,7 +30,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen pt-20 bg-black">
-      <section className="py-20 bg-black-100">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold text-white mb-4">Whoami?</h1>
@@ -99,14 +99,8 @@ const About = () => {
         </div>
       </section>
 
-
-
-
-
-      
-
       {/* Experience Timeline */}
-      <section className="py-20 bg-black-900">
+      <section className="py-20 bg-gray-800">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Professional Experience</h2>
@@ -134,7 +128,7 @@ const About = () => {
                 description: 'Analyzed security incidents and developed incident response procedures for enterprise clients.'
               }
             ].map((exp, index) => (
-              <div key={index} className="bg-gray-800 rounded-lg p-6 border-l-4 border-cyan-400">
+              <div key={index} className="bg-gray-700 rounded-lg p-6 border-l-4 border-cyan-400">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
                   <h3 className="text-xl font-bold text-white">{exp.title}</h3>
                   <span className="text-cyan-400 font-medium">{exp.year}</span>
