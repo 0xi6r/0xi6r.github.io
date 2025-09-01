@@ -95,7 +95,7 @@ const HomePage = () => {
         <div className="max-w-2xl mx-auto px-4">
           {/* Latest Post */}
           <div className="mb-12">
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-cyan-500/10 transition-shadow duration-300">
+            <div className="bg-black">
               <div className="grid lg:grid-cols-3 gap-0">
                 {/* Content */}
                 <div className="lg:col-span-2 p-8 lg:p-12">
