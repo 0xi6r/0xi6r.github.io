@@ -91,7 +91,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen pt-20 bg-black">
       {/* Hero/Latest Post Section */}
-      <section className="py-20 bg-black">
+      <section className="bg-black">
         <div className="max-w-2xl mx-auto px-4">
           {/* Latest Post */}
           <div className="mb-12">
