@@ -97,7 +97,7 @@ const EthicalOath = () => {
             The ethical hacker's oath is my assurance—to you and myself—that every project I undertake is handled with the highest standards of responsibility. Ethical standards do not hinder progress; they build lasting trust and security.
           </p>
           <p className="text-gray-500">
-            If you have questions or wish to discuss this oath or my approach, please <a href="mailto:ethics@0xi6r.com" className="underline">contact me</a> directly.
+            If you have questions or wish to discuss this oath or my approach, please <a href="mailto:0xi6r@tutamail.com" className="underline">contact me</a> directly.
           </p>
         </section>
       </main>
