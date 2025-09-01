@@ -95,11 +95,6 @@ const HomePage = () => {
         <div className="max-w-4xl mx-auto px-4">
           {/* Latest Post */}
           <div className="mb-12">
-            <div className="flex items-center mb-8">
-              <h2 className="text-3xl font-bold text-white mr-4">Updated</h2>
-              <div className="flex-grow h-px bg-gradient-to-r from-cyan-500 to-transparent"></div>
-            </div>
-            
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-cyan-500/10 transition-shadow duration-300">
               <div className="grid lg:grid-cols-3 gap-0">
                 {/* Content */}
@@ -131,14 +126,6 @@ const HomePage = () => {
                       <Calendar className="w-5 h-5 mr-2" />
                       <span>{formatDate(latestPost.date)}</span>
                     </div>
-                    
-                    <Link 
-                      to={`/blog/${latestPost.slug}`}
-                      className="flex items-center bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
-                    >
-                      Read Full Article
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </Link>
                   </div>
                 </div>
                 
