@@ -1,5 +1,6 @@
 ---
 title: "My Interests: The Things That I Think Define Me"
+image: "images/blog/interests.jpg"
 date: "2025-01-06"
 excerpt: "From breaking code to getting a shell & having a life - a glimpse into what makes me tick, both professionally and personally."
 ---
