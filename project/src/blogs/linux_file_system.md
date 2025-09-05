@@ -1,5 +1,6 @@
 ---
 title: "The Linux FIlesystem"
+image: "/images/blog/Unix-File-System.png"
 date: "2025-02-13"
 excerpt: " Understanding its architecture, components, and functionalities for effective usage."
 ---
