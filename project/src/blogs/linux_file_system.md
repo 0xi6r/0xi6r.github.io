@@ -9,8 +9,9 @@ excerpt: " Understanding its architecture, components, and functionalities for e
 ## The Linux File System
 
 The Linux file system is based on a hierarchical directory structure, starting from the root directory (`/`). All files and directories are organized under this root directory, forming a tree-like structure.
+<img width="1024" height="1024" alt="hunting-bugs" src="https://github.com/user-attachments/assets/53589812-0b1c-45e2-9e7d-e00cc36c650b" />
 
-![alt text](Unix_File_System.png)
+
 
 ### Key Features
 - **Case Sensitivity**: Linux file systems are case-sensitive, meaning that `File.txt` and `file.txt` are considered different files.
