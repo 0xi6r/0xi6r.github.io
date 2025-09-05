@@ -1,5 +1,6 @@
 ---
 title: "Welcome to My Blog!"
+image: "images/blog/welcome-to-blog.jpg"
 date: "2024-11-10"
 excerpt: "Hello world! This is my very first blog post. Learn about what you can expect from this blog and my journey in cybersecurity."
 ---
