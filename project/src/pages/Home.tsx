@@ -217,7 +217,7 @@ const HomePage: React.FC = () => {
                         to={`/blog?post=${latestPost.id}`}
                         className="flex items-center bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
                       >
-                        Read Full Article
+                        Read
                         <ArrowRight className="w-5 h-5 ml-2" />
                       </Link>
                     </div>
