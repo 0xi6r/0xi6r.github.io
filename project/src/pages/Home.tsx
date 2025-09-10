@@ -265,7 +265,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Featured Articles Section */}
-      <section className="py-20 bg-black">
+      <section className="bg-black">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex items-center mb-12">
             <h2 className="text-3xl font-bold text-white mr-4">Featured</h2>
