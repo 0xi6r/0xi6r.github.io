@@ -286,7 +286,7 @@ const Blog: React.FC = () => {
                 posts.map((post) => (
                   <article 
                     key={post.id} 
-                    className="p-6 bg-gray-800 border border-gray-700 rounded-lg hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1 hover:border-gray-600 transition-all duration-300 cursor-pointer group"
+                    className="p-6 bg-black border border-gray-700 rounded-lg hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1 hover:border-gray-600 transition-all duration-300 cursor-pointer group"
                     onClick={() => handlePostClick(post)}
                     role="button"
                     tabIndex={0}
