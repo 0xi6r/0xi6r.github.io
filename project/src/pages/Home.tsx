@@ -173,7 +173,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen pt-20 bg-black">
       {/* Hero/Latest Post Section */}
-      <section className="py-20 bg-black">
+      <section className="bg-black">
         <div className="max-w-4xl mx-auto px-4">
 
           {/* Latest Post */}
