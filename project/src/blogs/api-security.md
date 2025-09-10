@@ -2,7 +2,7 @@
 title: "API Security: Vulnerabilities & Defense Mechanisms"
 image: "images/blog/api-sec.png"
 date: "2025-09-10"
-excerpt: "From breaking code to getting a shell & having a life - a glimpse into what makes me tick, both professionally and personally."
+excerpt: "Unlike traditional web applications, APIs are intentionally designed to be accessible and discoverable. This fundamental characteristic creates several security challenges."
 ---
 
 
