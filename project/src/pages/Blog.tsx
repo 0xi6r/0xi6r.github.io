@@ -272,11 +272,8 @@ const Blog: React.FC = () => {
           <div>
             <header className="text-center mb-12 pb-8 border-b border-gray-700">
               <h1 className="text-5xl font-bold mb-4 text-white bg-gradient-to-r from-blue-400 pt-8 to-purple-500 bg-clip-text text-transparent">
-                Blog
+                Posts and Updates
               </h1>
-              <p className="text-xl text-gray-400">
-                Latest posts and updates
-              </p>
             </header>
             
             <div className="space-y-6">
