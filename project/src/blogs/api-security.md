@@ -25,7 +25,7 @@ Unlike traditional web applications, APIs are **intentionally designed to be acc
 
 ### API1: Broken Object Level Authorization (BOLA)
 
-**What it is:** BOLA occurs when applications fail to validate that a user should have access to a specific object through an API endpoint[attached_file:1][39][42].
+**What it is:** BOLA occurs when applications fail to validate that a user should have access to a specific object through an API endpoint.
 
 **Technical example:**
 ```
@@ -46,7 +46,7 @@ If the API only checks if the user is authenticated but doesn't verify they own 
 
 ### API2: Broken Authentication
 
-**What it is:** Weak or improperly implemented authentication mechanisms that allow attackers to compromise user accounts or assume other users' identities[attached_file:1][42][48].
+**What it is:** Weak or improperly implemented authentication mechanisms that allow attackers to compromise user accounts or assume other users' identities.
 
 **Common vulnerabilities:**
 - **Credential stuffing**: Attackers use stolen username/password combinations from breaches
@@ -72,7 +72,7 @@ curl -X POST /api/login \
 
 ### API3: Broken Object Property Level Authorization (BOPLA)
 
-**What it is:** APIs that expose more object properties than necessary or allow modification of properties that should be read-only[attached_file:1][42].
+**What it is:** APIs that expose more object properties than necessary or allow modification of properties that should be read-only.
 
 **Example scenario:**
 A user profile API that returns:
@@ -98,7 +98,7 @@ The `internal_notes`, `credit_score`, and `admin_flags` should never be exposed 
 
 ### API4: Unrestricted Resource Consumption
 
-**What it is:** APIs that don't limit resource consumption, allowing attackers to cause denial of service or incur excessive costs[attached_file:1][43].
+**What it is:** APIs that don't limit resource consumption, allowing attackers to cause denial of service or incur excessive costs.
 
 **Attack scenarios:**
 - **GraphQL depth attacks**: Requesting deeply nested queries that consume excessive CPU
@@ -127,7 +127,7 @@ const resourceLimiter = (req, res, next) => {
 
 ### API5: Broken Function Level Authorization (BFLA)
 
-**What it is:** Insufficient verification of user permissions when accessing different API functions, allowing privilege escalation[attached_file:1][42].
+**What it is:** Insufficient verification of user permissions when accessing different API functions, allowing privilege escalation.
 
 **Testing approach:**
 1. **Map all endpoints**: Document every API endpoint and its intended access level
@@ -159,7 +159,7 @@ def delete_user():
 
 ### API6: Unrestricted Access to Sensitive Business Flows
 
-**What it is:** Business logic flaws that allow automation of sensitive processes, causing business disruption[attached_file:1][42].
+**What it is:** Business logic flaws that allow automation of sensitive processes, causing business disruption
 
 **Real-world examples:**
 - **Ticket scalping**: Automated purchase of limited event tickets
@@ -174,7 +174,7 @@ def delete_user():
 
 ### API7: Server-Side Request Forgery (SSRF)
 
-**What it is:** APIs that fetch remote resources without proper validation, allowing attackers to access internal systems[attached_file:1][42].
+**What it is:** APIs that fetch remote resources without proper validation, allowing attackers to access internal systems
 
 **Attack example:**
 ```bash
@@ -218,7 +218,7 @@ def validate_url(url):
 
 ### API8: Security Misconfiguration
 
-**What it is:** Inadequate security configurations across API stack components[attached_file:1][42].
+**What it is:** Inadequate security configurations across API stack components.
 
 **Common misconfigurations:**
 - **CORS policy**: `Access-Control-Allow-Origin: *` with credentials enabled
@@ -236,7 +236,7 @@ def validate_url(url):
 
 ### API9: Improper Inventory Management
 
-**What it is:** Lack of proper inventory and lifecycle management for API versions and endpoints[attached_file:1][42].
+**What it is:** Lack of proper inventory and lifecycle management for API versions and endpoints.
 
 **Discovery techniques:**
 ```bash
@@ -260,7 +260,7 @@ curl -i https://api-staging.example.com/users
 
 ### API10: Unsafe Consumption of APIs
 
-**What it is:** Insufficient validation when consuming data from third-party APIs[attached_file:1][42].
+**What it is:** Insufficient validation when consuming data from third-party APIs
 
 **Vulnerability example:**
 ```python
@@ -314,7 +314,7 @@ def process_user_data():
 
 ### Third-Party Integration Risks
 
-Modern APIs rarely exist in isolation. They depend on numerous third-party libraries, services, and integrations, each potentially introducing vulnerabilities[attached_file:1].
+Modern APIs rarely exist in isolation. They depend on numerous third-party libraries, services, and integrations, each potentially introducing vulnerabilities.
 
 **Risk management approach:**
 - **Software Bill of Materials (SBOM)**: Track all dependencies
@@ -324,7 +324,7 @@ Modern APIs rarely exist in isolation. They depend on numerous third-party libra
 
 ### Cascading Failures in Microservices
 
-When APIs are part of a microservices architecture, the failure of one service can cascade throughout the system[attached_file:1][41][44].
+When APIs are part of a microservices architecture, the failure of one service can cascade throughout the system.
 
 **Resilience patterns:**
 - **Circuit breaker**: Prevent cascading failures
@@ -334,7 +334,7 @@ When APIs are part of a microservices architecture, the failure of one service c
 
 ### Attack Surface Expansion
 
-Each additional API endpoint represents a potential attack vector. Microservice architectures can dramatically increase the number of exposed endpoints[attached_file:1][50].
+Each additional API endpoint represents a potential attack vector. Microservice architectures can dramatically increase the number of exposed endpoints.
 
 **Surface management:**
 - **API gateway**: Centralized control point
