@@ -245,7 +245,7 @@ const Blog: React.FC = () => {
               <span>←</span> Back to Blog
             </button>
             
-            <article className="bg-black border border-gray-700 rounded-lg p-8 shadow-xl">
+            <article className="bg-black  p-8 shadow-xl">
               <header className="mb-8 pb-6 border-b border-gray-700">
                 <h1 className="text-4xl font-bold mb-3 text-gray-100 leading-tight">
                   {selectedPost.title}
