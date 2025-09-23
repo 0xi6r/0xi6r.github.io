@@ -5,7 +5,6 @@ import { Link, useLocation } from 'react-router-dom';
 const services = [
   { name: "Penetration Testing", href: "/PenetrationTesting" },
   { name: "Red Team Operations", href: "/RedTeamServices" },
-  { name: "System Administration & Threat Intelligence", href: "/SysAdminServices" }
 ];
 
 const navItems = [
