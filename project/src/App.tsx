@@ -9,10 +9,9 @@ import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import RedTeamServices from './pages/RedTeamServices';
 import PenetrationTesting from './pages/PenetrationTesting';
-import PrivacyPolicy from './pages/PrivacyPolicy'
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import EthicalOath from './pages/EthicalOath';
 import VulnResearch from './pages/VulnResearch';
-import SysAdminServices from './pages/SysAdminServices';;
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -30,7 +29,6 @@ function App() {
           <Route path='/PenetrationTesting' element ={<PenetrationTesting />} />
           <Route path='/EthicalOath' element ={<EthicalOath />} />
           <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
-          <Route path='/SysAdminServices' element={<SysAdminServices/>} />
           <Route path='/VulnResearch' element={<VulnResearch />} />
           <Route path='*' element={<NotFound />} />
 
