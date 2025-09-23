@@ -156,16 +156,16 @@ const RedTeamServices = () => {
             <div>
               <div className="flex items-center space-x-2 mb-6">
                 <Target className="w-8 h-8 text-red-400" />
-                <span className="text-red-400 font-semibold text-lg">Red Team Operations</span>
+                <span className="text-red-400 font-semibold text-lg">Red Team Ops</span>
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Simulate Real-World 
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600"> Adversaries</span>
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Advanced persistent threat simulation designed for enterprise organizations. 
+                APT simulation. 
                 Test your security posture against sophisticated, multi-vector attacks that mirror 
-                real-world threat actors targeting companies like yours.
+                real-world threat actors.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
@@ -220,7 +220,7 @@ const RedTeamServices = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">Why Red Team Operations?</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Traditional security testing only scratches the surface. Red Team operations provide 
+              Traditional security testing only scratches the surface. Red teaming provides a 
               comprehensive evaluation of your security posture against sophisticated threats.
             </p>
           </div>
@@ -321,7 +321,7 @@ const RedTeamServices = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">Tools & Techniques</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Enterprise-grade tools and custom techniques used by real threat actors.
+              Enterprise-grade tools and CUSTOM techniques.
             </p>
           </div>
 
@@ -441,7 +441,6 @@ const RedTeamServices = () => {
           <Target className="w-16 h-16 text-red-400 mx-auto mb-6" />
           <h2 className="text-4xl font-bold text-white mb-6">Ready to Test Your Defenses?</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join industry leaders who trust 0xi6r for advanced security testing. 
             Let's discuss how Red Team operations can strengthen your security posture.
           </p>
           
@@ -466,7 +465,7 @@ const RedTeamServices = () => {
             
             <Link to="/contact" className="w-full bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center group">
               <Mail className="w-5 h-5 mr-2" />
-              Contact for Enterprise Consultation
+              Contact for Consultation
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
