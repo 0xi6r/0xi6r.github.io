@@ -314,7 +314,7 @@ const PenetrationTestingServices = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">Our Testing Services</h2>
+            <h2 className="text-4xl font-bold text-white mb-6">Testing Services</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Comprehensive penetration testing services tailored to your specific technology stack 
               and security requirements.
@@ -536,7 +536,7 @@ const PenetrationTestingServices = () => {
                 <Mail className="w-5 h-5 text-blue-400" />
                 <div className="text-left">
                   <p className="text-white font-semibold">Email</p>
-                  <p className="text-gray-300">security@example.com</p>
+                  <p className="text-gray-300">0xi6r@tutamail.com</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
