@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import { 
   Shield, 
   Target, 
@@ -11,10 +12,9 @@ import {
   Zap, 
   FileText, 
   ArrowRight, 
-  Play, 
   ChevronDown, 
   ChevronUp,
-  Globe,
+  Network,
   Server,
   Smartphone,
   Wifi,
@@ -22,210 +22,17 @@ import {
   Code,
   Mail,
   Phone,
-  TrendingUp,
-  Award,
-  Building,
-  Layers,
-  Settings,
-  BookOpen,
-  Lightbulb,
-  BarChart3,
-  Network,
-  Gavel,
-  UserCheck,
-  MapPin,
   Search,
   Bug,
-  Activity,
-  DollarSign,
-  Timer,
-  Star,
-  ArrowDown,
-  ExternalLink,
-  Download,
-  Calendar,
-  Briefcase
+  Key,
+  Globe
 } from 'lucide-react';
 
-const PenetrationTesting = () => {
-  const [activePhase, setActivePhase] = useState(0);
-  const [expandedCard, setExpandedCard] = useState(null);
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
+const PenetrationTestingServices = () => {
+  const [activeTab, setActiveTab] = useState('overview');
+  const [expandedFAQ, setExpandedFAQ] = useState(null);
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const businessNeeds = [
-    {
-      icon: DollarSign,
-      title: "Regulatory Compliance",
-      subtitle: "Meet industry standards and avoid penalties",
-      description: "PCI DSS, HIPAA, SOX, and other regulations mandate regular security testing. Penetration testing demonstrates due diligence and helps avoid costly compliance violations.",
-      stats: "Up to $4.35M average cost of data breach",
-      color: "from-green-500 to-emerald-600"
-    },
-    {
-      icon: Shield,
-      title: "Cyber Insurance Requirements",
-      subtitle: "Satisfy insurance policy conditions",
-      description: "Many cyber insurance policies require annual penetration testing. Demonstrate proactive security measures to maintain coverage and potentially reduce premiums.",
-      stats: "73% of insurers require security assessments",
-      color: "from-blue-500 to-cyan-600"
-    },
-    {
-      icon: TrendingUp,
-      title: "Business Risk Management",
-      subtitle: "Protect revenue and reputation",
-      description: "Identify vulnerabilities before attackers do. Prevent business disruption, data loss, and reputational damage that can impact customer trust and market position.",
-      stats: "60% of small businesses close within 6 months of a cyber attack",
-      color: "from-purple-500 to-violet-600"
-    },
-    {
-      icon: Building,
-      title: "Vendor & Partner Requirements",
-      subtitle: "Meet third-party security expectations",
-      description: "Enterprise clients and partners increasingly require security testing evidence. Penetration testing reports demonstrate security maturity to stakeholders.",
-      stats: "95% of Fortune 500 companies require vendor security assessments",
-      color: "from-orange-500 to-red-600"
-    }
-  ];
-
-  const testingTypes = [
-    {
-      icon: Globe,
-      title: "Web Application Testing",
-      description: "Comprehensive testing of web applications, APIs, and web services",
-      features: ["OWASP Top 10", "Business logic flaws", "Authentication bypass", "SQL injection", "XSS vulnerabilities"],
-      price: "Starting at $8,000",
-      duration: "2-3 weeks",
-      popular: true
-    },
-    {
-      icon: Network,
-      title: "Network Penetration Testing",
-      description: "Internal and external network infrastructure assessment",
-      features: ["Network segmentation", "Privilege escalation", "Lateral movement", "Service exploitation", "Firewall bypass"],
-      price: "Starting at $12,000",
-      duration: "3-4 weeks",
-      popular: false
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Application Testing",
-      description: "iOS and Android application security assessment",
-      features: ["Static/Dynamic analysis", "Runtime manipulation", "Data storage security", "Communication security", "Platform-specific issues"],
-      price: "Starting at $10,000",
-      duration: "2-3 weeks",
-      popular: false
-    },
-    {
-      icon: Shield,
-      title: "Cloud Security Testing",
-      description: "AWS, Azure, GCP cloud infrastructure assessment",
-      features: ["IAM misconfigurations", "Storage bucket security", "Container security", "Serverless security", "Multi-cloud environments"],
-      price: "Starting at $15,000",
-      duration: "3-5 weeks",
-      popular: false
-    },
-    {
-      icon: Wifi,
-      title: "Wireless Security Testing",
-      description: "WiFi, Bluetooth, and wireless protocol assessment",
-      features: ["WPA/WPA2/WPA3 testing", "Rogue access points", "Client attacks", "Bluetooth security", "IoT device testing"],
-      price: "Starting at $6,000",
-      duration: "1-2 weeks",
-      popular: false
-    },
-    {
-      icon: Users,
-      title: "Social Engineering Testing",
-      description: "Human factor security assessment and awareness testing",
-      features: ["Phishing campaigns", "Vishing attacks", "Physical security", "USB drops", "Pretexting scenarios"],
-      price: "Starting at $8,000",
-      duration: "2-4 weeks",
-      popular: false
-    }
-  ];
-
-  const methodology = [
-    {
-      phase: "Planning & Reconnaissance",
-      duration: "3-5 days",
-      description: "Information gathering and attack surface mapping",
-      activities: [
-        "Scope definition and rules of engagement",
-        "OSINT gathering and target profiling",
-        "Network and service enumeration",
-        "Vulnerability identification and prioritization"
-      ],
-      tools: ["Nmap", "Masscan", "theHarvester", "Shodan", "Recon-ng"]
-    },
-    {
-      phase: "Vulnerability Assessment",
-      duration: "5-7 days",
-      description: "Systematic identification of security weaknesses",
-      activities: [
-        "Automated vulnerability scanning",
-        "Manual testing and validation",
-        "False positive elimination",
-        "Risk assessment and prioritization"
-      ],
-      tools: ["Nessus", "OpenVAS", "Burp Suite", "OWASP ZAP", "Nuclei"]
-    },
-    {
-      phase: "Exploitation",
-      duration: "7-10 days",
-      description: "Controlled exploitation of identified vulnerabilities",
-      activities: [
-        "Proof-of-concept development",
-        "Privilege escalation attempts",
-        "Lateral movement simulation",
-        "Impact demonstration"
-      ],
-      tools: ["Metasploit", "SQLmap", "Hashcat", "Impacket", "Custom scripts"]
-    },
-    {
-      phase: "Reporting & Remediation",
-      duration: "3-5 days",
-      description: "Comprehensive documentation and guidance",
-      activities: [
-        "Executive summary preparation",
-        "Technical findings documentation",
-        "Remediation recommendations",
-        "Risk rating and business impact"
-      ],
-      tools: ["Custom reporting", "CVSS scoring", "Remediation guides", "Presentation materials"]
-    }
-  ];
-
-  const testimonials = [
-    {
-      quote: "The penetration test revealed critical vulnerabilities we never knew existed. Their detailed remediation guidance helped us fix issues before they became incidents.",
-      author: "David Thompson",
-      title: "IT Security Manager",
-      company: "FinTech Startup",
-      rating: 5
-    },
-    {
-      quote: "Professional, thorough, and delivered exactly what we needed for our compliance requirements. The report was clear and actionable.",
-      author: "Maria Santos",
-      title: "Compliance Officer",
-      company: "Healthcare Provider",
-      rating: 5
-    },
-    {
-      quote: "Best penetration testing experience we've had. They found issues our previous vendors missed and provided excellent post-engagement support.",
-      author: "James Wilson",
-      title: "CISO",
-      company: "Manufacturing Company",
-      rating: 5
-    }
-  ];
-
+  // Smooth scroll to section
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -233,203 +40,395 @@ const PenetrationTesting = () => {
     }
   };
 
+  const methodologies = [
+    {
+      name: "OWASP Testing Guide",
+      description: "Comprehensive web application security testing methodology",
+      icon: Shield,
+      color: "text-blue-400"
+    },
+    {
+      name: "PTES Framework",
+      description: "Penetration Testing Execution Standard for systematic testing",
+      icon: Target,
+      color: "text-blue-400"
+    },
+    {
+      name: "NIST SP 800-115",
+      description: "Technical guide to information security testing",
+      icon: FileText,
+      color: "text-blue-400"
+    }
+  ];
+
+  const tools = [
+    { category: "Reconnaissance", tools: ["Nmap", "Burp Suite", "OWASP ZAP", "Sublist3r", "Amass"], icon: Search },
+    { category: "Vulnerability Analysis", tools: ["Nessus", "Nexpose", "OpenVAS", "Nikto", "SQLMap"], icon: Bug },
+    { category: "Exploitation", tools: ["Metasploit", "Burp Suite", "SQLMap", "John the Ripper", "Hashcat"], icon: Zap },
+    { category: "Web Application", tools: ["Burp Suite Pro", "OWASP ZAP", "Acunetix", "Netsparker", "Wfuzz"], icon: Globe },
+    { category: "Network Security", tools: ["Wireshark", "Aircrack-ng", "Responder", "Impacket", "CrackMapExec"], icon: Network },
+    { category: "Reporting", tools: ["Dradis", "Serpico", "PlexTrac", "Faraday", "Custom Templates"], icon: FileText }
+  ];
+
+  const phases = [
+    {
+      phase: "1. Pre-engagement & Planning",
+      duration: "3-5 days",
+      description: "Scope definition and rules of engagement",
+      activities: [
+        "Scope finalization and objectives",
+        "Rules of Engagement documentation",
+        "Communication protocols establishment",
+        "Legal authorization and agreements"
+      ]
+    },
+    {
+      phase: "2. Intelligence Gathering",
+      duration: "2-4 days",
+      description: "Comprehensive reconnaissance and information gathering",
+      activities: [
+        "Passive and active reconnaissance",
+        "Attack surface mapping",
+        "Service enumeration",
+        "Technology stack identification"
+      ]
+    },
+    {
+      phase: "3. Vulnerability Analysis",
+      duration: "3-7 days",
+      description: "Systematic vulnerability identification and validation",
+      activities: [
+        "Automated vulnerability scanning",
+        "Manual vulnerability verification",
+        "False positive elimination",
+        "Risk assessment and prioritization"
+      ]
+    },
+    {
+      phase: "4. Exploitation & Validation",
+      duration: "5-10 days",
+      description: "Controlled exploitation to validate security issues",
+      activities: [
+        "Privilege escalation testing",
+        "Lateral movement simulation",
+        "Business impact validation",
+        "Proof-of-concept development"
+      ]
+    },
+    {
+      phase: "5. Post-Exploitation Analysis",
+      duration: "2-4 days",
+      description: "Impact assessment and data collection",
+      activities: [
+        "Data access verification",
+        "Security control effectiveness",
+        "Persistence mechanisms testing",
+        "Cleanup and access removal"
+      ]
+    },
+    {
+      phase: "6. Reporting & Remediation",
+      duration: "5-7 days",
+      description: "Comprehensive reporting and remediation guidance",
+      activities: [
+        "Technical findings documentation",
+        "Executive summary preparation",
+        "Remediation roadmap creation",
+        "Stakeholder presentation and walkthrough"
+      ]
+    }
+  ];
+
+  const testingTypes = [
+    {
+      type: "Web Application Testing",
+      icon: Globe,
+      description: "Comprehensive security assessment of web applications and APIs",
+      focus: ["OWASP Top 10 vulnerabilities", "Business logic flaws", "Authentication bypass", "API security"]
+    },
+    {
+      type: "Network Penetration Testing",
+      icon: Network,
+      description: "Internal and external network infrastructure security assessment",
+      focus: ["Network segmentation", "Service hardening", "Lateral movement", "Privilege escalation"]
+    },
+    {
+      type: "Mobile Application Testing",
+      icon: Smartphone,
+      description: "iOS and Android application security assessment",
+      focus: ["Data storage security", "Communication security", "Reverse engineering", "Platform-specific vulnerabilities"]
+    },
+    {
+      type: "Cloud Security Assessment",
+      icon: Server,
+      description: "AWS, Azure, and GCP infrastructure security testing",
+      focus: ["IAM misconfigurations", "Storage security", "Network security groups", "Cloud-specific services"]
+    },
+    {
+      type: "Wireless Security Testing",
+      icon: Wifi,
+      description: "Wireless network infrastructure security assessment",
+      focus: ["WPA2/WPA3 security", "Rogue access points", "Wireless client security", "Protocol vulnerabilities"]
+    },
+    {
+      type: "Social Engineering",
+      icon: Users,
+      description: "Phishing and physical security awareness testing",
+      focus: ["Phishing campaigns", "Physical access testing", "Vishing simulations", "Security awareness effectiveness"]
+    }
+  ];
+
+  const faqs = [
+    {
+      question: "What's the difference between vulnerability scanning and penetration testing?",
+      answer: "Vulnerability scanning uses automated tools to identify known vulnerabilities, while penetration testing involves manual testing by security experts to validate vulnerabilities, exploit them safely, and assess business impact. Penetration testing provides context and prioritization that scanners cannot."
+    },
+    {
+      question: "How long does a typical penetration test take?",
+      answer: "Engagement duration varies based on scope: Web applications (2-3 weeks), network infrastructure (3-4 weeks), comprehensive assessments (4-6 weeks). We provide detailed timelines during scoping based on your environment complexity and testing objectives."
+    },
+    {
+      question: "Do you perform tests during business hours to minimize disruption?",
+      answer: "Yes, we coordinate testing schedules with your team and typically conduct assessments during maintenance windows or off-peak hours. For certain tests like social engineering, we may need to operate during business hours to simulate real-world conditions."
+    },
+    {
+      question: "What happens if you find critical vulnerabilities during testing?",
+      answer: "We follow a responsible disclosure process: immediate notification of critical findings, followed by detailed reporting. We work with your team to ensure urgent issues are addressed promptly while continuing with the planned testing activities."
+    },
+    {
+      question: "Do you provide remediation support after the test?",
+      answer: "Absolutely. Our deliverables include detailed remediation guidance, developer-friendly explanations, and retesting services. We offer consultation calls with your development team to ensure understanding and proper implementation of fixes."
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      {/* Hero Section - Bright, Modern Design */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-green-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-        </div>
-
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-blue-900/20">
+        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold mb-8 shadow-lg">
-              <Bug className="w-4 h-4" />
-              <span>Professional Penetration Testing</span>
-            </div>
-
-            {/* Main Heading */}
-            <h1 className="text-6xl lg:text-7xl font-extrabold mb-8 leading-tight">
-              <span className="text-gray-900">Find Vulnerabilities</span>
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-                Before Attackers Do
-              </span>
-            </h1>
-
-            {/* Subheading */}
-            <p className="text-xl lg:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Comprehensive penetration testing services that identify security weaknesses, 
-              demonstrate real-world attack scenarios, and provide actionable remediation guidance 
-              to strengthen your security posture.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-              <button 
-                onClick={() => scrollToSection('pricing')}
-                className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-              >
-                <span className="flex items-center justify-center">
-                  Get Started Today
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
-              <button 
-                onClick={() => scrollToSection('methodology')}
-                className="group bg-white text-gray-900 px-8 py-4 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-gray-200 hover:border-purple-300"
-              >
-                <span className="flex items-center justify-center">
-                  View Methodology
-                  <Eye className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
-                </span>
-              </button>
-            </div>
-
-            {/* Stats Cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              {[
-                { number: "500+", label: "Tests Completed", icon: CheckCircle },
-                { number: "99.9%", label: "Client Satisfaction", icon: Star },
-                { number: "24h", label: "Report Delivery", icon: Timer },
-                { number: "100%", label: "Compliance Ready", icon: Shield }
-              ].map((stat, index) => {
-                const IconComponent = stat.icon;
-                return (
-                  <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200">
-                    <IconComponent className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-                    <div className="text-3xl font-bold text-gray-900 mb-1">{stat.number}</div>
-                    <div className="text-gray-600 text-sm">{stat.label}</div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="w-6 h-6 text-gray-400" />
-        </div>
-      </section>
-
-      {/* Business Need Section - Card-based Layout */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">
-              Why Your Business Needs 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> Penetration Testing</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Beyond compliance requirements, penetration testing is essential for modern business resilience, 
-              risk management, and maintaining competitive advantage in today's threat landscape.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            {businessNeeds.map((need, index) => {
-              const IconComponent = need.icon;
-              return (
-                <div 
-                  key={index} 
-                  className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="flex items-center space-x-2 mb-6">
+                <Shield className="w-8 h-8 text-blue-400" />
+                <span className="text-blue-400 font-semibold text-lg">Penetration Testing</span>
+              </div>
+              <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Identify & Fix
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600"> Security Vulnerabilities</span>
+              </h1>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                Comprehensive security assessments to identify vulnerabilities before attackers do. 
+                Our penetration testing services help you strengthen your security posture systematically.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center group"
                 >
-                  {/* Background Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${need.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                  
-                  <div className="relative">
-                    {/* Icon */}
-                    <div className={`w-16 h-16 bg-gradient-to-br ${need.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="w-8 h-8 text-white" />
-                    </div>
-
-                    {/* Content */}
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{need.title}</h3>
-                    <p className="text-lg font-semibold text-gray-600 mb-4">{need.subtitle}</p>
-                    <p className="text-gray-700 mb-6 leading-relaxed">{need.description}</p>
-                    
-                    {/* Stats */}
-                    <div className={`inline-block bg-gradient-to-r ${need.color} text-white px-4 py-2 rounded-full text-sm font-semibold`}>
-                      {need.stats}
-                    </div>
+                  Start Your Assessment
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </button>
+                <button 
+                  onClick={() => scrollToSection('methodology')}
+                  className="border border-gray-600 hover:border-blue-400 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+                >
+                  View Methodology
+                </button>
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-xl font-semibold text-white">Assessment Overview</h3>
+                  <Shield className="w-6 h-6 text-blue-400" />
+                </div>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400">Duration</span>
+                    <span className="text-white font-semibold">2-6 weeks</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400">Testing Depth</span>
+                    <span className="text-white font-semibold">Comprehensive</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400">Reporting</span>
+                    <span className="text-white font-semibold">Technical + Executive</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400">Remediation Support</span>
+                    <span className="text-white font-semibold">Included</span>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Testing Types Section - Pricing Card Style */}
-      <section id="pricing" className="py-20 bg-white">
+      {/* Why Penetration Testing Section */}
+      <section id="why-penetration-testing" className="py-20 bg-gray-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">
-              Comprehensive Testing 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600"> Services</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose from our range of specialized penetration testing services, 
-              each tailored to address specific security concerns and compliance requirements.
+            <h2 className="text-4xl font-bold text-white mb-6">Why Penetration Testing?</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Proactive security testing helps identify and fix vulnerabilities before they can be 
+              exploited by malicious actors, saving costs and protecting your reputation.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {testingTypes.map((type, index) => {
-              const IconComponent = type.icon;
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-8 hover:border-blue-500/50 transition-all duration-300">
+              <Bug className="w-12 h-12 text-blue-400 mb-6" />
+              <h3 className="text-2xl font-semibold text-white mb-4">Vulnerability Identification</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Discover security weaknesses that automated scanners miss through manual testing 
+                and expert analysis of your applications and infrastructure.
+              </p>
+            </div>
+
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-8 hover:border-blue-500/50 transition-all duration-300">
+              <Shield className="w-12 h-12 text-blue-400 mb-6" />
+              <h3 className="text-2xl font-semibold text-white mb-4">Risk Prioritization</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Get clear guidance on which vulnerabilities pose the greatest risk to your business 
+                and should be addressed first based on exploitability and impact.
+              </p>
+            </div>
+
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-8 hover:border-blue-500/50 transition-all duration-300">
+              <CheckCircle className="w-12 h-12 text-blue-400 mb-6" />
+              <h3 className="text-2xl font-semibold text-white mb-4">Compliance Requirements</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Meet regulatory requirements for PCI DSS, HIPAA, SOC 2, ISO 27001, and other 
+                compliance frameworks that mandate regular security testing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testing Types Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-6">Our Testing Services</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Comprehensive penetration testing services tailored to your specific technology stack 
+              and security requirements.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testingTypes.map((test, index) => {
+              const IconComponent = test.icon;
               return (
-                <div 
-                  key={index} 
-                  className={`relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-2 ${
-                    type.popular ? 'border-purple-300 ring-4 ring-purple-100' : 'border-gray-200'
-                  }`}
-                >
-                  {/* Popular Badge */}
-                  {type.popular && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full text-sm font-semibold">
-                        Most Popular
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Icon */}
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
-                    <IconComponent className="w-8 h-8 text-white" />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{type.title}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{type.description}</p>
-
-                  {/* Features */}
-                  <div className="space-y-3 mb-8">
-                    {type.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center space-x-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                        <span className="text-gray-700">{feature}</span>
+                <div key={index} className="bg-gray-900 border border-gray-800 rounded-xl p-8 hover:border-blue-500/50 transition-all duration-300">
+                  <IconComponent className="w-12 h-12 text-blue-400 mb-6" />
+                  <h3 className="text-xl font-semibold text-white mb-4">{test.type}</h3>
+                  <p className="text-gray-300 mb-6 leading-relaxed">{test.description}</p>
+                  <div className="space-y-2">
+                    {test.focus.map((item, itemIndex) => (
+                      <div key={itemIndex} className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <span className="text-gray-300 text-sm">{item}</span>
                       </div>
                     ))}
                   </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-                  {/* Pricing */}
-                  <div className="border-t border-gray-200 pt-6">
-                    <div className="flex justify-between items-center mb-4">
-                      <div>
-                        <div className="text-3xl font-bold text-gray-900">{type.price}</div>
-                        <div className="text-gray-500 text-sm">Duration: {type.duration}</div>
-                      </div>
-                      <Calendar className="w-6 h-6 text-gray-400" />
+      {/* Methodology Section */}
+      <section id="methodology" className="py-20 bg-gray-900/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-6">Testing Methodology</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Structured approach based on industry standards to ensure comprehensive coverage 
+              and consistent results.
+            </p>
+          </div>
+
+          {/* Framework Cards */}
+          <div className="flex justify-center gap-8 mb-16 flex-wrap">
+            {methodologies.map((methodology, index) => {
+              const IconComponent = methodology.icon;
+              return (
+                <div key={index} className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 w-full max-w-xs text-center">
+                  <IconComponent className={`w-8 h-8 ${methodology.color} mb-4 mx-auto`} />
+                  <h3 className="text-lg font-semibold text-white mb-2">{methodology.name}</h3>
+                  <p className="text-sm text-gray-400">{methodology.description}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Testing Phases */}
+          <div className="space-y-8">
+            <h3 className="text-3xl font-bold text-white text-center mb-12">Testing Phases</h3>
+            {phases.map((phase, index) => (
+              <div key={index} className="bg-gray-900 border border-gray-800 rounded-xl p-8 hover:border-blue-500/50 transition-all duration-300">
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                  <div className="flex items-center space-x-4 mb-4 lg:mb-0">
+                    <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg">
+                      {index + 1}
                     </div>
-                    
-                    <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                      Get Quote
-                    </button>
+                    <div>
+                      <h4 className="text-xl font-semibold text-white">{phase.phase}</h4>
+                      <p className="text-gray-400">{phase.description}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2 text-blue-400">
+                    <Clock className="w-5 h-5" />
+                    <span className="font-semibold">{phase.duration}</span>
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {phase.activities.map((activity, actIndex) => (
+                    <div key={actIndex} className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                      <span className="text-gray-300">{activity}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tools & Techniques */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-6">Tools & Technologies</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Industry-standard tools combined with custom scripts and manual testing expertise.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
+            {tools.map((category, index) => {
+              const IconComponent = category.icon;
+              return (
+                <div key={index} className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <IconComponent className="w-6 h-6 text-blue-400" />
+                    <h3 className="text-xl font-semibold text-white">{category.category}</h3>
+                  </div>
+                  <div className="space-y-2">
+                    {category.tools.map((tool, toolIndex) => (
+                      <div key={toolIndex} className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <span className="text-gray-300">{tool}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               );
@@ -438,178 +437,122 @@ const PenetrationTesting = () => {
         </div>
       </section>
 
-      {/* Methodology Section - Interactive Timeline */}
-      <section id="methodology" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      {/* Compliance & Standards */}
+      <section className="py-20 bg-gray-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">
-              Our Proven 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600"> Methodology</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A systematic approach based on industry standards like PTES, OWASP, and NIST, 
-              refined through hundreds of successful engagements.
-            </p>
-          </div>
-
-          {/* Interactive Phase Selector */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {methodology.map((phase, index) => (
-              <button
-                key={index}
-                onClick={() => setActivePhase(index)}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                  activePhase === index
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-50 shadow-md'
-                }`}
-              >
-                Phase {index + 1}
-              </button>
-            ))}
-          </div>
-
-          {/* Active Phase Details */}
-          <div className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-200">
-            <div className="grid lg:grid-cols-2 gap-12">
-              <div>
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    {activePhase + 1}
-                  </div>
-                  <div>
-                    <h3 className="text-3xl font-bold text-gray-900">{methodology[activePhase].phase}</h3>
-                    <p className="text-gray-600 font-semibold">{methodology[activePhase].duration}</p>
-                  </div>
-                </div>
-                
-                <p className="text-xl text-gray-700 mb-8">{methodology[activePhase].description}</p>
-                
-                <h4 className="text-xl font-bold text-gray-900 mb-4">Key Activities</h4>
-                <div className="space-y-3">
-                  {methodology[activePhase].activities.map((activity, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-                      <span className="text-gray-700">{activity}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl font-bold text-white mb-6">Compliance & Standards</h2>
+              <p className="text-xl text-gray-300 mb-8">
+                Our testing methodologies align with industry standards and compliance requirements 
+                to help you meet regulatory obligations.
+              </p>
               
-              <div>
-                <h4 className="text-xl font-bold text-gray-900 mb-6">Tools & Technologies</h4>
-                <div className="grid grid-cols-2 gap-4">
-                  {methodology[activePhase].tools.map((tool, index) => (
-                    <div key={index} className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-4 border border-blue-200">
-                      <div className="flex items-center space-x-3">
-                        <Settings className="w-5 h-5 text-blue-600" />
-                        <span className="font-semibold text-gray-900">{tool}</span>
-                      </div>
-                    </div>
-                  ))}
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <FileText className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-2">Industry Compliance</h3>
+                    <p className="text-gray-300">Testing aligned with PCI DSS, HIPAA, SOC 2, ISO 27001, and other frameworks.</p>
+                  </div>
                 </div>
                 
-                {/* Progress Indicator */}
-                <div className="mt-8">
-                  <div className="flex justify-between text-sm text-gray-600 mb-2">
-                    <span>Phase Progress</span>
-                    <span>{Math.round(((activePhase + 1) / methodology.length) * 100)}%</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
-                    <div 
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 h-3 rounded-full transition-all duration-500"
-                      style={{ width: `${((activePhase + 1) / methodology.length) * 100}%` }}
-                    ></div>
+                <div className="flex items-start space-x-4">
+                  <Shield className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-2">Quality Assurance</h3>
+                    <p className="text-gray-300">All findings undergo peer review and validation to ensure accuracy.</p>
                   </div>
                 </div>
+                
+                <div className="flex items-start space-x-4">
+                  <Lock className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-2">Confidentiality</h3>
+                    <p className="text-gray-300">Strict NDAs and secure handling of all client data and findings.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8">
+              <h3 className="text-2xl font-semibold text-white mb-6">Supported Standards</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {['OWASP Top 10', 'PTES', 'NIST SP 800-115', 'OSSTMM', 'PCI DSS', 'HIPAA', 'ISO 27001', 'SOC 2'].map((standard, index) => (
+                  <div key={index} className="bg-gray-800 border border-gray-700 rounded-lg p-3 text-center">
+                    <span className="text-white font-semibold">{standard}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section - Modern Card Design */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* FAQ Section */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">
-              Client 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-600"> Success Stories</span>
-            </h2>
-            <p className="text-xl text-gray-600">
-              Trusted by businesses across industries to secure their digital assets.
-            </p>
+            <h2 className="text-4xl font-bold text-white mb-6">Frequently Asked Questions</h2>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300">
-                {/* Star Rating */}
-                <div className="flex space-x-1 mb-6">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                
-                {/* Quote */}
-                <blockquote className="text-gray-700 mb-6 text-lg leading-relaxed italic">
-                  "{testimonial.quote}"
-                </blockquote>
-                
-                {/* Author */}
-                <div className="border-t border-gray-200 pt-6">
-                  <div className="font-bold text-gray-900">{testimonial.author}</div>
-                  <div className="text-blue-600 font-semibold">{testimonial.title}</div>
-                  <div className="text-gray-500">{testimonial.company}</div>
-                </div>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+                <button
+                  onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
+                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-800 transition-colors"
+                >
+                  <h3 className="text-lg font-semibold text-white pr-4">{faq.question}</h3>
+                  {expandedFAQ === index ? 
+                    <ChevronUp className="w-5 h-5 text-blue-400 flex-shrink-0" /> : 
+                    <ChevronDown className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                  }
+                </button>
+                {expandedFAQ === index && (
+                  <div className="px-8 pb-6">
+                    <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section - Bold, Action-Oriented */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+      {/* CTA Section */}
+      <section id="contact" className="py-20 bg-gradient-to-r from-blue-900/20 to-gray-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-12 border border-white/20">
-            <Bug className="w-16 h-16 text-white mx-auto mb-6" />
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Ready to Secure Your Business?
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Don't wait for a security incident to discover your vulnerabilities. 
-              Get a comprehensive penetration test today and protect what matters most.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 shadow-xl">
-                <span className="flex items-center justify-center">
-                  <Mail className="w-5 h-5 mr-2" />
-                  Get Free Quote
-                </span>
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="flex items-center justify-center">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Schedule Call
-                </span>
-              </button>
-            </div>
-            
-            <div className="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-white/20">
-              <div>
-                <div className="text-2xl font-bold text-white">24-48h</div>
-                <div className="text-white/80 text-sm">Quick Start</div>
+          <Shield className="w-16 h-16 text-blue-400 mx-auto mb-6" />
+          <h2 className="text-4xl font-bold text-white mb-6">Ready to Secure Your Systems?</h2>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Let's discuss your security testing needs and create a customized assessment plan.
+          </p>
+          
+          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-semibold text-white mb-6">Schedule Your Assessment</h3>
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="flex items-center space-x-3">
+                <Mail className="w-5 h-5 text-blue-400" />
+                <div className="text-left">
+                  <p className="text-white font-semibold">Email</p>
+                  <p className="text-gray-300">security@example.com</p>
+                </div>
               </div>
-              <div>
-                <div className="text-2xl font-bold text-white">100%</div>
-                <div className="text-white/80 text-sm">Satisfaction</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-white">24/7</div>
-                <div className="text-white/80 text-sm">Support</div>
+              <div className="flex items-center space-x-3">
+                <Clock className="w-5 h-5 text-blue-400" />
+                <div className="text-left">
+                  <p className="text-white font-semibold">Response Time</p>
+                  <p className="text-gray-300">Within 24 hours</p>
+                </div>
               </div>
             </div>
+            
+            <Link to="/contact" className="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center group">
+              <Mail className="w-5 h-5 mr-2" />
+              Contact for Assessment
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>
@@ -617,4 +560,4 @@ const PenetrationTesting = () => {
   );
 };
 
-export default PenetrationTesting;
+export default PenetrationTestingServices;
