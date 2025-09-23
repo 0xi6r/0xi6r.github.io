@@ -76,15 +76,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
-              <li><Link to="/PenetrationTesting" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Penetration Testing</Link></li>
-              <li><Link to="/RedTeamServices" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Red Team Operations</Link></li>
-            </ul>
-          </div>
-
           {/* Quick Links (no contact or location) */}
           <div>
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
@@ -93,6 +84,15 @@ const Footer = () => {
               <li><Link to="/blog" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Blog</Link></li>
               <li><Link to="/contact" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Contact</Link></li>
               <li><Link to="/EthicalOath" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Oath</Link></li>
+            </ul>
+          </div>
+
+           {/* Services */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Services</h4>
+            <ul className="space-y-2">
+              <li><Link to="/PenetrationTesting" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Penetration Testing</Link></li>
+              <li><Link to="/RedTeamServices" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Red Team Operations</Link></li>
             </ul>
           </div>
 
