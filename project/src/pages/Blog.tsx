@@ -238,7 +238,7 @@ const Blog: React.FC = () => {
         {selectedPost ? (
           <div className="animate-fade-in">
             <button 
-              className="mb-8 px-4 py-2 bg-black hover:bg-gray-600 text-gray-100 rounded-md transition-colors duration-200 flex items-center gap-2 border border-gray-600"
+              className="mb-8 px-4 py-2 bg-black hover:bg-gray-600 text-gray-100 rounded-md transition-colors duration-200 flex items-center gap-2"
               onClick={handleBackToList}
               type="button"
             >
