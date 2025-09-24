@@ -61,8 +61,8 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
              <Link to="/" className="flex items-center space-x-2">
-            <span className="text-white font-bold text-xl">Isaac</span>
-          </Link>
+                <></>
+             </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8 items-center">
