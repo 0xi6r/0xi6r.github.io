@@ -231,7 +231,7 @@ const HomePage: React.FC = () => {
                           <img 
                             src={latestPost.image} 
                             alt={latestPost.title}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                             onError={(e) => {
                               // Fallback to gradient background if image fails to load
                               (e.target as HTMLImageElement).style.display = 'none';
