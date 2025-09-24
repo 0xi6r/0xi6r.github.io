@@ -251,7 +251,7 @@ const HomePage: React.FC = () => {
                       ) : (
                         <div className="h-full bg-gradient-to-br from-cyan-600 to-blue-700 flex items-center justify-center p-8">
                           <div className="w-full h-64 lg:h-full bg-black/20 rounded-lg flex items-center justify-center">
-                            <Eye className="w-16 h-16 text-white/40" />
+                            <Eye className="w-full h-16 text-white/40" />
                           </div>
                         </div>
                       )}
