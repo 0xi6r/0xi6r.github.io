@@ -270,12 +270,6 @@ const Blog: React.FC = () => {
           </div>
         ) : (
           <div>
-            <header className="text-center mb-12 pb-8 border-b border-gray-700">
-              <h1 className="text-5xl font-bold mb-4 text-white bg-gradient-to-r from-blue-400 pt-8 to-purple-500 bg-clip-text text-transparent">
-                Posts and Updates
-              </h1>
-            </header>
-            
             <div className="space-y-6">
               {posts.length === 0 ? (
                 <div className="text-center py-12 text-gray-500 italic">
