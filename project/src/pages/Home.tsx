@@ -181,7 +181,7 @@ const HomePage: React.FC = () => {
             <div className="mb-12"> 
               <div className="bg-black">
                 <div className="grid lg:grid-cols-3 gap-0">
-                  {/* Content */}
+                  {/* Content - Now spans full width on mobile, 2/3 on desktop */}
                   <div className="lg:col-span-2 p-8 lg:p-12">
                     <div className="flex items-center mb-4">
                       <span className={`px-3 py-1 rounded-full text-white text-sm font-medium ${getCategoryColor(latestPost.category || 'General')}`}>
@@ -223,8 +223,8 @@ const HomePage: React.FC = () => {
                     </div>
                   </div>
                   
-                  {/* Image */}
-                  <div className="lg:col-span-1">
+                  {/* Image - Hidden on mobile, visible on lg screens and above */}
+                  <div className="hidden lg:block lg:col-span-1">
                     <div className="h-full relative overflow-hidden">
                       {latestPost.image ? (
                         <>
