@@ -224,39 +224,40 @@ const HomePage: React.FC = () => {
                   </div>
                   
                   {/* Image - Hidden on mobile, visible on lg screens and above */}
+                 {/* Image - Hidden on mobile, visible on lg screens and above */}
                   <div className="hidden lg:block lg:col-span-1">
-                    <div className="h-full min-h-[300px] relative overflow-hidden">
+                    <div className="relative overflow-hidden aspect-[3/2] rounded-lg">
                       {latestPost.image ? (
                         <>
-                          <img 
-                            src={latestPost.image} 
+                          <img
+                            src={latestPost.image}
                             alt={latestPost.title}
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-cover"
                             onError={(e) => {
-                              // Fallback to gradient background if image fails to load
                               (e.target as HTMLImageElement).style.display = 'none';
                               const parent = (e.target as HTMLImageElement).parentElement;
                               if (parent) {
-                                parent.className = "h-full bg-gradient-to-br from-cyan-600 to-blue-700 flex items-center justify-center p-8";
-                                const placeholder = document.createElement('div');
-                                placeholder.className = "w-full h-64 lg:h-full bg-black/20 rounded-lg flex items-center justify-center";
-                                placeholder.innerHTML = '<svg class="w-16 h-16 text-white/40" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>';
+                                parent.className =
+                                  "aspect-[3/2] bg-gradient-to-br from-cyan-600 to-blue-700 flex items-center justify-center p-8 rounded-lg";
+                                const placeholder = document.createElement("div");
+                                placeholder.className =
+                                  "w-full h-full bg-black/20 rounded-lg flex items-center justify-center";
+                                placeholder.innerHTML =
+                                  '<svg class="w-16 h-16 text-white/40" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>';
                                 parent.appendChild(placeholder);
                               }
                             }}
                           />
-                          {/* Overlay for better text readability if needed */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                         </>
                       ) : (
-                        <div className="h-full bg-gradient-to-br from-cyan-600 to-blue-700 flex items-center justify-center p-8">
-                          <div className="w-full h-64 lg:h-full bg-black/20 rounded-lg flex items-center justify-center">
-                            <Eye className="w-full h-16 text-white/40" />
-                          </div>
+                        <div className="aspect-[3/2] bg-gradient-to-br from-cyan-600 to-blue-700 flex items-center justify-center p-8 rounded-lg">
+                          <Eye className="w-16 h-16 text-white/40" />
                         </div>
                       )}
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
