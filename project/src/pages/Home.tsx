@@ -164,7 +164,7 @@ const HomePage: React.FC = () => {
           {/* Latest Post - Text Only */}
           {latestPost && (
             <div className="mb-12">
-              <div className="bg-gray-900 rounded-xl p-6 lg:p-8 shadow-lg">
+              <div className="bg-black rounded-xl p-6 lg:p-8 shadow-lg">
                 <div className="flex flex-col gap-6">
                   
                   {/* Title */}
