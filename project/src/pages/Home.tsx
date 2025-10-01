@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Calendar, 
-  Tag, 
   ArrowRight, 
-  ExternalLink, 
-  Github, 
   Clock,
   Eye
 } from 'lucide-react';
@@ -37,18 +34,6 @@ interface FrontmatterMetadata {
 interface ParsedContent {
   metadata: FrontmatterMetadata;
   body: string;
-}
-
-interface FeaturedProject {
-  id: number;
-  title: string;
-  description: string;
-  about: string;
-  githubUrl: string;
-  technologies: string[];
-  image: string;
-  status: string;
-  lastUpdate: string;
 }
 
 const HomePage: React.FC = () => {
@@ -183,7 +168,7 @@ const HomePage: React.FC = () => {
                 <div className="flex flex-col lg:flex-row gap-8">
                   
                   {/* Content Left */}
-                  <div className="lg:w-2/3">
+                  <div className="lg:w-3/5">
                     <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
                       {latestPost.title}
                     </h1>
@@ -194,17 +179,17 @@ const HomePage: React.FC = () => {
                       </p>
                     )}
 
-                    {/* Meta: Category + Date */}
-                    <div className="flex items-center mb-4 gap-4">
+                    {/* Meta: Category + Date + Read Time */}
+                    <div className="flex flex-wrap items-center gap-4 mb-6">
                       <span className={`px-3 py-1 rounded-full text-white text-sm font-medium ${getCategoryColor(latestPost.category || 'General')}`}>
                         {latestPost.category || 'General'}
                       </span>
-                      <span className="text-gray-400 text-sm">
-                        <Calendar className="w-4 h-4 inline mr-1" />
+                      <span className="text-gray-400 text-sm flex items-center">
+                        <Calendar className="w-4 h-4 mr-1" />
                         {formatDate(latestPost.date)}
                       </span>
-                      <span className="text-gray-400 text-sm">
-                        <Clock className="w-4 h-4 inline mr-1" />
+                      <span className="text-gray-400 text-sm flex items-center">
+                        <Clock className="w-4 h-4 mr-1" />
                         {latestPost.readTime}
                       </span>
                     </div>
@@ -222,13 +207,13 @@ const HomePage: React.FC = () => {
                     </Link>
                   </div>
 
-                  {/* Image Right */}
-                  <div className="lg:w-1/3 flex justify-center">
+                  {/* Image Right - Now Bigger */}
+                  <div className="lg:w-2/5 flex justify-center p-4">
                     {latestPost.image ? (
                       <img
                         src={latestPost.image}
                         alt={latestPost.title}
-                        className="w-full h-auto object-contain rounded-lg shadow-md"
+                        className="max-w-full max-h-[400px] object-contain rounded-lg shadow-md"
                         onError={(e) => {
                           (e.target as HTMLImageElement).style.display = 'none';
                           const parent = (e.target as HTMLImageElement).parentElement;
