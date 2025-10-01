@@ -202,10 +202,10 @@ const HomePage: React.FC = () => {
                   {/* Read More Button */}
                   <Link 
                     to={`/blog?post=${latestPost.id}`}
-                    className="inline-flex items-center bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+                    className="text-cyan-400 hover:text-cyan-300 font-medium flex items-center"
                   >
                     Read Full Article
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                    <ArrowRight className="w-4 h-4 ml-1" />
                   </Link>
                 </div>
               </div>
