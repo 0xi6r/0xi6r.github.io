@@ -224,9 +224,8 @@ const HomePage: React.FC = () => {
                   </div>
                   
                   {/* Image - Hidden on mobile, visible on lg screens and above */}
-                 {/* Image - Hidden on mobile, visible on lg screens and above */}
-                  <div className="hidden lg:block lg:col-span-1">
-                    <div className="relative overflow-hidden aspect-[3/2] rounded-lg">
+                  <div className="hidden lg:block lg:col-span-1 p-8 lg:p-12 flex items-start">
+                    <div className="relative overflow-hidden aspect-[3/2] w-full rounded-lg">
                       {latestPost.image ? (
                         <>
                           <img
