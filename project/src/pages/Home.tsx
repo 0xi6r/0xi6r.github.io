@@ -176,86 +176,80 @@ const HomePage: React.FC = () => {
       <section className="bg-black">
         <div className="max-w-4xl mx-auto px-4">
 
-          {/* Latest Post */}
+          {/* Latest Post - Editorial Style */}
           {latestPost && (
-            <div className="mb-12"> 
-              <div className="bg-black">
-                <div className="grid lg:grid-cols-3 gap-0">
-                  {/* Content - Now spans full width on mobile, 2/3 on desktop */}
-                  <div className="lg:col-span-2 p-8 lg:p-12">
-                    <div className="flex items-center mb-4">
-                      <span className={`px-3 py-1 rounded-full text-white text-sm font-medium ${getCategoryColor(latestPost.category || 'General')}`}>
-                        {latestPost.category || 'General'}
-                      </span>
-                      <div className="flex items-center ml-4 text-gray-400 text-sm">
-                        <Clock className="w-4 h-4 mr-1" />
-                        {latestPost.readTime}
-                      </div>
-                    </div>
-                    
-                    <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+            <div className="mb-12">
+              <div className="bg-gray-900 rounded-xl p-6 lg:p-8 shadow-lg">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  
+                  {/* Content Left */}
+                  <div className="lg:w-2/3">
+                    <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
                       {latestPost.title}
                     </h1>
                     
                     {latestPost.subtitle && (
-                      <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+                      <p className="text-lg text-gray-300 mb-4 leading-relaxed font-medium">
                         {latestPost.subtitle}
                       </p>
                     )}
-                    
-                    <p className="text-gray-400 mb-8 leading-relaxed">
+
+                    {/* Meta: Category + Date */}
+                    <div className="flex items-center mb-4 gap-4">
+                      <span className={`px-3 py-1 rounded-full text-white text-sm font-medium ${getCategoryColor(latestPost.category || 'General')}`}>
+                        {latestPost.category || 'General'}
+                      </span>
+                      <span className="text-gray-400 text-sm">
+                        <Calendar className="w-4 h-4 inline mr-1" />
+                        {formatDate(latestPost.date)}
+                      </span>
+                      <span className="text-gray-400 text-sm">
+                        <Clock className="w-4 h-4 inline mr-1" />
+                        {latestPost.readTime}
+                      </span>
+                    </div>
+
+                    <p className="text-gray-400 mb-6 leading-relaxed">
                       {latestPost.excerpt}
                     </p>
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center text-gray-400">
-                        <Calendar className="w-5 h-5 mr-2" />
-                        <span>{formatDate(latestPost.date)}</span>
-                      </div>
-                      
-                      <Link 
-                        to={`/blog?post=${latestPost.id}`}
-                        className="flex items-center bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
-                      >
-                        Read
-                        <ArrowRight className="w-5 h-5 ml-2" />
-                      </Link>
-                    </div>
-                  </div>
-                  
-                  {/* Image - Hidden on mobile, visible on lg screens and above */}
-                  <div className="hidden lg:block lg:col-span-1 p-8 lg:p-12 flex items-start">
-                    <div className="relative w-full rounded-lg overflow-hidden bg-gray-900">
-                      {latestPost.image ? (
-                        <>
-                          <img
-                            src={latestPost.image}
-                            alt={latestPost.title}
-                            className="w-full h-auto object-contain"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).style.display = 'none';
-                              const parent = (e.target as HTMLImageElement).parentElement;
-                              if (parent) {
-                                parent.innerHTML = `
-                                  <div class="w-full h-full flex items-center justify-center p-4 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-lg">
-                                    <svg class="w-16 h-16 text-white/40" fill="currentColor" viewBox="0 0 20 20">
-                                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                      <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                  </div>
-                                `;
-                              }
-                            }}
-                          />
-                        </>
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center p-8 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-lg">
-                          <Eye className="w-16 h-16 text-white/40" />
-                        </div>
-                      )}
-                    </div>
+
+                    <Link 
+                      to={`/blog?post=${latestPost.id}`}
+                      className="inline-flex items-center bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+                    >
+                      Read Full Article
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Link>
                   </div>
 
+                  {/* Image Right */}
+                  <div className="lg:w-1/3 flex justify-center">
+                    {latestPost.image ? (
+                      <img
+                        src={latestPost.image}
+                        alt={latestPost.title}
+                        className="w-full h-auto object-contain rounded-lg shadow-md"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none';
+                          const parent = (e.target as HTMLImageElement).parentElement;
+                          if (parent) {
+                            parent.innerHTML = `
+                              <div class="w-full h-full flex items-center justify-center p-6 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-lg">
+                                <svg class="w-16 h-16 text-white/40" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                                </svg>
+                              </div>
+                            `;
+                          }
+                        }}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center p-6 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-lg">
+                        <Eye className="w-16 h-16 text-white/40" />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
