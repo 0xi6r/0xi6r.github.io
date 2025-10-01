@@ -225,32 +225,31 @@ const HomePage: React.FC = () => {
                   
                   {/* Image - Hidden on mobile, visible on lg screens and above */}
                   <div className="hidden lg:block lg:col-span-1 p-8 lg:p-12 flex items-start">
-                    <div className="relative overflow-hidden aspect-[3/2] w-full rounded-lg">
+                    <div className="relative w-full rounded-lg overflow-hidden bg-gray-900">
                       {latestPost.image ? (
                         <>
                           <img
                             src={latestPost.image}
                             alt={latestPost.title}
-                            className="w-full h-full object-cover"
+                            className="w-full h-auto object-contain"
                             onError={(e) => {
                               (e.target as HTMLImageElement).style.display = 'none';
                               const parent = (e.target as HTMLImageElement).parentElement;
                               if (parent) {
-                                parent.className =
-                                  "aspect-[3/2] bg-gradient-to-br from-cyan-600 to-blue-700 flex items-center justify-center p-8 rounded-lg";
-                                const placeholder = document.createElement("div");
-                                placeholder.className =
-                                  "w-full h-full bg-black/20 rounded-lg flex items-center justify-center";
-                                placeholder.innerHTML =
-                                  '<svg class="w-16 h-16 text-white/40" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>';
-                                parent.appendChild(placeholder);
+                                parent.innerHTML = `
+                                  <div class="w-full h-full flex items-center justify-center p-4 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-lg">
+                                    <svg class="w-16 h-16 text-white/40" fill="currentColor" viewBox="0 0 20 20">
+                                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                      <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                  </div>
+                                `;
                               }
                             }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                         </>
                       ) : (
-                        <div className="aspect-[3/2] bg-gradient-to-br from-cyan-600 to-blue-700 flex items-center justify-center p-8 rounded-lg">
+                        <div className="w-full h-full flex items-center justify-center p-8 bg-gradient-to-br from-cyan-600 to-blue-700 rounded-lg">
                           <Eye className="w-16 h-16 text-white/40" />
                         </div>
                       )}
@@ -292,7 +291,6 @@ const HomePage: React.FC = () => {
                           alt={article.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           onError={(e) => {
-                            // Fallback to gradient background if image fails to load
                             (e.target as HTMLImageElement).style.display = 'none';
                             const parent = (e.target as HTMLImageElement).parentElement;
                             if (parent) {
@@ -303,7 +301,6 @@ const HomePage: React.FC = () => {
                             }
                           }}
                         />
-                        {/* Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </>
                     ) : (
