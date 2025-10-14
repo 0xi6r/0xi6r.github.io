@@ -159,7 +159,7 @@ const HomePage: React.FC = () => {
     <div className="min-h-screen pt-20 bg-black">
       {/* Hero/Latest Post Section */}
       <section className="bg-black">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-3xl mx-auto px-4">
 
           {/* Latest Post - Text Only */}
           {latestPost && (
@@ -216,7 +216,7 @@ const HomePage: React.FC = () => {
 
       {/* Featured Articles Section */}
       <section className="bg-black">
-        <div className="max-w-8xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center mb-12">
             <h2 className="text-3xl font-bold text-white mr-4">Featured</h2>
             <div className="flex-grow h-px bg-black"></div>
