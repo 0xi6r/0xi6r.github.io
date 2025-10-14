@@ -159,7 +159,7 @@ const HomePage: React.FC = () => {
     <div className="min-h-screen pt-20 bg-black">
       {/* Hero/Latest Post Section */}
       <section className="bg-black">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
 
           {/* Latest Post - Text Only */}
           {latestPost && (
