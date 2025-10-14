@@ -92,7 +92,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-white font-bold text-xl">YourLogo</span>
+            <span className="text-white font-bold text-xl"><img src={Logo} className="w-8 h-8" alt="0xi6r Logo" /></span>
           </Link>
 
           {/* Desktop Navigation */}
