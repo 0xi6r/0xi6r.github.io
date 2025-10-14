@@ -230,7 +230,7 @@ const HomePage: React.FC = () => {
           </div>
 
           {featuredArticles.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8"> 
               {featuredArticles.map((article) => (
                 <article key={article.id} className="bg-black rounded-xl overflow-hidden hover:bg-gray-750 transition-colors duration-300 group">
                   {/* Article Image */}
