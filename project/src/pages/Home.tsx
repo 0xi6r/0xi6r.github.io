@@ -288,15 +288,6 @@ const HomePage: React.FC = () => {
                         <Calendar className="w-4 h-4 mr-1" />
                         <span>{formatDate(article.date)}</span>
                       </div>
-                      
-                      <Link 
-                        to={`/blog?post=${article.id}`}
-                        className="text-cyan-400 hover:text-cyan-300 font-medium text-sm flex items-center"
-                      >
-                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-200">
-                      {article.title}
-                    </h3>
-                      </Link>
                     </div>
                   </div>
                 </article>
