@@ -266,15 +266,16 @@ const HomePage: React.FC = () => {
                       <span className={`px-2 py-1 rounded text-white text-xs font-medium ${getCategoryColor(article.category || 'General')}`}>
                         {article.category || 'General'}
                       </span>
-                      <div className="flex items-center ml-3 text-gray-400 text-xs">
-                        <Clock className="w-3 h-3 mr-1" />
-                        {article.readTime}
-                      </div>
                     </div>
                     
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-200">
+                    <Link 
+                        to={`/blog?post=${article.id}`}
+                        className="text-cyan-400 hover:text-cyan-300 font-medium text-sm flex items-center"
+                      >
+                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-200">
                       {article.title}
                     </h3>
+                      </Link>
                     
                     {article.subtitle && (
                       <p className="text-gray-400 text-sm mb-4 leading-relaxed">
@@ -292,8 +293,9 @@ const HomePage: React.FC = () => {
                         to={`/blog?post=${article.id}`}
                         className="text-cyan-400 hover:text-cyan-300 font-medium text-sm flex items-center"
                       >
-                        Read More
-                        <ArrowRight className="w-3 h-3 ml-1" />
+                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-200">
+                      {article.title}
+                    </h3>
                       </Link>
                     </div>
                   </div>
