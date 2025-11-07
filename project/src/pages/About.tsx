@@ -31,6 +31,7 @@ const About = () => {
   return (
     <div className="min-h-screen pt-20 bg-black">
       <section className="py-20 bg-black">
+        <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 text-white shadow-xl">
