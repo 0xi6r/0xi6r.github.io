@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Send, Linkedin, Twitter, Github } from 'lucide-react';
+import { Mail, MapPin, Send, Linkedin, Github } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -53,7 +53,7 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: Twitter, href: 'https://x.com/0xi6r', label: 'Twitter' },
+    { icon: Linkedin, href: 'https://www.Linkedin.com/in/itsisaac', label: 'Linkedin' },
     { icon: Github, href: 'https://github.com/0xi6r', label: 'GitHub' }
   ];
 
