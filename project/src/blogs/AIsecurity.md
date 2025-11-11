@@ -1,7 +1,7 @@
 ---
 title: "AI Offensive Testing: Guide to exploiting LLMs"
 image: "images/blog/ai.png"
-date: "2025-09-10"
+date: "2025-11-11"
 excerpt: "Unlike traditional web applications, APIs are intentionally designed to be accessible and discoverable. This fundamental characteristic creates several security challenges."
 category: "API security"
 ---
