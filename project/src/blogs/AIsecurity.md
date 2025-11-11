@@ -2,8 +2,8 @@
 title: "AI Offensive Testing: Guide to exploiting LLMs"
 image: "images/blog/ai.png"
 date: "2025-11-11"
-excerpt: "Unlike traditional web applications, APIs are intentionally designed to be accessible and discoverable. This fundamental characteristic creates several security challenges."
-category: "API security"
+excerpt: "Infosec has a new frontier: AI. The security of Large Language Models goes far beyond traditional vulnerabilities. We're now dealing with prompt injection, model theft, training data poisoning, and weaponized "agency.""
+category: "AI security"
 ---
 
 ## **AI Red Teaming: A Comprehensive Guide to breaking Large Language Models**
