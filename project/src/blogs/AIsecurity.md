@@ -3,7 +3,7 @@ title: "AI Offensive Testing: Guide to exploiting LLMs"
 image: "images/blog/ai.png"
 date: "2025-11-11"
 excerpt: "Infosec has a new frontier: AI. The security of Large Language Models goes far beyond traditional vulnerabilities. We're now dealing with prompt injection, model theft, training data poisoning, and weaponized "agency.""
-category: "AI security"
+category: "Red Team"
 ---
 
 The integration of Large Language Models (LLMs) into enterprise applications has created a new frontier for security professionals. While these AI systems offer unprecedented capabilities, they also introduce a novel and complex attack surface. This guide serves as a comprehensive playbook for penetration testers and security teams tasked with assessing the security posture of AI-enabled systems. It provides a structured methodology, from initial reconnaissance to advanced exploitation and remediation, to identify and mitigate the unique vulnerabilities inherent in LLMs.
