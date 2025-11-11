@@ -3,7 +3,7 @@ title: "AV & EDR evasion"
 image: "images/blog/av.png"
 date: "2025-10-14"
 excerpt: "most effective payload loaders fly under the radar by combining direct syscalls, API hashing, entropy reduction, and anti-analysis tricks like mouse-click monitoring and self-deletion. They avoid the C runtime, hide imports, and even brute-force decryption keys at runtime—all to look less like malware and more like just another ordinary program."
-category: "AV & EDR"
+category: "Red Team"
 ---
 
 **Payload Loaders Security Evasion**
