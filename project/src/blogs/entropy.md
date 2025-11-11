@@ -3,7 +3,7 @@ title: "Binary Entropy reduction"
 image: "images/blog/entropy.png"
 date: "2025-09-18"
 excerpt: "Malware often stands out because it’s packed or encrypted—making its file entropy unusually high. But attackers are getting smarter: by using weak encryption, structured obfuscation (like IPv4 or UUID formats), padding with repeated bytes, or even inserting plain English text, they can lower a file’s entropy to mimic legitimate software. For defenders, this means entropy alone isn’t enough—you need context, behavior, and deeper analysis to spot the threat hiding in plain sight."|
-category: "Malware"
+category: "Red Team"
 ---
 
 **Lowering the Noise: Binary Entropy**
