@@ -3,7 +3,7 @@ title: "Zero Trust Security Model: What Is It?"
 image: "images/blog/zero-trust.png"
 date: "2025-11-07"
 excerpt: "Hackers don't just attack from the outside—they exploit our trust."
-category: "Security"
+category: "General"
 ---
 
 # Zero Trust Security Model: What Is It?
