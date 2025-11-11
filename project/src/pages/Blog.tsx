@@ -242,7 +242,7 @@ const Blog: React.FC = () => {
               onClick={handleBackToList}
               type="button"
             >
-              <span>←</span> Back to Blog
+              <span>←</span> Blog
             </button>
             
             <article className="bg-black  p-8 shadow-xl">
@@ -305,19 +305,6 @@ const Blog: React.FC = () => {
                     <p className="text-gray-300 mb-6 leading-relaxed">
                       {post.excerpt}
                     </p>
-                    <button 
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md transition-colors duration-200 text-sm font-medium shadow-lg hover:shadow-blue-500/25"
-                      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                        e.stopPropagation();
-                        handlePostClick(post);
-                      }}
-                      type="button"
-                    >
-                      Read More 
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </button>
                   </article>
                 ))
               )}
