@@ -3,7 +3,7 @@ title: "Browser Fingerprint"
 image: "images/blog/wasm.png"
 date: "2025-10-01"
 excerpt: "A clever—and concerning—use of WebAssembly’s performance characteristics to bypass traditional anti-fingerprinting defenses. By exploiting subtle timing differences in how Chromium-based browsers handle WebAssembly-to-JavaScript setters, the technique achieves >99% accuracy in browser identification, even when the User-Agent is spoofed. While powerful for fraud detection, it underscores a growing privacy gap: as browsers harden surface-level identifiers, attackers (and defenders) are turning to microarchitectural and engine-level side channels. Mitigations like timing noise injection or high-resolution timer restrictions are promising but come with performance trade-offs. For now, this work is a wake-up call: true privacy requires deeper browser-level protections, not just cookie blocking."
-category: "General"
+category: "Vulnerability Research"
 ---
 
 A few months ago, I started wondering: **how much can a website really learn about me—even if I try to hide?** I’ve used privacy extensions, spoofed my User-Agent, cleared cookies, and even run browsers in VMs. But I kept hearing whispers in the infosec community about a new frontier in browser fingerprinting: **WebAssembly**.
