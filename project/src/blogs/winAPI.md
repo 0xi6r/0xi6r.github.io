@@ -3,7 +3,7 @@ title: "The Windows API for Security"
 image: "images/blog/winAPI.png"
 date: "2025-09-20"
 excerpt: "In the world of Windows malware and defense, everything hinges on how programs talk to the operating system—and that conversation happens through the Windows API. From opening files to injecting code into other processes, every action leaves a trace in the form of API calls. For security professionals, learning to “listen in” on this dialogue isn’t about coding—it’s about spotting the subtle signs of compromise hidden in plain sight."
-category: "Windows security"
+category: "Red Team"
 ---
 
 **Why Windows API Knowledge Matters for Security**
