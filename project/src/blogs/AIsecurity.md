@@ -6,17 +6,13 @@ excerpt: "Infosec has a new frontier: AI. The security of Large Language Models 
 category: "AI security"
 ---
 
-## **AI Red Teaming: A Comprehensive Guide to breaking Large Language Models**
-
-### **Introduction**
-
 The integration of Large Language Models (LLMs) into enterprise applications has created a new frontier for security professionals. While these AI systems offer unprecedented capabilities, they also introduce a novel and complex attack surface. This guide serves as a comprehensive playbook for penetration testers and security teams tasked with assessing the security posture of AI-enabled systems. It provides a structured methodology, from initial reconnaissance to advanced exploitation and remediation, to identify and mitigate the unique vulnerabilities inherent in LLMs.
 
-### **Executive Summary**
+### **Summary**
 
 A successful AI penetration test involves a systematic approach:
 *   **Scoping and Reconnaissance:** Understand the AI system, its components (LLM, APIs, data sources, plugins), and its business context. Collect technical details about the model, its architecture, and data flows to identify critical assets and potential impacts.
-*   **Vulnerability Assessment:** Employ a mix of automated and manual techniques. Use specialized tools like `garak` and `LLMFuzzer` to probe for common vulnerabilities. Manually craft sophisticated prompts to test for injections, jailbreaks, and biased outputs. Scrutinize the system for data leakage, insecure output handling, insecure plugins, and excessive agency.
+*   **Vulnerability Assessment:** Employ a mix of automated and manual techniques. Use specialized tools like *garak* and *LLMFuzzer* to probe for common vulnerabilities. Manually craft sophisticated prompts to test for injections, jailbreaks, and biased outputs. Scrutinize the system for data leakage, insecure output handling, insecure plugins, and excessive agency.
 *   **Exploitation and Chaining:** Move beyond identification to active exploitation. Attempt to chain vulnerabilities to achieve a greater impact, such as leveraging a prompt injection to exfiltrate data via a plugin with excessive permissions.
 *   **Post-Exploitation:** If initial access is gained, explore the potential for model theft, deeper data exfiltration, or lateral movement within the connected infrastructure.
 
