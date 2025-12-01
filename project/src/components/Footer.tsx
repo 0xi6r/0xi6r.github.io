@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Linkedin, Twitter, Github, Send, AlertCircle, CheckCircle } from 'lucide-react';
+import { Shield, Linkedin, Mastodon, Github, Send, AlertCircle, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './0xi6r.svg';
 
@@ -61,7 +61,7 @@ const Footer = () => {
               <a href="https://linkedin.com/in/isaacogina" className="text-gray-400 hover:text-cyan-400 transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://twitter.com/0xi6r" className="text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="https://infosec.exchange/@0x_i6r" className="text-gray-400 hover:text-cyan-400 transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
               <a href="https://github.com/0xi6r" className="text-gray-400 hover:text-cyan-400 transition-colors">
