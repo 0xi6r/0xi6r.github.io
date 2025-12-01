@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Shield, Linkedin, Mastodon, Github, Send, AlertCircle, CheckCircle } from 'lucide-react';
+import { Shield, Linkedin, Github, Send, AlertCircle, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './0xi6r.svg';
+import mastodon from './mastodon.jpg';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -62,7 +63,7 @@ const Footer = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a href="https://infosec.exchange/@0x_i6r" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                <Mastodon className="w-5 h-5" />
+                <img src={mastodon} className="w-5 h-5" alt="mastodon" />
               </a>
               <a href="https://github.com/0xi6r" className="text-gray-400 hover:text-cyan-400 transition-colors">
                 <Github className="w-5 h-5" />
