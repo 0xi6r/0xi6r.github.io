@@ -62,7 +62,7 @@ const Footer = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a href="https://infosec.exchange/@0x_i6r" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                <Twitter className="w-5 h-5" />
+                <Mastodon className="w-5 h-5" />
               </a>
               <a href="https://github.com/0xi6r" className="text-gray-400 hover:text-cyan-400 transition-colors">
                 <Github className="w-5 h-5" />
