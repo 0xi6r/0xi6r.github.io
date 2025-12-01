@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Shield, Linkedin, Github, Send, AlertCircle, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './0xi6r.svg';
-import mastodon from './mastodon.jpg';
+import mastodon from './mastodon.svg';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
