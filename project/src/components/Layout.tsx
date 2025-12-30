@@ -19,6 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     '/NotFound',
     '/PrivacyPolicy',
     '/VulnResearch',
+    '/sitemap',
     // Add services page if you create it
     // Add more pages as needed
   ];
