@@ -90,7 +90,7 @@ const Footer = () => {
 
            {/* Services */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Services</h4>
+            <h4 className="text-white font-semibold mb-4">Skills</h4>
             <ul className="space-y-2">
               <li className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Penetration Testing</li>
               <li className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Red Teaming</li>
