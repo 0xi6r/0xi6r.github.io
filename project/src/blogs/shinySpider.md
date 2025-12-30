@@ -1,3 +1,9 @@
+title: "ShinySp1d3r Ransomware Analysis"
+image: "images/blog/shinySp1d3r.png"
+date: "2025-12-8"
+excerpt: "A Technical Analysis of ShinySp1d3r: A Go-Based Ransomware from the Scattered Lapsus$ Hunters"
+category: "Malware Analysis"
+
 # ShinySp1d3r Ransomware Static Analysis
 
 <img width="1186" height="605" alt="background" src="https://github.com/user-attachments/assets/84bb322c-243b-43d7-b120-55ecdc11c3be" />
