@@ -8,7 +8,9 @@ category: "Malware Analysis"
 
 # ShinySp1d3r Ransomware Static Analysis
 
-<img width="1186" height="605" alt="background" src="/ai.png" />
+---
+image: "images/blog/shinySp1d3r.png"
+---
 
 ## Summary
 ShinySp1d3r is a Ransomware-as-a-Service (RaaS) platform, built by the Scattered Lapsus$ Hunters alliance: (ShinyHunters, Scattered Spider, and LAPSUS).
