@@ -4,8 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 import Logo from './0xi6r.svg';
 
 const services = [
-  { name: "Penetration Testing", href: "/PenetrationTesting" },
-  { name: "Red Team Operations", href: "/RedTeamServices" },
+  { name: "Penetration Testing" },
+  { name: "Red Team Operations" },
 ];
 
 const navItems = [
