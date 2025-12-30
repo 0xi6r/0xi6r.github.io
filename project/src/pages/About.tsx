@@ -14,17 +14,17 @@ const About = () => {
     {
       title: 'Vulnerability Research',
       description: 'Discovering and analyzing security vulnerabilities in modern systems',
-      link: '/VulnResearch'
+      link: '/blog?post=vulnerability-research'
     },
     {
       title: 'APT Simulation',
       description: 'Helping organizations strengthen their security posture against advanced adversaries',
-      link: '/RedTeamServices'
+      link: '/Services'
     },
     {
       title: 'Research Publications',
       description: 'Contributing to the cybersecurity knowledge base',
-      link: '/blog?post=whatIdo'
+      link: '/Services'
     }
   ];
 
