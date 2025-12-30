@@ -12,6 +12,7 @@ import PenetrationTesting from './pages/PenetrationTesting';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import EthicalOath from './pages/EthicalOath';
 import VulnResearch from './pages/VulnResearch';
+import Services from './pages/Services';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path='/EthicalOath' element ={<EthicalOath />} />
           <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
           <Route path='/VulnResearch' element={<VulnResearch />} />
+          <Route path='/Services' element={<Services />} />
           <Route path='*' element={<NotFound />} />
 
         </Routes>
