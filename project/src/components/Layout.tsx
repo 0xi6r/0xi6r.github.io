@@ -10,8 +10,21 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   
-  // Check if current path is the blog page
-  const isBlogPage = location.pathname === '/blog';
+  // Define ALL pages that should NOT have a footer
+  const pagesWithoutFooter = [
+    '/blog',
+    '/EthicalOath',           // Add about page
+    '/services',
+    '/Terms',
+    '/NotFound',
+    '/PrivacyPolicy',
+    '/VulnResearch',
+    // Add services page if you create it
+    // Add more pages as needed
+  ];
+  
+  // Check if current path is in the excluded list
+  const shouldShowFooter = !pagesWithoutFooter.includes(location.pathname);
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -19,8 +32,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main className="flex-grow">
         {children}
       </main>
-      {/* Conditionally render footer */}
-      {!isBlogPage && <Footer />}
+      {shouldShowFooter && <Footer />}
     </div>
   );
 };
