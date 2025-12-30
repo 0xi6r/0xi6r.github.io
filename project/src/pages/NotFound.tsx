@@ -6,7 +6,7 @@ const NotFound: React.FC = () => {
     <div className="min-h-screen bg-black flex flex-col items-center justify-center p-4">
       <div className="text-center">
         {/* 404 Number */}
-        <h1 className="text-9xl font-bold text-cyan-400 mb-4">404</h1>
+        <h1 className="text-9xl font-bold text-red-400 mb-4">404</h1>
         
         {/* Message */}
         <h2 className="text-2xl font-semibold text-white mb-6">
