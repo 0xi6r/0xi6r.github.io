@@ -92,8 +92,8 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
-              <li><Link to="/PenetrationTesting" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Penetration Testing</Link></li>
-              <li><Link to="/RedTeamServices" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Red Team Operations</Link></li>
+              <li className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Penetration Testing</li>
+              <li className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Red Team Operations</li>
             </ul>
           </div>
 
