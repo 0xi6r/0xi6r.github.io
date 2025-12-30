@@ -23,7 +23,6 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path='/Terms' element={<Terms />} />
-          <Route path='/EthicalOath' element ={<EthicalOath />} />
           <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
           <Route path='/VulnResearch' element={<VulnResearch />} />
           <Route path='/Services' element={<Services />} />
