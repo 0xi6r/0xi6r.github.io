@@ -8,7 +8,6 @@ import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import PrivacyPolicy from './pages/PrivacyPolicy';
-import EthicalOath from './pages/EthicalOath';
 import VulnResearch from './pages/VulnResearch';
 import Services from './pages/Services';
 import NotFound from './pages/NotFound';
