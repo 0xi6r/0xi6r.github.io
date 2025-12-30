@@ -15,10 +15,6 @@ import VulnResearch from './pages/VulnResearch';
 import NotFound from './pages/NotFound';
 
 function App() {
-  // end year edit
-  const location = useLocation();
-  const isBlogPage = location.pathname === '/blog';
-  // end
   return (
     <Router>
       <ScrollToTop />
@@ -37,8 +33,6 @@ function App() {
           <Route path='*' element={<NotFound />} />
 
         </Routes>
-         {/* Conditionally render footer. end year edit */}
-      {!isBlogPage && <Footer />}
       </Layout>
     </Router>
   );
