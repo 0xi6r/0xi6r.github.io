@@ -214,7 +214,7 @@ const ServicesPage: React.FC = () => {
               to="/contact" 
               className="hover:text-cyan-300 transition-colors"
             >
-              Contact for Inquiries & Engagement
+              Contact for Inquiries, collaboration & Engagement
             </Link>
           </div>
         </div>
@@ -345,10 +345,10 @@ const ServicesPage: React.FC = () => {
         {/* Contact CTA Section */}
         <div className="bg-gradient-to-r from-gray-900 to-black border border-gray-800 rounded-2xl p-8 md:p-12 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to Strengthen Your Security?
+            Want To Talk Security?
           </h2>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            Whether you need a one-time assessment or ongoing security testing, I provide tailored solutions to meet your organization's unique security challenges.
+            Whether you need a one-time assessment or ongoing security testing, I provide tailored solutions to meet any unique security challenges.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -356,10 +356,10 @@ const ServicesPage: React.FC = () => {
               className="px-8 py-4 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 transition-colors inline-flex items-center justify-center"
             >
               <Mail className="w-5 h-5 mr-2" />
-              Schedule a Consultation
+              Hire me!
             </Link>
             <a
-              href="https://github.com/yourusername" // Replace with your GitHub
+              href="https://github.com/0xi6r" // Replace with your GitHub
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 border border-gray-700 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition-colors inline-flex items-center justify-center"
