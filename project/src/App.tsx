@@ -7,8 +7,6 @@ import About from './pages/About';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import Terms from './pages/Terms';
-import RedTeamServices from './pages/RedTeamServices';
-import PenetrationTesting from './pages/PenetrationTesting';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import EthicalOath from './pages/EthicalOath';
 import VulnResearch from './pages/VulnResearch';
@@ -26,8 +24,6 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path='/Terms' element={<Terms />} />
-          <Route path='/RedTeamServices' element={<RedTeamServices />} />
-          <Route path='/PenetrationTesting' element ={<PenetrationTesting />} />
           <Route path='/EthicalOath' element ={<EthicalOath />} />
           <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
           <Route path='/VulnResearch' element={<VulnResearch />} />
