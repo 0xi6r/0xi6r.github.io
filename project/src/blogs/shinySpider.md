@@ -6,8 +6,6 @@ excerpt: "A Technical Analysis of ShinySp1d3r: A Go-Based Ransomware from the Sc
 category: "Malware Analysis"
 ---
 
-# ShinySp1d3r Ransomware Static Analysis
-
 ![Image description](/images/blog/shinySp1d3r.png)
 
 ## Summary
@@ -19,7 +17,7 @@ Its modular, cross-platform design, with future versions planned for Linux and E
 
 Below is an image I borrowed from Any[.]Run showing the execution chain once the malware is executed.
 
-<img width="1101" height="553" alt="Screenshot (47)" src="https://github.com/user-attachments/assets/58f9666b-0413-48d9-91ca-df2ed9d996d3" />
+![Image description](/images/blog/anyRun.png)
 
 # Technical Analysis
 
