@@ -93,7 +93,11 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Penetration Testing</li>
-              <li className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Red Team Operations</li>
+              <li className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Red Teaming</li>
+              <li className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Malware Analysis</li>
+              <li className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Reverse Engineering</li>
+              <li className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Offensive Tool Dev</li>
+              <li className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Vulnerability Research</li>
             </ul>
           </div>
 
