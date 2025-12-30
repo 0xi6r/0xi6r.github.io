@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import Logo from './0xi6r.svg';
+import Logo from '/0xi6r.svg';
 
 const services = [
   { name: "Penetration Testing", href:"/services" },
