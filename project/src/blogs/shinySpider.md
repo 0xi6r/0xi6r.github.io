@@ -19,7 +19,6 @@ Below is an image I borrowed from Any[.]Run showing the execution chain once the
 
 ![Image description](/images/blog/anyRun.png)
 
-# Technical Analysis
 
 ## sample overview
 - File type: PE64
@@ -36,4 +35,30 @@ Below is an image I borrowed from Any[.]Run showing the execution chain once the
 
 
 ## String Analysis
+be continued.
+
+
+## Using IDA Pro
+Below is the GO runtime entry point after IDA pro completes analysis cleanly usually refered to as: the Go’s Windows runtime bootstrap.
+_rt0_amd64_windows is the OS-specific entry, It jumps immediately into _rt0_amd64. From here, Go sets up: Stack, Goroutines, GC, TLS and Scheduler.
+We won't waste time reversing runtime internals as this is not the malicious logic of ShinySp1d3r ransomware we are after.
+
+![Image description](/images/blog/startida.png)
+
+## Finding main  
+To get to the ransom logic, we have to reach main.main(), which is where: File traversal, Encryption, Key generation, Network calls (if any), and Ransom note writing will occur. 
+Everything before that is Go runtime noise.
+To find main.main, I utilized the simplest method, which is searching through the strings sub-view for main.main. This forms our primary analysis function.
+
+![Image description](/images/blog/mainmain.png)
+
+
+
+
+
+
+
+
+
+
 
