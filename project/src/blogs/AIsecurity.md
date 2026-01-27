@@ -1,6 +1,6 @@
 ---
 title: "AI Offensive Testing: Guide to exploiting LLMs"
-title2: Exploiting LLMs.
+title1: Exploiting LLMs.
 image: "images/blog/ai.png"
 date: "2025-11-11"
 excerpt: "The security of Large Language Models goes far beyond traditional vulnerabilities. We're now dealing with prompt injection, model theft, training data poisoning, and weaponized "agency."
