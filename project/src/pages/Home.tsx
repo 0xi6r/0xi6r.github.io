@@ -10,6 +10,7 @@ import {
 interface BlogPost {
   id: string;
   title: string;
+  title1:string;
   date: string;
   excerpt: string;
   content: string;
