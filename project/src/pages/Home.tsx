@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ProjectShowcase from "@/components/ProjectShowcase";
 import { 
   Calendar, 
   ArrowRight, 
@@ -217,10 +216,7 @@ const HomePage: React.FC = () => {
       </section>
 
       
-      {/* Add ProjectShowcase HERE */}
-      <ProjectShowcase />
-      
-
+    
       {/* Featured Articles Section */}
       <section className="bg-black">
         <div className="max-w-7xl mx-auto px-4">
