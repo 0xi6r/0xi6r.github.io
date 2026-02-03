@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ProjectShowcase from "../components/ProjectShowcase";
+import ProjectShowcase from "@/components/ProjectShowcase";
 import { 
   Calendar, 
   ArrowRight, 
