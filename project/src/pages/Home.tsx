@@ -39,7 +39,6 @@ interface ParsedContent {
 }
 
 const HomePage: React.FC = () => {
-  <ProjectShowCase />
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [latestPost, setLatestPost] = useState<BlogPost | null>(null);
   const [featuredArticles, setFeaturedArticles] = useState<BlogPost[]>([]);
@@ -217,6 +216,11 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
+      
+      {/* Add ProjectShowcase HERE */}
+      <ProjectShowcase />
+      
+
       {/* Featured Articles Section */}
       <section className="bg-black">
         <div className="max-w-7xl mx-auto px-4">
@@ -304,9 +308,6 @@ const HomePage: React.FC = () => {
           )}
         </div>
       </section>
-        <div>
-          <ProjectShowCase />
-        </div>
     </div>
   );
 };
