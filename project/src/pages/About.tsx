@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Award, Users, Clock, ArrowRight } from 'lucide-react';
+import ProjectShowCase from "../components/ProjectShowcase";
 
 const About = () => {
   const stats = [
@@ -64,6 +65,8 @@ const About = () => {
           </div>
         </div>
       </section>
+
+    <ProjectShowcase />
 
       {/* Features Section */}
       <section className="py-20 bg-gray-100">
