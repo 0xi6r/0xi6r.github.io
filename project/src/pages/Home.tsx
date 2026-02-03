@@ -39,6 +39,7 @@ interface ParsedContent {
 }
 
 const HomePage: React.FC = () => {
+  <ProjectShowCase />
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [latestPost, setLatestPost] = useState<BlogPost | null>(null);
   const [featuredArticles, setFeaturedArticles] = useState<BlogPost[]>([]);
