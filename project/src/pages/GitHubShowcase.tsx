@@ -234,4 +234,4 @@ const GitHubShowcase: React.FC<GitHubShowcaseProps> = ({
   );
 };
 
-export default GithubShowcase;
+export default GitHubShowcase;
