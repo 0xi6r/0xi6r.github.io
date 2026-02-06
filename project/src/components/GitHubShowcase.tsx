@@ -130,8 +130,7 @@ const GitHubShowcase: React.FC<GitHubShowcaseProps> = ({
       <div className="flex items-center gap-3 mb-6">
         <Github className="h-8 w-8" />
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">GitHub Projects</h2>
-          <p className="text-gray-600">@{username}</p>
+          <h2 className="text-2xl font-bold text-gray-200">Projects</h2>
         </div>
       </div>
 
