@@ -96,7 +96,12 @@ const About = () => {
         </div>
       </section>
 
-      <GithubShowcase />
+       <GitHubShowcase 
+        username="your-github-username" 
+        maxProjects={6}
+        showLanguage={true}
+        showTopics={true}
+      />
 
       {/* Experience Timeline */}
       {/* to be updated later  <section className="py-20 bg-gray-800">
