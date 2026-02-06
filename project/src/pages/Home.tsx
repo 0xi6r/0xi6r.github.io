@@ -216,7 +216,12 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      
+      <GitHubShowcase 
+        username="0xi6r" 
+        maxProjects={6}
+        showLanguage={true}
+        showTopics={true}
+      />
     
       {/* Featured Articles Section */}
       <section className="bg-black">
