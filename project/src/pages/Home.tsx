@@ -308,7 +308,7 @@ const HomePage: React.FC = () => {
 
       <GitHubShowcase 
         username="0xi6r" 
-        maxProjects={3}
+        maxProjects={4}
         showLanguage={true}
         showTopics={true}
       />
