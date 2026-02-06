@@ -126,111 +126,240 @@ const GitHubShowcase: React.FC<GitHubShowcaseProps> = ({
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center gap-3 mb-6">
-        <Github className="h-8 w-8" />
-        <div>
-          <h2 className="text-2xl font-bold text-gray-200">Projects</h2>
-        </div>
-      </div>
+    // Inside the return statement of GitHubShowcase component
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg transition-shadow duration-300"
-          >
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3 className="font-bold text-lg text-gray-900 truncate">
-                  {project.name}
-                </h3>
-                <p className="text-sm text-gray-500">
-                  Updated {formatDate(project.updated_at)}
-                </p>
-              </div>
-              <a
-                href={project.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-700"
-              >
-                <ExternalLink className="h-5 w-5" />
-              </a>
-            </div>
-
-            {project.description && (
-              <p className="text-gray-700 mb-4 line-clamp-2">
-                {project.description}
-              </p>
-            )}
-
-            {showTopics && project.topics.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mb-4">
-                {project.topics.slice(0, 3).map((topic) => (
-                  <span
-                    key={topic}
-                    className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full"
-                  >
-                    {topic}
-                  </span>
-                ))}
-                {project.topics.length > 3 && (
-                  <span className="px-2 py-1 text-xs text-gray-500">
-                    +{project.topics.length - 3} more
-                  </span>
-                )}
-              </div>
-            )}
-
-            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1 text-gray-600">
-                  <Star className="h-4 w-4" />
-                  <span className="text-sm">{project.stargazers_count}</span>
-                </div>
-                <div className="flex items-center gap-1 text-gray-600">
-                  <GitFork className="h-4 w-4" />
-                  <span className="text-sm">{project.forks_count}</span>
-                </div>
-                {showLanguage && project.language && (
-                  <div className="flex items-center gap-1">
-                    <div className="h-3 w-3 rounded-full bg-blue-500"></div>
-                    <span className="text-sm text-gray-600">
-                      {project.language}
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {project.homepage && (
-                <a
-                  href={project.homepage}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-blue-600 hover:text-blue-800 font-medium"
-                >
-                  View Live
-                </a>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="text-center pt-4">
-        <a
-          href={`https://github.com/${username}?tab=repositories`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
-        >
-          View all repositories on GitHub
-          <ExternalLink className="h-4 w-4" />
-        </a>
+return (
+  <div style={{ fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif' }}>
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      gap: '12px', 
+      marginBottom: '24px',
+      color: '#ffffff' // White text for header
+    }}>
+      <svg 
+        height="32" 
+        viewBox="0 0 16 16" 
+        width="32" 
+        style={{ fill: '#ffffff' }} // White GitHub icon
+      >
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+      </svg>
+      <div>
+        <h2 style={{ 
+          fontSize: '24px', 
+          fontWeight: 'bold', 
+          margin: '0 0 4px 0',
+          color: '#ffffff' // White title
+        }}>
+          GitHub Projects
+        </h2>
+        <p style={{ 
+          color: '#94a3b8', // Slate-400 color for username
+          margin: '0',
+          fontSize: '16px'
+        }}>
+          @{username}
+        </p>
       </div>
     </div>
-  );
-};
+
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+      gap: '20px',
+      marginBottom: '30px'
+    }}>
+      {projects.map((project) => (
+        <div
+          key={project.id}
+          style={{
+            backgroundColor: '#0f172a', // Dark blue/black background
+            border: '1px solid #334155', // Slate-700 border
+            borderRadius: '12px',
+            padding: '20px',
+            transition: 'all 0.2s ease',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.5)',
+            color: '#ffffff' // White text for project card
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 212, 255, 0.15)';
+            e.currentTarget.style.borderColor = '#06b6d4'; // Cyan border on hover
+            e.currentTarget.style.transform = 'translateY(-2px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.5)';
+            e.currentTarget.style.borderColor = '#334155';
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
+        >
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            marginBottom: '12px'
+          }}>
+            <div style={{ flex: 1 }}>
+              <h3 style={{
+                fontSize: '18px',
+                fontWeight: '600',
+                margin: '0 0 4px 0',
+                color: '#ffffff' // White title
+              }}>
+                {project.name}
+              </h3>
+              <p style={{
+                fontSize: '14px',
+                color: '#94a3b8', // Slate-400
+                margin: '0'
+              }}>
+                Updated {formatDate(project.updated_at)}
+              </p>
+            </div>
+            <a
+              href={project.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: '#94a3b8', // Slate-400
+                textDecoration: 'none',
+                marginLeft: '10px',
+                transition: 'color 0.2s ease'
+              }}
+              title="View on GitHub"
+              onMouseEnter={(e) => e.currentTarget.style.color = '#06b6d4'} // Cyan on hover
+              onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
+            >
+              ↗
+            </a>
+          </div>
+
+          {project.description && (
+            <p style={{
+              color: '#cbd5e1', // Slate-300
+              margin: '0 0 16px 0',
+              fontSize: '15px',
+              lineHeight: '1.5'
+            }}>
+              {project.description}
+            </p>
+          )}
+
+          {showTopics && project.topics && project.topics.length > 0 && (
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '6px',
+              marginBottom: '16px'
+            }}>
+              {project.topics.slice(0, 3).map((topic) => (
+                <span
+                  key={topic}
+                  style={{
+                    padding: '4px 10px',
+                    fontSize: '12px',
+                    backgroundColor: '#164e63', // Dark cyan background
+                    color: '#67e8f9', // Light cyan text
+                    borderRadius: '20px',
+                    fontWeight: '500'
+                  }}
+                >
+                  {topic}
+                </span>
+              ))}
+              {project.topics.length > 3 && (
+                <span style={{
+                  padding: '4px 10px',
+                  fontSize: '12px',
+                  color: '#94a3b8' // Slate-400
+                }}>
+                  +{project.topics.length - 3} more
+                </span>
+              )}
+            </div>
+          )}
+
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingTop: '16px',
+            borderTop: '1px solid #334155' // Slate-700 border
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ color: '#fbbf24' }}>⭐</span> {/* Yellow star */}
+                <span style={{ fontSize: '14px', color: '#ffffff' }}>
+                  {project.stargazers_count}
+                </span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ color: '#94a3b8' }}>🍴</span> {/* Slate-400 fork */}
+                <span style={{ fontSize: '14px', color: '#ffffff' }}>
+                  {project.forks_count}
+                </span>
+              </div>
+              {showLanguage && project.language && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <div style={{
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
+                    backgroundColor: '#06b6d4' // Cyan dot
+                  }}></div>
+                  <span style={{ fontSize: '14px', color: '#94a3b8' }}>
+                    {project.language}
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {project.homepage && (
+              <a
+                href={project.homepage}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: '14px',
+                  color: '#06b6d4', // Cyan link
+                  textDecoration: 'none',
+                  fontWeight: '500',
+                  transition: 'color 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#67e8f9'} // Light cyan on hover
+                onMouseLeave={(e) => e.currentTarget.style.color = '#06b6d4'}
+              >
+                View Live
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div style={{ textAlign: 'center' }}>
+      <a
+        href={`https://github.com/${username}?tab=repositories`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          color: '#06b6d4', // Cyan
+          textDecoration: 'none',
+          fontSize: '16px',
+          fontWeight: '500',
+          transition: 'color 0.2s ease'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.color = '#67e8f9'} // Light cyan on hover
+        onMouseLeave={(e) => e.currentTarget.style.color = '#06b6d4'}
+      >
+        View all repositories on GitHub
+        <span>↗</span>
+      </a>
+    </div>
+  </div>
+);
 
 export default GitHubShowcase;
