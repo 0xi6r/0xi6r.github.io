@@ -97,7 +97,7 @@ const About = () => {
       </section>
 
        <GitHubShowcase 
-        username="your-github-username" 
+        username="0xi6r" 
         maxProjects={6}
         showLanguage={true}
         showTopics={true}
