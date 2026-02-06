@@ -10,6 +10,7 @@ import Terms from './pages/Terms';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import VulnResearch from './pages/VulnResearch';
 import Services from './pages/Services';
+import GitHubShowcase from './pages/GitHubShowcase';
 import NotFound from './pages/NotFound';
 
 function App() {
