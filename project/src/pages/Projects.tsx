@@ -1,280 +1,237 @@
-import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "shadcn";
-import { Badge } from "shadcn";
-import { Button } from "shadcn";
-import { ExternalLink, Github } from "lucide-react";
+import React, { useEffect, useState } from 'react';
+import { Github, Star, GitFork, ExternalLink } from 'lucide-react';
 
-interface Project {
+interface GitHubProject {
   id: number;
-  title: string;
-  description: string;
-  problem: string;
-  tags: string[];
-  icon: string;
-  links: {
-    github?: string;
-    demo?: string;
-    external?: string;
-  };
-  date: string;
-  featured?: boolean;
+  name: string;
+  description: string | null;
+  html_url: string;
+  homepage: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  language: string | null;
+  updated_at: string;
+  topics: string[];
 }
 
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with payment integration and inventory management.",
-    problem: "Businesses needed an easy way to sell products online without complex setup.",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    icon: "🛍️",
-    links: {
-      github: "https://github.com",
-      demo: "https://example.com",
-    },
-    date: "2024",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Task Management App",
-    description: "Collaborative task management tool with real-time updates and team features.",
-    problem: "Teams struggled to track tasks and collaborate effectively across time zones.",
-    tags: ["React", "Firebase", "Tailwind CSS"],
-    icon: "✓",
-    links: {
-      demo: "https://example.com",
-      github: "https://github.com",
-    },
-    date: "2024",
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "Analytics Dashboard",
-    description: "Real-time analytics dashboard with interactive charts and data visualization.",
-    problem: "Companies needed accessible insights from complex data without technical expertise.",
-    tags: ["React", "D3.js", "TypeScript", "PostgreSQL"],
-    icon: "📊",
-    links: {
-      demo: "https://example.com",
-      github: "https://github.com",
-    },
-    date: "2023",
-  },
-  {
-    id: 4,
-    title: "AI Content Generator",
-    description: "AI-powered tool for generating marketing copy and social media content.",
-    problem: "Content creators spent hours writing copy when they could automate it.",
-    tags: ["Python", "OpenAI API", "FastAPI", "React"],
-    icon: "✨",
-    links: {
-      demo: "https://example.com",
-      external: "https://example.com",
-    },
-    date: "2023",
-  },
-  {
-    id: 5,
-    title: "Weather Forecast App",
-    description: "Beautiful weather app with location-based forecasts and alerts.",
-    problem: "Existing weather apps were cluttered and hard to navigate.",
-    tags: ["React Native", "OpenWeather API", "Expo"],
-    icon: "🌤️",
-    links: {
-      github: "https://github.com",
-    },
-    date: "2023",
-  },
-  {
-    id: 6,
-    title: "Personal Blog Platform",
-    description: "Lightweight blogging platform with markdown support and SEO optimization.",
-    problem: "Bloggers needed a fast, customizable platform without vendor lock-in.",
-    tags: ["Next.js", "MDX", "Vercel", "Tailwind CSS"],
-    icon: "📝",
-    links: {
-      demo: "https://example.com",
-      github: "https://github.com",
-    },
-    date: "2022",
-  },
-];
+interface GitHubShowcaseProps {
+  username: string;
+  maxProjects?: number;
+  showLanguage?: boolean;
+  showTopics?: boolean;
+}
 
-const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
-  return (
-    <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
-      <CardHeader className="pb-3">
-        <div className="flex items-start justify-between">
-          <div className="text-4xl mb-2">{project.icon}</div>
-          {project.featured && (
-            <Badge variant="default" className="bg-blue-600">
-              Featured
-            </Badge>
-          )}
+const GitHubShowcase: React.FC<GitHubShowcaseProps> = ({
+  username,
+  maxProjects = 6,
+  showLanguage = true,
+  showTopics = true,
+}) => {
+  const [projects, setProjects] = useState<GitHubProject[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        // GitHub API for user repositories
+        const response = await fetch(
+          `https://api.github.com/users/${username}/repos?sort=updated&direction=desc&per_page=${maxProjects}`
+        );
+        
+        if (!response.ok) {
+          throw new Error(`GitHub API error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Fetch topics for each repository (requires GitHub API v3)
+        const projectsWithTopics = await Promise.all(
+          data.map(async (repo: any) => {
+            try {
+              const topicsResponse = await fetch(
+                `https://api.github.com/repos/${username}/${repo.name}/topics`,
+                {
+                  headers: {
+                    'Accept': 'application/vnd.github.mercy-preview+json',
+                  },
+                }
+              );
+              
+              const topicsData = await topicsResponse.json();
+              return {
+                ...repo,
+                topics: topicsData.names || [],
+              };
+            } catch {
+              return { ...repo, topics: [] };
+            }
+          })
+        );
+        
+        setProjects(projectsWithTopics);
+        setError(null);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch projects');
+        console.error('Error fetching GitHub projects:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, [username, maxProjects]);
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-[200px] flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-2 text-gray-600">Loading GitHub projects...</p>
         </div>
-        <CardTitle className="text-xl">{project.title}</CardTitle>
-        <p className="text-xs text-gray-400 mt-1">{project.date}</p>
-      </CardHeader>
+      </div>
+    );
+  }
 
-      <CardContent className="flex-1 flex flex-col gap-3">
+  if (error) {
+    return (
+      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+        <p className="text-red-700">
+          Error loading projects: {error}
+        </p>
+        <p className="text-sm text-red-600 mt-1">
+          Make sure the username "{username}" is correct and the repository is public.
+        </p>
+      </div>
+    );
+  }
+
+  if (projects.length === 0) {
+    return (
+      <div className="text-center py-8">
+        <Github className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+        <p className="text-gray-600">No public repositories found for @{username}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center gap-3 mb-6">
+        <Github className="h-8 w-8" />
         <div>
-          <p className="text-sm text-gray-300 mb-2">{project.description}</p>
-          <p className="text-xs text-gray-400 italic">
-            <strong>Problem:</strong> {project.problem}
-          </p>
+          <h2 className="text-2xl font-bold text-gray-900">GitHub Projects</h2>
+          <p className="text-gray-600">@{username}</p>
         </div>
+      </div>
 
-        <div className="flex flex-wrap gap-1">
-          {project.tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="text-xs">
-              {tag}
-            </Badge>
-          ))}
-        </div>
-
-        <div className="flex gap-2 mt-auto pt-3">
-          {project.links.github && (
-            <Button
-              variant="outline"
-              size="sm"
-              className="flex-1"
-              onClick={() => window.open(project.links.github, "_blank")}
-            >
-              <Github className="w-4 h-4 mr-1" />
-              Code
-            </Button>
-          )}
-          {project.links.demo && (
-            <Button
-              variant="default"
-              size="sm"
-              className="flex-1"
-              onClick={() => window.open(project.links.demo, "_blank")}
-            >
-              <ExternalLink className="w-4 h-4 mr-1" />
-              Demo
-            </Button>
-          )}
-          {project.links.external && !project.links.demo && (
-            <Button
-              variant="default"
-              size="sm"
-              className="flex-1"
-              onClick={() => window.open(project.links.external, "_blank")}
-            >
-              <ExternalLink className="w-4 h-4 mr-1" />
-              View
-            </Button>
-          )}
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
-
-export default function ProjectsPage() {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  // Get all unique tags
-  const allTags = Array.from(new Set(projects.flatMap((p) => p.tags)));
-
-  // Filter projects
-  const filteredProjects = projects.filter((project) => {
-    const matchesTag = !selectedTag || project.tags.includes(selectedTag);
-    const matchesSearch =
-      project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesTag && matchesSearch;
-  });
-
-  // Separate featured and regular projects
-  const featuredProjects = filteredProjects.filter((p) => p.featured);
-  const regularProjects = filteredProjects.filter((p) => !p.featured);
-
-  return (
-    <div className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">Projects</h1>
-          <p className="text-lg text-gray-400">
-            A collection of projects I've built to solve real problems and learn new technologies.
-          </p>
-        </div>
-
-        {/* Search */}
-        <div className="mb-8">
-          <input
-            type="text"
-            placeholder="Search projects..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-background text-gray-100 placeholder-gray-500"
-          />
-        </div>
-
-        {/* Tag Filter */}
-        <div className="mb-8">
-          <p className="text-sm font-semibold mb-3 text-gray-300">Filter by technology:</p>
-          <div className="flex flex-wrap gap-2">
-            <Button
-              variant={selectedTag === null ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedTag(null)}
-            >
-              All
-            </Button>
-            {allTags.map((tag) => (
-              <Button
-                key={tag}
-                variant={selectedTag === tag ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedTag(tag)}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <div
+            key={project.id}
+            className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-lg transition-shadow duration-300"
+          >
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <h3 className="font-bold text-lg text-gray-900 truncate">
+                  {project.name}
+                </h3>
+                <p className="text-sm text-gray-500">
+                  Updated {formatDate(project.updated_at)}
+                </p>
+              </div>
+              <a
+                href={project.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-gray-700"
               >
-                {tag}
-              </Button>
-            ))}
-          </div>
-        </div>
+                <ExternalLink className="h-5 w-5" />
+              </a>
+            </div>
 
-        {/* Featured Projects */}
-        {featuredProjects.length > 0 && (
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-6">Featured</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
+            {project.description && (
+              <p className="text-gray-700 mb-4 line-clamp-2">
+                {project.description}
+              </p>
+            )}
+
+            {showTopics && project.topics.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {project.topics.slice(0, 3).map((topic) => (
+                  <span
+                    key={topic}
+                    className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full"
+                  >
+                    {topic}
+                  </span>
+                ))}
+                {project.topics.length > 3 && (
+                  <span className="px-2 py-1 text-xs text-gray-500">
+                    +{project.topics.length - 3} more
+                  </span>
+                )}
+              </div>
+            )}
+
+            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1 text-gray-600">
+                  <Star className="h-4 w-4" />
+                  <span className="text-sm">{project.stargazers_count}</span>
+                </div>
+                <div className="flex items-center gap-1 text-gray-600">
+                  <GitFork className="h-4 w-4" />
+                  <span className="text-sm">{project.forks_count}</span>
+                </div>
+                {showLanguage && project.language && (
+                  <div className="flex items-center gap-1">
+                    <div className="h-3 w-3 rounded-full bg-blue-500"></div>
+                    <span className="text-sm text-gray-600">
+                      {project.language}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {project.homepage && (
+                <a
+                  href={project.homepage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                >
+                  View Live
+                </a>
+              )}
             </div>
           </div>
-        )}
+        ))}
+      </div>
 
-        {/* All Projects */}
-        <div>
-          <h2 className="text-2xl font-bold mb-6">
-            {featuredProjects.length > 0 ? "Other Projects" : "All Projects"}
-          </h2>
-          {regularProjects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {regularProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-gray-400 text-lg">No projects found matching your criteria.</p>
-            </div>
-          )}
-        </div>
-
-        {/* Results Count */}
-        <div className="mt-8 text-center text-sm text-gray-400">
-          Showing {filteredProjects.length} of {projects.length} projects
-        </div>
+      <div className="text-center pt-4">
+        <a
+          href={`https://github.com/${username}?tab=repositories`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+        >
+          View all repositories on GitHub
+          <ExternalLink className="h-4 w-4" />
+        </a>
       </div>
     </div>
   );
-}
+};
+
+export default GitHubShowcase;
