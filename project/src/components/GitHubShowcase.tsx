@@ -23,7 +23,7 @@ interface GitHubShowcaseProps {
 
 const GitHubShowcase: React.FC<GitHubShowcaseProps> = ({
   username,
-  maxProjects = 6,
+  maxProjects = 3,
   showLanguage = true,
   showTopics = true,
 }) => {
