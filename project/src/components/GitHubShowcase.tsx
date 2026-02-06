@@ -124,8 +124,6 @@ const GitHubShowcase: React.FC<GitHubShowcaseProps> = ({
       </div>
     );
   }
-
-  return (
     // Inside the return statement of GitHubShowcase component
 
 return (
