@@ -96,6 +96,8 @@ const About = () => {
         </div>
       </section>
 
+      <GithubShowcase />
+
       {/* Experience Timeline */}
       {/* to be updated later  <section className="py-20 bg-gray-800">
         <div className="max-w-4xl mx-auto px-4">
