@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Award, Users, Clock, ArrowRight } from 'lucide-react';
-import ProjectShowcase from './components/ProjectShowcase';
+import ProjectShowcase from '../components/ProjectShowcase';
 
 const About = () => {
   const stats = [
