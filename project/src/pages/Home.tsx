@@ -78,7 +78,7 @@ const HomePage: React.FC = () => {
       
       setPosts(loadedPosts);
       setLatestPost(loadedPosts[0] || null);
-      setFeaturedArticles(loadedPosts.slice(1, 6)); // Next 3 posts after latest //edited to 5 posts from 3 (1, 4)
+      setFeaturedArticles(loadedPosts.slice(1, 4)); // Next 3 posts after latest //edited to 5 posts from 3 (1, 4)
     } catch (err) {
       setError('Failed to load blog posts');
       console.error('Error loading blog posts:', err);
@@ -234,7 +234,7 @@ const HomePage: React.FC = () => {
           </div>
 
           {featuredArticles.length > 0 ? (
-            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8"> 
+            <div className="grid md:grid-cols-3 lg:grid-cols-2 gap-8"> 
               {featuredArticles.map((article) => (
                 <article key={article.id} className="bg-black rounded-xl overflow-hidden hover:bg-gray-750 transition-colors duration-300 group">
                   {/* Article Image */}
