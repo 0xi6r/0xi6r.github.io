@@ -6,7 +6,7 @@ import {
   Clock,
   Eye
 } from 'lucide-react';
-import GitHubShowcase  from './GitHubShowcase';
+import GitHubShowcase  from '../components/GitHubShowcase';
 
 interface BlogPost {
   id: string;
