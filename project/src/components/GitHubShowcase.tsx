@@ -359,5 +359,6 @@ return (
     </div>
   </div>
 );
+};
 
 export default GitHubShowcase;
