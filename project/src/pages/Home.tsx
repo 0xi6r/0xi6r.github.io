@@ -311,7 +311,6 @@ const HomePage: React.FC = () => {
         maxProjects={3}
         showLanguage={true}
         showTopics={true}
-        className="px-4"
       />
     </div>
   );
