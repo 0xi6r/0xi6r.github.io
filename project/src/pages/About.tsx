@@ -15,7 +15,7 @@ const About = () => {
     {
       title: 'Vulnerability Research',
       description: 'Discovering and analyzing security vulnerabilities in modern systems',
-      link: '/blog?post=vulnerability-research'
+      link: '/VulnerabilityResearchPag'
     },
     {
       title: 'APT Simulation',
