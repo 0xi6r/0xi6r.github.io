@@ -11,7 +11,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import VulnResearch from './pages/VulnResearch';
 import Services from './pages/Services';
 import GitHubShowcase from './components/GitHubShowcase';
-import VulnerabilityResearchPage from './pages/VulnerabilityResearch';
+import VulnerabilityResearch from './pages/VulnerabilityResearch';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path='/Terms' element={<Terms />} />
           <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
-          <Route path='/VulnerabilityResearchPage' element={<VulnerabilityResearchPage />} />
+          <Route path='/VulnerabilityResearch' element={<VulnerabilityResearch />} />
           <Route path='/Services' element={<Services />} />
           <Route path='*' element={<NotFound />} />
 
