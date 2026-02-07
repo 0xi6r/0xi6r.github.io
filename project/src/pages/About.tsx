@@ -38,7 +38,7 @@ const About = () => {
               <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 text-white shadow-xl">
                 <h2 className="text-2xl font-bold mb-6 text-white">Whoami?</h2>
                 <p className="text-gray-300 mb-6 leading-relaxed">
-                My name is Isaac, a 23-year-old offensive security researcher specializing in vulnerability research, penetration testing, and red team operations. I focus on identifying and exploiting security vulnerabilities, 
+                My name is Isaac, a 24-year-old offensive security researcher specializing in vulnerability research, penetration testing, and red team operations. I focus on identifying and exploiting security vulnerabilities, 
                 developing EDR evasion techniques, and providing comprehensive mitigation strategies for potential attack vectors 
                 that threat actors could leverage. My primary objective is to enhance the overall security posture of organizations 
                 through advanced offensive security methodologies and strategic risk assessment
