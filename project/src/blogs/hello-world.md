@@ -21,8 +21,7 @@ To document my learning, share useful tips, and give back to the community.
 Exploitation deep dives, C/Rust projects, malware dev tutorials, and walkthroughs.
 
 **[Let's Connect!](https://linkedin.com/in/itsisaac):**  
-Reach out with questions, opportunities, suggestions, or just to say hi!
-(https://linkedin.com/in/itsisaac)
+Reach out with questions, opportunities, sponsorship, suggestions, or just to say hi!
 
 ---
 
