@@ -5,6 +5,8 @@ date: "2026-01-11"
 excerpt: "Analysis of the "Micro Stealer" Infostealer: Anti-Analysis Features and HTTP-Based Exfiltration"
 category: "Malware Analysis"
 ---
+
+
 An information stealer, is a category of malware that is explicitly designed to infiltrate a system and clandestinely collect specific sets of sensitive data.
 Its primary objective is to exfiltrate this harvested information to a remote server controlled by an attacker. The targeted data typically includes credentials 
 (such as usernames and passwords), financial information (like banking details and credit card numbers), cryptocurrency wallet keys, browser cookies and autofill data, 
