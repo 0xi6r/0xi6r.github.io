@@ -1,69 +1,29 @@
 ---
-title: "Welcome to My Blog!"
+title: "What's all this about?"
 image: "images/blog/welcome-to-blog.jpg"
 date: "2024-11-10"
-excerpt: "Hello world! This is my very first blog post. Learn about what you can expect from this blog and my journey in cybersecurity."
+excerpt: "This is my very first post. Get infomed about what you can expect from me and my journey in infosec."
 ---
 
-# Welcome to My Blog!
+**Welcome!**  
+This is my space to share my journey into cybersecurity and tech.
 
-Hello and welcome! 👋
+**I’ll cover:**  
+Web security, low-level dev, malware/C2 research, privacy tools, personal projects, and tech opinions.
 
-I'm excited to share my thoughts, experiences, and learnings about infosec, emerging tech, and everything in between.
+**About me:**  
+Backend dev moving into security. I value clean code, open source, learning, and sharing knowledge.
 
-## What You Can Expect
+**Why this blog?**  
+To document my learning, share useful tips, and give back to the community.
 
-This blog will cover a variety of topics including:
+**Coming soon:**  
+Exploitation deep dives, C/Rust projects, malware dev tutorials, and walkthroughs.
 
-- **Web Security Research**
-- **Low level dev & Exploitation**
-- **Malware Development, Research & analysis**
-- **C2 Development & tutorials**
-- **Personal projects and experiments**
-- **Cyber geopolitics**
-- **Privacy (encryption & obfuscation)**
-
-## My Background
-
-I'm a passionate web developer who loves creating beautiful, functional, and performant web applications. I believe in:
-
-- Writing clean, maintainable code
-- Continuous learning and improvement
-- Sharing knowledge with the community
-- Building inclusive and accessible web experiences
-
-## Why I Started This Blog
-
-> "The best way to learn is to show others how you do it."
-
-I started this blog to:
-
-1. **Document my learning journey**
-2. **Share useful tips and tricks**
-3. **Connect with other researchers and developers**
-4. **Give back to the community**
-5. **Make a dent on the Internet**
-
-## What's Coming Next
-
-In upcoming posts, you can expect:
-
-- Deep dives into web, API & binary exploitation
-- low level development ( I usse C btw)
-- Malware dev techniques
-- Project walkthroughs and tutorials
-
-## [Let's Connect!](https://x.com/0xi6r)
-
-I'd love to hear from you! Feel free to reach out if you have:
-
-- Questions about any of my posts
-- Suggestions for future topics
-- Feedback or corrections
-- Just want to say hello!
-
-Thanks for reading, and I hope you'll join me on this journey! 🚀
+**[Let's Connect!](https://linkedin.com/in/itsisaac):**  
+Reach out with questions, opportunities, suggestions, or just to say hi!
+(https://linkedin.com/in/itsisaac)
 
 ---
 
-*Happy coding!*
+*updated: 10/2/2025*
