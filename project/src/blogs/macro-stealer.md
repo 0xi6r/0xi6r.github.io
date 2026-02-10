@@ -1,6 +1,6 @@
 ---
 title: "Macro Stealer Analysis"
-image: "images/blog/macro-stealer.png"
+image: "images/blog/macro-stealer-attack-flow.png"
 date: "2026-01-11"
 excerpt: "Analysis of the "Micro Stealer" Infostealer: Anti-Analysis Features and HTTP-Based Exfiltration"
 category: "Malware Analysis"
