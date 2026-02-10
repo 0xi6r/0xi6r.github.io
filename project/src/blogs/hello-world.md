@@ -25,4 +25,4 @@ Reach out with questions, opportunities, sponsorship, suggestions, or just to sa
 
 ---
 
-*updated: 10/2/2025*
+*updated: 10/2/2026*
