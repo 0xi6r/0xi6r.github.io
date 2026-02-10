@@ -3,7 +3,7 @@ title: "Malware Anti-analysis Techniques"
 image: "/images/blog/anti-analysis.jpg"
 date: "2026-02-10"
 excerpt: "Anti-analysis techniques allow malware to detect and evade examination. They can identify if the code is running in a research environment, such as a virtual machine or debugger. When detected, the malware may halt execution or show benign behavior, effectively hiding its true intent from analysts and security tools."
-category: "security"
+category: "Malware Analysis"
 ---
 
 Malware anti-analysis is how malicious software tries to detect and avoid being examined. It looks for signs of a virtual machine, debugger, or automated sandbox. If it finds them, it can stop running or hide its real purpose. This makes it harder for security researchers to understand and stop the threat.
