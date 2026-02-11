@@ -419,6 +419,61 @@ const HomePage: React.FC = () => {
           showTopics={true}
         />
       </div>
+      {/* Infosec Focus Areas Section */}
+      <section className="bg-black pb-12 sm:pb-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-white mb-3">
+              Infosec Focus Areas
+            </h2>
+          </div>
+      
+          {/* Simple Grid Layout */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            <Link
+              to="/blog?category=Red%20Team"
+              className="px-6 py-3 bg-white hover:bg-gray-100 text-black font-medium rounded-lg transition-colors"
+            >
+              Red Team ({posts.filter(p => p.category === 'Red Team').length})
+            </Link>
+      
+            <Link
+              to="/blog?category=Vulnerability%20Research"
+              className="px-6 py-3 bg-white hover:bg-gray-100 text-black font-medium rounded-lg transition-colors"
+            >
+              Vulnerability Research ({posts.filter(p => p.category === 'Vulnerability Research').length})
+            </Link>
+      
+            <Link
+              to="/blog?category=Tool%20Development"
+              className="px-6 py-3 bg-white hover:bg-gray-100 text-black font-medium rounded-lg transition-colors"
+            >
+              Tool Development ({posts.filter(p => p.category === 'Tool Development').length})
+            </Link>
+      
+            <Link
+              to="/blog?category=Threat%20Intelligence"
+              className="px-6 py-3 bg-white hover:bg-gray-100 text-black font-medium rounded-lg transition-colors"
+            >
+              Threat Intelligence ({posts.filter(p => p.category === 'Threat Intelligence').length})
+            </Link>
+      
+            <Link
+              to="/blog?category=Malware%20Analysis"
+              className="px-6 py-3 bg-white hover:bg-gray-100 text-black font-medium rounded-lg transition-colors"
+            >
+              Malware Analysis ({posts.filter(p => p.category === 'Malware Analysis').length})
+            </Link>
+      
+            <Link
+              to="/blog?category=General"
+              className="px-6 py-3 bg-white hover:bg-gray-100 text-black font-medium rounded-lg transition-colors"
+            >
+              General ({posts.filter(p => p.category === 'General').length})
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
