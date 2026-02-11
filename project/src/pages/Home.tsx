@@ -285,8 +285,8 @@ const HomePage: React.FC = () => {
                 <div className="flex flex-col gap-4 sm:gap-6">
 
                   {/* Title */}
-                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 leading-tight">
-                    {latestPost.title}
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2 leading-tight">
+                  {latestPost.title}
                   </h1>
 
                   {/* Subtitle */}
@@ -300,6 +300,9 @@ const HomePage: React.FC = () => {
                   <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
                     <span className={`px-3 py-1 rounded-full text-white text-xs sm:text-sm font-medium ${getCategoryColor(latestPost.category || 'General')}`}>
                       {latestPost.category || 'General'}
+                    </span>
+                    <span className="px-2 py-1 bg-green-500/10 text-green-400 text-xs font-medium rounded border border-green-500/30">
+                      New
                     </span>
                     <span className="text-gray-400 text-xs sm:text-sm flex items-center">
                       <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
