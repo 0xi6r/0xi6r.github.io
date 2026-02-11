@@ -3,8 +3,8 @@ import RSS from 'rss';
 export default async function handler(req, res) {
   const feed = new RSS({
     title: 'Your Blog',
-    feed_url: 'https://yourdomain.com/api/rss',
-    site_url: 'https://yourdomain.com',
+    feed_url: 'https://0x-i6r.vercel.app/api/rss',
+    site_url: 'https://0x-i6r.vercel.app',
   });
 
   // Fetch and add posts (similar logic as above)
