@@ -1,12 +1,13 @@
 ---
 Titl: "What is __security_cookie?"
-image: "/image/blog/sec-cookie.png"
+image: "/images/blog/sec-cookie.png"
 Date: "2026-12-02"
-Excerpt:"You have almost certainly encountered __security_cookie while inspecting a binary in IDA, Ghidra, x64dbg, or any other reverse engineering tool. It tends to appear in function prologues and epilogues, often referenced alongside stack variables and exception handlers. If you have ever paused and wondered what it actually does, this breakdown is for you." 
+Excerpt: "You have almost certainly encountered __security_cookie while inspecting a binary in IDA, ... What does it actually do?" 
 Featured: false
 category: "Malware Analysis"
 ---
 
+![__security_init cookie](/images/blog/sec-cookie.png"
 
 It's a **Buffer Security Check initialization code** - commonly known as **GS cookie** or **security cookie** initialization in Visual C++.
 
@@ -20,7 +21,7 @@ This function initializes the `__security_cookie` that protects against **stack 
 - Before a function returns, it checks if the cookie was modified
 - If modified → buffer overflow detected → program terminates
 
-### This above screenshot:
+### The above screenshot:
 1. **Checks if cookie needs initialization** - if cookie is default value (-1153374642 = 0xBB40E64E) or has high bytes zero
 2. **Calls `sub_481458()`** - this gets a random number (likely from `RDTSC`, `QueryPerformanceCounter`, or system entropy)
 3. **Validates/modifies the random value**:
