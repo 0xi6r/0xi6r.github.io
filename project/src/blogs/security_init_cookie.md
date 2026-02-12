@@ -7,7 +7,7 @@ Featured: false
 category: "Malware Analysis"
 ---
 
-![__security_init cookie](/images/blog/sec-cookie.png"
+![__security_init cookie](/images/blog/sec-cookie.png)
 
 It's a **Buffer Security Check initialization code** - commonly known as **GS cookie** or **security cookie** initialization in Visual C++.
 
