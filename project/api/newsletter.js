@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email, user_agent, source } = req.body;
+  const { email, source } = req.body;
 
   if (!email || !/^.+@.+\..+$/.test(email)) {
     return res.status(400).json({ error: 'Invalid email address.' });
@@ -20,41 +20,46 @@ export default async function handler(req, res) {
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
     const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
-    // Escape special characters for Markdown
-    const escapeMarkdown = (text) => {
+    // Get IP address
+    const ip = req.headers['x-forwarded-for'] || 
+               req.headers['x-real-ip'] || 
+               req.socket.remoteAddress || 
+               'Unknown';
+    
+    // Get user agent
+    const userAgent = req.headers['user-agent'] || 'Unknown';
+    
+    // Get referrer
+    const referrer = req.headers['referer'] || req.headers['referrer'] || 'Direct';
+    
+    // Get accept language
+    const language = req.headers['accept-language'] || 'Unknown';
+    
+    // Get timestamp
+    const timestamp = new Date().toISOString();
+    const localTime = new Date().toLocaleString();
+
+    // Simple escape for plain text (optional, just for cleaner output)
+    const cleanText = (text) => {
       if (!text) return 'Unknown';
-      return text
-        .replace(/_/g, '\\_')
-        .replace(/\*/g, '\\*')
-        .replace(/\[/g, '\\[')
-        .replace(/\]/g, '\\]')
-        .replace(/\(/g, '\\(')
-        .replace(/\)/g, '\\)')
-        .replace(/~/g, '\\~')
-        .replace(/`/g, '\\`')
-        .replace(/>/g, '\\>')
-        .replace(/#/g, '\\#')
-        .replace(/\+/g, '\\+')
-        .replace(/-/g, '\\-')
-        .replace(/=/g, '\\=')
-        .replace(/\|/g, '\\|')
-        .replace(/\{/g, '\\{')
-        .replace(/\}/g, '\\}')
-        .replace(/\./g, '\\.')
-        .replace(/!/g, '\\!');
+      return text.replace(/\n/g, ' ').trim();
     };
 
-    // Format the message for Telegram without Markdown (option 1)
     const telegramMessage = `
-📬 NEW NEWSLETTER SUBSCRIPTION
+📬 NEWSLETTER SUBSCRIPTION
 
-Email: ${cleanEmail}
-Source: ${source || 'footer_signup'}
-User Agent: ${user_agent || 'Unknown'}
-Time: ${new Date().toLocaleString()}
+📧 Email: ${cleanEmail}
+📱 Source: ${source || 'footer_signup'}
+
+📋 ADDITIONAL INFO:
+🌐 IP: ${ip}
+💻 User Agent: ${cleanText(userAgent)}
+🔗 Referrer: ${referrer}
+🌍 Language: ${language}
+🕐 Time (UTC): ${timestamp}
+🕐 Local: ${localTime}
     `;
 
-    // Send to Telegram without parse_mode (plain text)
     const telegramResponse = await fetch(
       `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
       {
@@ -65,7 +70,6 @@ Time: ${new Date().toLocaleString()}
         body: JSON.stringify({
           chat_id: TELEGRAM_CHAT_ID,
           text: telegramMessage,
-          // Remove parse_mode to send as plain text
         }),
       }
     );
@@ -77,7 +81,7 @@ Time: ${new Date().toLocaleString()}
       throw new Error(telegramData.description || 'Failed to send Telegram message');
     }
 
-    // Send welcome email via Resend
+    // Send welcome email
     await resend.emails.send({
       from: '0xi6r@tutamail.com',
       to: cleanEmail,
