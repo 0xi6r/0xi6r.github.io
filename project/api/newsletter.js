@@ -1,10 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -19,27 +13,44 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid email address.' });
   }
 
+  const cleanEmail = email.toLowerCase().trim();
+
   try {
-    const { error } = await supabase
-      .from('newsletter_subscriptions')
-      .insert([
-        {
-          email: email.toLowerCase().trim(),
-          source: source || 'footer_signup',
-          user_agent: user_agent || null,
-        },
-      ]);
-    if (error) {
-      if (error.code === '23505' || error.message.includes('duplicate key value')) {
-        return res.status(400).json({ error: 'This email is already subscribed.' });
+    const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+    const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+
+    const telegramMessage = `
+📬 *New Newsletter Subscription*
+
+👤 *Email:* ${cleanEmail}
+📱 *Source:* ${source || 'footer_signup'}
+💻 *User Agent:* ${user_agent || 'Unknown'}
+📅 *Timestamp:* ${new Date().toLocaleString()}
+    `;
+
+    const telegramResponse = await fetch(
+      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: telegramMessage,
+          parse_mode: 'Markdown',
+        }),
       }
-      return res.status(500).json({ error: 'Failed to subscribe.' });
+    );
+
+    const telegramData = await telegramResponse.json();
+
+    if (!telegramData.ok) {
+      throw new Error(telegramData.description);
     }
 
     // Send welcome email
     await resend.emails.send({
-      from: '0xi6r@tutamail.com', // must be verified with Resend
-      to: email,
+      from: '0xi6r@tutamail.com',
+      to: cleanEmail,
       subject: 'Welcome to Security Insights Newsletter!',
       html: `
         <h2>Welcome to Security Insights!</h2>
@@ -51,6 +62,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ success: true });
   } catch (err) {
-    return res.status(500).json({ error: 'Server error.' });
+    console.error('Newsletter API Error:', err);
+    return res.status(500).json({ error: 'Failed to subscribe. Please try again.' });
   }
 }
