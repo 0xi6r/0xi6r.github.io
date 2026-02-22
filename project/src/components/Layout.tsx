@@ -13,7 +13,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   // Define ALL pages that should NOT have a footer
   const pagesWithoutFooter = [
     '/blog',
-    '/about',
     '/contact',
     '/EthicalOath',          
     '/services',
