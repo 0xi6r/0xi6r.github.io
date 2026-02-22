@@ -103,7 +103,7 @@ const Contact = () => {
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <div key={index} className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center flex-shrink-0">
                         <info.icon className="w-5 h-5 text-gray-300" />
                       </div>
                       <div>
@@ -134,7 +134,7 @@ const Contact = () => {
                     <a
                       key={index}
                       href={social.href}
-                      className="flex items-center gap-2 px-4 py-2 bg-black hover:bg-white rounded-lg transition-colors duration-300 text-black hover:text-black"
+                      className="flex items-center gap-2 px-4 py-2 bg-black hover:bg-white rounded-lg transition-colors duration-300 text-white hover:text-black"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
