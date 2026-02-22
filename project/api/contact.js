@@ -11,33 +11,59 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Your Telegram bot configuration
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
     const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
-    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-      throw new Error('Telegram configuration missing');
-    }
+    // Get IP address (handles both direct and proxied requests)
+    const ip = req.headers['x-forwarded-for'] || 
+               req.headers['x-real-ip'] || 
+               req.socket.remoteAddress || 
+               'Unknown';
+    
+    // Get user agent
+    const userAgent = req.headers['user-agent'] || 'Unknown';
+    
+    // Get referrer
+    const referrer = req.headers['referer'] || req.headers['referrer'] || 'Direct';
+    
+    // Get accept language
+    const language = req.headers['accept-language'] || 'Unknown';
 
-    // Format the message for Telegram
+    // Get current timestamp in multiple formats
+    const timestamp = new Date().toISOString();
+    const localTime = new Date().toLocaleString();
+
+    // Escape any special characters for Markdown
+    const escapeMarkdown = (text) => {
+      if (!text) return 'Unknown';
+      return text.replace(/([_*[\]()~`>#+\-=|{}.!])/g, '\\$1');
+    };
+
     const telegramMessage = `
 📬 *New Contact Form Submission*
 
-👤 *Name:* ${name}
-📧 *Email:* ${email}
-📝 *Subject:* ${subject || 'No subject'}
+👤 *Name:* ${escapeMarkdown(name)}
+📧 *Email:* ${escapeMarkdown(email)}
+📝 *Subject:* ${escapeMarkdown(subject || 'No subject')}
 💬 *Message:*
-${message}
+${escapeMarkdown(message)}
+
+---
+
+📋 *Additional Information:*
+🌐 *IP Address:* ${escapeMarkdown(ip)}
+💻 *User Agent:* ${escapeMarkdown(userAgent)}
+🔗 *Referrer:* ${escapeMarkdown(referrer)}
+🌍 *Language:* ${escapeMarkdown(language)}
+🕐 *Time (UTC):* ${timestamp}
+🕐 *Local Time:* ${localTime}
     `;
 
-    // Send to Telegram
     const telegramResponse = await fetch(
       `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           chat_id: TELEGRAM_CHAT_ID,
           text: telegramMessage,
@@ -49,7 +75,7 @@ ${message}
     const telegramData = await telegramResponse.json();
 
     if (!telegramData.ok) {
-      throw new Error(telegramData.description || 'Failed to send Telegram message');
+      throw new Error(telegramData.description);
     }
 
     return res.status(200).json({ success: true });
