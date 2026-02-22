@@ -134,7 +134,7 @@ const Contact = () => {
                     <a
                       key={index}
                       href={social.href}
-                      className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors duration-300 text-gray-300 hover:text-white"
+                      className="flex items-center gap-2 px-4 py-2 bg-black hover:bg-white rounded-lg transition-colors duration-300 text-black hover:text-black"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
