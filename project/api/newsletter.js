@@ -20,24 +20,41 @@ export default async function handler(req, res) {
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
     const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
-    // Escape Markdown special characters
+    // Escape special characters for Markdown
     const escapeMarkdown = (text) => {
       if (!text) return 'Unknown';
-      return text.replace(/([_*[\]()~`>#+\-=|{}.!])/g, '\\$1');
+      return text
+        .replace(/_/g, '\\_')
+        .replace(/\*/g, '\\*')
+        .replace(/\[/g, '\\[')
+        .replace(/\]/g, '\\]')
+        .replace(/\(/g, '\\(')
+        .replace(/\)/g, '\\)')
+        .replace(/~/g, '\\~')
+        .replace(/`/g, '\\`')
+        .replace(/>/g, '\\>')
+        .replace(/#/g, '\\#')
+        .replace(/\+/g, '\\+')
+        .replace(/-/g, '\\-')
+        .replace(/=/g, '\\=')
+        .replace(/\|/g, '\\|')
+        .replace(/\{/g, '\\{')
+        .replace(/\}/g, '\\}')
+        .replace(/\./g, '\\.')
+        .replace(/!/g, '\\!');
     };
 
-    const escapedUserAgent = escapeMarkdown(user_agent || 'Unknown');
-    const escapedSource = escapeMarkdown(source || 'footer_signup');
-
+    // Format the message for Telegram without Markdown (option 1)
     const telegramMessage = `
-📬 *New Newsletter Subscription*
+📬 NEW NEWSLETTER SUBSCRIPTION
 
-👤 *Email:* ${cleanEmail}
-📱 *Source:* ${escapedSource}
-💻 *User Agent:* ${escapedUserAgent}
-📅 *Timestamp:* ${new Date().toLocaleString()}
+Email: ${cleanEmail}
+Source: ${source || 'footer_signup'}
+User Agent: ${user_agent || 'Unknown'}
+Time: ${new Date().toLocaleString()}
     `;
 
+    // Send to Telegram without parse_mode (plain text)
     const telegramResponse = await fetch(
       `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
       {
@@ -48,7 +65,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           chat_id: TELEGRAM_CHAT_ID,
           text: telegramMessage,
-          parse_mode: 'MarkdownV2', // Using MarkdownV2 which is more strict but we escape everything
+          // Remove parse_mode to send as plain text
         }),
       }
     );
@@ -57,7 +74,7 @@ export default async function handler(req, res) {
 
     if (!telegramData.ok) {
       console.error('Telegram error:', telegramData);
-      throw new Error(telegramData.description);
+      throw new Error(telegramData.description || 'Failed to send Telegram message');
     }
 
     // Send welcome email via Resend
