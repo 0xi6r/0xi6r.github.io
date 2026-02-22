@@ -57,8 +57,8 @@ const Navigation = () => {
                 to={item.href}
                 className={`transition-colors duration-200 font-medium px-3 py-2 rounded-lg ${
                   isActive(item.href)
-                    ? 'text-cyan-400 bg-gray-800'
-                    : 'text-gray-300 hover:text-cyan-400 hover:bg-gray-800'
+                    ? 'text-black bg-white'
+                    : 'text-gray-300 hover:text-black hover:bg-gray-300'
                 }`}
               >
                 {item.name}
