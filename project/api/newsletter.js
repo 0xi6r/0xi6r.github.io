@@ -1,3 +1,4 @@
+// /api/newsletter.js
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -19,12 +20,21 @@ export default async function handler(req, res) {
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
     const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
+    // Escape Markdown special characters
+    const escapeMarkdown = (text) => {
+      if (!text) return 'Unknown';
+      return text.replace(/([_*[\]()~`>#+\-=|{}.!])/g, '\\$1');
+    };
+
+    const escapedUserAgent = escapeMarkdown(user_agent || 'Unknown');
+    const escapedSource = escapeMarkdown(source || 'footer_signup');
+
     const telegramMessage = `
 📬 *New Newsletter Subscription*
 
 👤 *Email:* ${cleanEmail}
-📱 *Source:* ${source || 'footer_signup'}
-💻 *User Agent:* ${user_agent || 'Unknown'}
+📱 *Source:* ${escapedSource}
+💻 *User Agent:* ${escapedUserAgent}
 📅 *Timestamp:* ${new Date().toLocaleString()}
     `;
 
@@ -32,11 +42,13 @@ export default async function handler(req, res) {
       `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           chat_id: TELEGRAM_CHAT_ID,
           text: telegramMessage,
-          parse_mode: 'Markdown',
+          parse_mode: 'MarkdownV2', // Using MarkdownV2 which is more strict but we escape everything
         }),
       }
     );
@@ -44,10 +56,11 @@ export default async function handler(req, res) {
     const telegramData = await telegramResponse.json();
 
     if (!telegramData.ok) {
+      console.error('Telegram error:', telegramData);
       throw new Error(telegramData.description);
     }
 
-    // Send welcome email
+    // Send welcome email via Resend
     await resend.emails.send({
       from: '0xi6r@tutamail.com',
       to: cleanEmail,
