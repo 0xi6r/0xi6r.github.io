@@ -4,6 +4,7 @@ image: "images/blog/pei.png"
 date: "2025-10-01"
 excerpt: "The core concept is simple: instead of executing code in your own process, you force another process to execute it for you. This provides two main advantage ..."
 category: "Red Team"
+featured: true
 ---
 
 Process injection is a technique that allows code to run inside the address space of another process. It's used by both legitimate software (debuggers, sandboxes) and malicious actors (malware, post-exploitation tools).
