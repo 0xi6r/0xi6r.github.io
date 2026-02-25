@@ -4,7 +4,7 @@ image: "images/blog/udp-gangster.png"
 date: "2025-02-12"
 excerpt: "A Reflective Loader mechanism to load shellcode"
 category: "Malware Analysis"
-featured: false
+featured: true
 ---
 
 
