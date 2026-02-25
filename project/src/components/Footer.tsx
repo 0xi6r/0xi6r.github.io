@@ -71,13 +71,6 @@ const Footer = () => {
             {/* Social Links - Consistent Icons */}
             <div className="flex space-x-4 mb-6">
               <a 
-                href="https://linkedin.com/in/isaacogina" 
-                className="text-gray-400 hover:text-cyan-400 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a 
                 href="https://infosec.exchange/@0x_i6r" 
                 className="text-gray-400 hover:text-cyan-400 transition-colors"
                 aria-label="Mastodon"
