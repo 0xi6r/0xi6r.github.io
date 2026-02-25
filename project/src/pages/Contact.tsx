@@ -70,7 +70,6 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/itsisaac', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/0xi6r', label: 'GitHub' }
   ];
 
