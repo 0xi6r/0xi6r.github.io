@@ -4,7 +4,6 @@ image: "images/blog/shinySp1d3r.png"
 date: "2025-12-8"
 excerpt: "A Technical Analysis of ShinySp1d3r: A Go-Based Ransomware from the Scattered Lapsus$ Hunters"
 category: "Malware Analysis"
-featured: true
 ---
 
 ![Image description](/images/blog/shinySp1d3r.png)
