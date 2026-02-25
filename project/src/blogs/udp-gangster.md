@@ -1,6 +1,6 @@
 ---
 title: "UdpGangster Reflective Loader Backdoor"
-image: "images/blog/udp-gangster.png"
+image: "images/blog/udp.png"
 date: "2025-02-12"
 excerpt: "A Reflective Loader mechanism to load shellcode"
 category: "Malware Analysis"
@@ -56,7 +56,7 @@ WinMain
 **String Analysis**
 
 Most strings are not readable. IDA shows gibberish, indicating string encryption. Later analysis revealed these strings are part of embedded shellcode.
-![string obfuscation](/image/blog/udp-strings.png)
+![string obfuscation](/images/blog/udp-strings.png)
 
 **Finding Main**
 
@@ -67,7 +67,7 @@ IDA's autoanalysis identified WinMain as the entry point. This is where analysis
 WinMain orchestrates the full execution chain. It has three stages: file staging, anti-analysis obfuscation, and in-memory payload execution.
 
 **1. Environment Resolution**
-![environment resolution](/image/blog/udp-env.png)
+![environment resolution](/images/blog/udp-env.png)
 
 The malware retrieves `USERPROFILE` and builds a path inside the user's home directory.
 
@@ -107,7 +107,7 @@ This produces executable shellcode.
 The transformed buffer is passed to `sub_140001B04`, which returns a function pointer. The pointer is immediately executed. This loads the backdoor payload entirely in memory. No secondary process is created. No additional files are dropped.
 
 **3.1 **sub_14000BBF0: In-Memory PE Loader**
-![loader](/image/blog/udp-ref.png)
+![loader](/images/blog/udp-ref.png)
 
 This function receives a raw PE file and manually reconstructs it in a newly allocated memory region.
 
