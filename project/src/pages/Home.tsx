@@ -175,6 +175,7 @@ const HomePage: React.FC = () => {
       'Tool Development': 'bg-green-500',
       'Threat Intelligence': 'bg-purple-500',
       'Malware Analysis': 'bg-yellow-500',
+      'Bug Bounty': 'bg-emerald-500',
       'General': 'bg-cyan-500'
     };
     return colors[category] || colors['General'];
