@@ -87,6 +87,7 @@ const Blog: React.FC = () => {
     { name: 'Tool Development', color: 'bg-green-500' },
     { name: 'Threat Intelligence', color: 'bg-purple-500' },
     { name: 'Malware Analysis', color: 'bg-yellow-500' },
+    { name: 'Bug Bounty', color: 'bg-emerald-500' },
     { name: 'General', color: 'bg-cyan-500' }
   ];
 
