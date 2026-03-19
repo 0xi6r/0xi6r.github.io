@@ -1,7 +1,7 @@
 ---
 title: "Remote Code Execution (RCE) in a CPE Management Web Application"
 date: 2026-03-19
-excerpt: "excerpt: "In this write-up, I explain a critical Remote Code Execution (RCE) vulnerability I found in a CPE management web application. I walk through how the vulnerability worked, how I discovered it, how it could be exploited through command injection, and what impact it could have on the server. The article also includes proof-of-concept steps, screenshots, and practical remediation recommendations."
+excerpt: "In this write-up, I explain a critical Remote Code Execution (RCE) vulnerability I found in a CPE management web application. I walk through how the vulnerability worked, how I discovered it, how it could be exploited through command injection, and what impact it could have on the server. The article also includes proof-of-concept steps, screenshots, and practical remediation recommendations."
 featured: false
 category: "Bug Bounty"
 ---
@@ -10,7 +10,7 @@ During a bug hunting session, I  discovered a  **Remote Code Execution (RCE)** i
 
 I was able to  inject shell commands, allowing me to execute arbitrary operating system commands..
 
-**Potential impact:**
+**Impact:**
 
 * Execute arbitrary shell commands
 * Extract sensitive system files
@@ -39,8 +39,6 @@ POST /cpe.php
 base_station=EXAMPLE&get_ip=GET+IP+Address
 ```
 
-**Example screenshot placeholder:**
-
 ![Screenshot: Base Station IP request](/images/blog/find-ip.png)
 
 The server responds with the IP address or a “not found” message if the Base Station does not exist.
@@ -61,8 +59,6 @@ The `cpe_ip` parameter is **user-controllable**. Modifying it with shell metacha
 MY-IP;whoami;cat /etc/passwd
 ```
 
-**Screenshot placeholder:**
-
 ![Screenshot: Injecting commands into cpe\_ip](/images/blog/inject-cmd.png)
 
 
@@ -74,7 +70,6 @@ Submitting the payload executes commands on the server. For example, contents of
 MY-IP;whoami;cat /etc/passwd
 ```
 
-**Screenshot placeholder:**
 
 ![Screenshot: Successful command execution](/images/blog/success-response.png)
 
@@ -87,7 +82,6 @@ Using a domain under control instead of an IP triggers DNS requests visible in s
 * Outbound DNS requests are allowed
 * DNS-based exfiltration is possible
 
-**Screenshot placeholder:**
 
 ![Screenshot: DNS lookup evidence](/images/blog/dns-lookup.png)
 
