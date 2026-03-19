@@ -1,8 +1,9 @@
 ---
-title: "Persistence: The Art of Maintaining Access"
+title: "Persistence: The Practical Guide to Maintaining Access"
 date: 2026-02-18
-description: "A practical and comprehensive guide to persistence techniques across Windows, Linux, Active Directory, macOS, and cloud environments."
-tags: red-team
+excerp: "A practical and comprehensive guide to persistence techniques across Windows, Linux, Active Directory, macOS, and cloud environments."
+Featured: false
+category: "Red Team"
 ---
 
 # Persistence: The Art of Maintaining Access
