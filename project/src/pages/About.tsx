@@ -51,9 +51,9 @@ const About = () => {
                   personal pursuits that provide fresh perspective and mental clarity; touching more grass to keep a balanced perspective.
                 </p>
                 {/* CV BUTTON */}
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4 mb-6">
                   <a
-                    href="/Isaac_cv.pdf"
+                    href="/Isaac_CV.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300 shadow-lg"
@@ -62,11 +62,11 @@ const About = () => {
                   </a>
 
                   <a
-                    href="/Isaac_cv.pdf"
+                    href="/Isaac_CV.pdf"
                     download
                     className="border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300"
                   >
-                    Download My CV (PDF)
+                    Download CV (PDF)
                   </a>
                 </div>
 
