@@ -50,6 +50,27 @@ const About = () => {
                   When I'm not hunting for vulnerabilities, I contribute to open-source security tools and prioritize maintaining a healthy work-life balance through outdoor activities and 
                   personal pursuits that provide fresh perspective and mental clarity; touching more grass to keep a balanced perspective.
                 </p>
+                {/* CV BUTTON */}
+                <div className="flex flex-wrap gap-4">
+                  <a
+                    href="/Isaac-cv.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300 shadow-lg"
+                  >
+                    View CV
+                  </a>
+
+                  <a
+                    href="/Isaac-cv.pdf"
+                    download
+                    className="border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300"
+                  >
+                    Download My CV (PDF)
+                  </a>
+                </div>
+
+                
               </div>
             </div>
 
