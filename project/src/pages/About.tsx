@@ -51,7 +51,7 @@ const About = () => {
                   personal pursuits that provide fresh perspective and mental clarity; touching more grass to keep a balanced perspective.
                 </p>
                 {/* CV BUTTON */}
-                <div className="flex flex-wrap gap-4 mb-6">
+                <div className="flex flex-wrap gap-4 mt-8">
                   <a
                     href="/Isaac_CV.pdf"
                     target="_blank"
