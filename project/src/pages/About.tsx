@@ -53,7 +53,7 @@ const About = () => {
                 {/* CV BUTTON */}
                 <div className="flex flex-wrap gap-4">
                   <a
-                    href="/Isaac-cv.pdf"
+                    href="/Isaac_cv.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300 shadow-lg"
@@ -62,7 +62,7 @@ const About = () => {
                   </a>
 
                   <a
-                    href="/Isaac-cv.pdf"
+                    href="/Isaac_cv.pdf"
                     download
                     className="border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300"
                   >
