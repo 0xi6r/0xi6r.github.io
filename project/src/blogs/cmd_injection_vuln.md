@@ -2,7 +2,7 @@
 title: "Remote Code Execution (RCE) in a CPE Management Web Application"
 date: 2026-03-19
 excerpt: "In this write-up, I explain a critical Remote Code Execution (RCE) vulnerability I found in a CPE management web application. I walk through how the vulnerability worked, how I discovered it, how it could be exploited through command injection, and what impact it could have on the server. The article also includes proof-of-concept steps, screenshots, and practical remediation recommendations."
-featured: false
+featured: true
 category: "Bug Bounty"
 ---
 
