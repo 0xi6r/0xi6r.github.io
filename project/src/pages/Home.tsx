@@ -189,7 +189,6 @@ const HomePage: React.FC = () => {
       'Tool Development': <Code className={iconClass} />,
       'Threat Intelligence': <Brain className={iconClass} />,
       'Malware Analysis': <Terminal className={iconClass} />,
-      'Bug Bounty': <Bug className={iconsClass} />,
       'General': <Code className={iconClass} />
     };
     return icons[category] || icons['General'];
