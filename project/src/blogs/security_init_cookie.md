@@ -1,5 +1,5 @@
 ---
-Titl: "What is __security_cookie?"
+Title: "What is __security_cookie?"
 image: "/images/blog/sec-cookie.png"
 Date: "2026-12-02"
 excerpt: "You have almost certainly encountered __security_cookie while inspecting a binary in IDA, ... What does it actually do?" 
