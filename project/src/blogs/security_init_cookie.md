@@ -1,7 +1,7 @@
 ---
 Title: "What is __security_cookie?"
 image: "/images/blog/sec-cookie.png"
-Date: 2026-02-12
+date: 2026-02-12
 excerpt: "You have almost certainly encountered __security_cookie while inspecting a binary in IDA, ... What does it actually do?" 
 Featured: false
 category: "Malware Analysis"
