@@ -15,7 +15,6 @@ import GitHubShowcase from '../components/GitHubShowcase';
 interface BlogPost {
   id: string;
   title: string;
-  title1: string;
   date: string;
   excerpt: string;
   content: string;
@@ -190,6 +189,7 @@ const HomePage: React.FC = () => {
       'Tool Development': <Code className={iconClass} />,
       'Threat Intelligence': <Brain className={iconClass} />,
       'Malware Analysis': <Terminal className={iconClass} />,
+      'Bug Bounty': <Bug className={iconsClass} />,
       'General': <Code className={iconClass} />
     };
     return icons[category] || icons['General'];
@@ -202,6 +202,7 @@ const HomePage: React.FC = () => {
       'Tool Development': 'from-green-900 via-green-800 to-green-900',
       'Threat Intelligence': 'from-purple-900 via-purple-800 to-purple-900',
       'Malware Analysis': 'from-yellow-900 via-yellow-800 to-yellow-900',
+      'Bug Bounty': "from-orange-900 via-orange-800 to-orange-900',
       'General': 'from-cyan-900 via-cyan-800 to-cyan-900'
     };
     return gradients[category] || gradients['General'];
