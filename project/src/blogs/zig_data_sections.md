@@ -1,5 +1,5 @@
 ---
-title: "Using Zig to Gauge How Difficult It Is Compared to C/Rust for Offensive Security: Shellcode Execution PART 1"
+title: "Using Zig to Gauge How Difficult It Is Compared to C/Rust for Offensive Security: Shellcode Loader PART 1"
 image: "images/blog/calc_shellcode.png"
 date: "2026-03-20"
 excerpt: "Zig is turning out to be extremely effective for low-level security tooling. This article looks at how difficult it really is to use Zig instead of C or Rust when building simple offensive security tools. The example shows how easy it is to allocate memory, control sections, and execute shellcode in a way that is clean, minimal, and practical for real authorized security testing."
@@ -145,7 +145,7 @@ Run the executable:
 ```
 
 Expected result: Calculator launches.
-![Screenshot: Base Station IP request](/images/blog/find-ip.png)
+![Screenshot: Base Station IP request](/images/blog/calc_shellcode.png)
 
 ## Key Points
 
