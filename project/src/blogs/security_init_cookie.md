@@ -1,7 +1,7 @@
 ---
 Title: "What is __security_cookie?"
 image: "/images/blog/sec-cookie.png"
-Date: "2026-12-02"
+Date: "2026-02-12"
 excerpt: "You have almost certainly encountered __security_cookie while inspecting a binary in IDA, ... What does it actually do?" 
 Featured: false
 category: "Malware Analysis"
@@ -9,7 +9,7 @@ category: "Malware Analysis"
 
 ![__security_init cookie](/images/blog/sec-cookie.png)
 
-It's a **Buffer Security Check initialization code** - commonly known as **GS cookie** or **security cookie** initialization in Visual C++.
+A **Buffer Security Check initialization code** - commonly known as **GS cookie** or **security cookie** initialization in Visual C++.
 
 ## What it is
 This function initializes the `__security_cookie` that protects against **stack buffer overflow attacks**. It's automatically added by the compiler when you compile with `/GS` (Buffer Security Check) enabled.
