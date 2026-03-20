@@ -1,14 +1,10 @@
 ---
 title: "Persistence: The Practical Guide to Maintaining Access"
 date: 2026-02-18
-excerp: "A practical and comprehensive guide to persistence techniques across Windows, Linux, Active Directory, macOS, and cloud environments."
+excerpt: "A practical and comprehensive guide to persistence techniques across Windows, Linux, Active Directory, macOS, and cloud environments."
 Featured: false
 category: "Red Team"
 ---
-
-# Persistence: The Art of Maintaining Access
-
-## Introduction
 
 Gaining access to a system is only the first step. The real challenge is keeping that access. Systems reboot, users change passwords, patches get applied, and security tools improve constantly. Without persistence, any compromise becomes temporary.
 
