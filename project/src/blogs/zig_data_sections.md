@@ -159,23 +159,9 @@ Expected result: Calculator launches.
 
 5. **Error Handling**: Always check return values from Windows APIs. `VirtualAlloc` returns `null` on failure.
 
-## Common Pitfalls
-
-- **Wrong calling convention**: `.winapi` not `.WinAPI` or `.C`
-- **@memcpy length**: Requires slices, not raw pointers
-- **Target architecture**: Must match shellcode (x64 vs x86)
-- **Memory leaks**: Always free allocated memory with `VirtualFree`
-
-## Security Considerations
-
-- Windows Defender may flag shellcode execution
-- DEP (Data Execution Prevention) blocks direct execution from data sections
-- Modern Windows requires appropriate memory protection flags
-- Use only on systems you own or have permission to test
-
 ## Complete Example
 
-The complete code combines all sections above. When executed, it allocates memory, copies the shellcode, changes protection flags, and executes - launching calculator.
+The [complete code](https://github.com/0xi6r/Offensive_zig/blob/main/zig_shellcode_loader.zig) combines all sections above. When executed, it allocates memory, copies the shellcode, changes protection flags, and executes - launching calculator. 
 
 ## Conclusion
 This is my attempt to see whether Zig can realistically replace C or Rust for the kind of tooling I build. There has been a lot of hype around it, so the goal here is simple: test it in real scenarios and see if it actually holds up.
