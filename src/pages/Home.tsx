@@ -59,7 +59,7 @@ const HomePage: React.FC = () => {
   const loadBlogPosts = async (): Promise<void> => {
     try {
       setLoading(true);
-      const modules = import.meta.glob('../blogs/*.md', { as: 'raw' });
+      const modules = import.meta.glob('/blogs/*.md', { as: 'raw' });
       const postPromises = Object.entries(modules).map(async ([path, importFn]): Promise<BlogPost> => {
         const content = await importFn() as string;
         const filename = path.split('/').pop()?.replace('.md', '') || '';
