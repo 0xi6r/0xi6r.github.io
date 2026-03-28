@@ -1,8 +1,9 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "0xi6r",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://0xi6r.github.io"
   "scripts": {
     "dev": "vite",
     "build": "vite build",
