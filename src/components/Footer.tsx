@@ -17,7 +17,7 @@ const Footer = () => {
     setError('');
 
     try {
-      const res = await fetch('/api/newsletter', {
+      const res = await fetch('https://0x-i6r.vercel.app/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
