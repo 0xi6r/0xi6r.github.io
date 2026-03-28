@@ -3,11 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://0xi6r.github.io"
+  "homepage": "https://0xi6r.github.io",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy": "gh-pages -b main -d build"
+    "deploy": "gh-pages -b main -d build",
     "generate-rss": "node scripts/generate-rss.js",
     "lint": "eslint .",
     "preview": "vite preview"
