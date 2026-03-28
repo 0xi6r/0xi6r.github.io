@@ -6,14 +6,18 @@ const TELEGRAM_API_BASE = 'https://api.telegram.org/bot';
 
 // Helper: Extract client info from request
 const extractClientInfo = (req) => ({
-  ip: req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.socket.remoteAddress || 'Unknown',
+  ip:
+    req.headers['x-forwarded-for'] ||
+    req.headers['x-real-ip'] ||
+    req.socket.remoteAddress ||
+    'Unknown',
   userAgent: req.headers['user-agent'] || 'Unknown',
   referrer: req.headers['referer'] || req.headers['referrer'] || 'Direct',
   language: req.headers['accept-language'] || 'Unknown',
 });
 
 // Helper: Escape Markdown special characters
-const escapeMarkdown = (text) => 
+const escapeMarkdown = (text) =>
   text ? text.replace(/([_*[\]()~`>#+\-=|{}.!])/g, '\\$1') : 'Unknown';
 
 // Helper: Validate request
@@ -22,9 +26,13 @@ const validateRequest = (req) => {
     return { valid: false, status: 405, error: 'Method Not Allowed' };
   }
 
-  const missing = REQUIRED_FIELDS.filter(field => !req.body[field]);
+  const missing = REQUIRED_FIELDS.filter((field) => !req.body[field]);
   if (missing.length > 0) {
-    return { valid: false, status: 400, error: `Missing required fields: ${missing.join(', ')}` };
+    return {
+      valid: false,
+      status: 400,
+      error: `Missing required fields: ${missing.join(', ')}`,
+    };
   }
 
   return { valid: true };
@@ -61,7 +69,7 @@ ${escapeMarkdown(message)}
 // Helper: Send Telegram notification
 const sendTelegramMessage = async (message) => {
   const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } = process.env;
-  
+
   const response = await fetch(
     `${TELEGRAM_API_BASE}${TELEGRAM_BOT_TOKEN}/sendMessage`,
     {
@@ -77,12 +85,24 @@ const sendTelegramMessage = async (message) => {
 
   const data = await response.json();
   if (!data.ok) throw new Error(data.description);
-  
+
   return data;
 };
 
 // Main handler
 export default async function handler(req, res) {
+
+  // ---- CORS FIX ----
+  res.setHeader('Access-Control-Allow-Origin', 'https://0r.github.io');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Handle preflight
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  // -------------------
+
   // Validation
   const validation = validateRequest(req);
   if (!validation.valid) {
