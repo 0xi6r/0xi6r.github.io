@@ -93,7 +93,7 @@ const sendTelegramMessage = async (message) => {
 export default async function handler(req, res) {
 
   // ---- CORS FIX ----
-  res.setHeader('Access-Control-Allow-Origin', 'https://0r.github.io');
+  res.setHeader('Access-Control-Allow-Origin', 'https://0xi6r.github.io');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
