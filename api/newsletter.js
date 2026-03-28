@@ -4,6 +4,18 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
+
+  // ---- CORS FIX ----
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // handle preflight request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  // -------------------
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -20,26 +32,20 @@ export default async function handler(req, res) {
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
     const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
-    // Get IP address
-    const ip = req.headers['x-forwarded-for'] || 
-               req.headers['x-real-ip'] || 
-               req.socket.remoteAddress || 
-               'Unknown';
-    
-    // Get user agent
+    const ip =
+      req.headers['x-forwarded-for'] ||
+      req.headers['x-real-ip'] ||
+      req.socket.remoteAddress ||
+      'Unknown';
+
     const userAgent = req.headers['user-agent'] || 'Unknown';
-    
-    // Get referrer
-    const referrer = req.headers['referer'] || req.headers['referrer'] || 'Direct';
-    
-    // Get accept language
+    const referrer =
+      req.headers['referer'] || req.headers['referrer'] || 'Direct';
     const language = req.headers['accept-language'] || 'Unknown';
-    
-    // Get timestamp
+
     const timestamp = new Date().toISOString();
     const localTime = new Date().toLocaleString();
 
-    // Simple escape for plain text (optional, just for cleaner output)
     const cleanText = (text) => {
       if (!text) return 'Unknown';
       return text.replace(/\n/g, ' ').trim();
@@ -58,15 +64,13 @@ export default async function handler(req, res) {
 🌍 Language: ${language}
 🕐 Time (UTC): ${timestamp}
 🕐 Local: ${localTime}
-    `;
+`;
 
-    const telegramResponse = await fetch(
+    await fetch(
       `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           chat_id: TELEGRAM_CHAT_ID,
           text: telegramMessage,
@@ -74,14 +78,6 @@ export default async function handler(req, res) {
       }
     );
 
-    const telegramData = await telegramResponse.json();
-
-    if (!telegramData.ok) {
-      console.error('Telegram error:', telegramData);
-      throw new Error(telegramData.description || 'Failed to send Telegram message');
-    }
-
-    // Send welcome email
     await resend.emails.send({
       from: '0xi6r@tutamail.com',
       to: cleanEmail,
