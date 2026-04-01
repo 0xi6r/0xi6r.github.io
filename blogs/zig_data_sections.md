@@ -4,7 +4,7 @@ image: "images/blog/calc_shellcode.png"
 date: "2026-03-20"
 excerpt: "Zig is turning out to be extremely effective for low-level security tooling. This article looks at how difficult it really is to use Zig instead of C or Rust when building simple offensive security tools. The example shows how easy it is to allocate memory, control sections, and execute shellcode in a way that is clean, minimal, and practical for real authorized security testing."
 category: "Tool Development"
-fetured: false
+fetured: true
 ---
 
 This write-up demonstrates how to execute shellcode in Zig on Windows. We'll cover memory allocation, protection manipulation, and execution - essential techniques for system programming and security research.
