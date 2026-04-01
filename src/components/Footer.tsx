@@ -225,10 +225,10 @@ const Footer = () => {
         {/* === Bottom Footer === */}
         <div className="border-t border-gray-800 mt-10 pt-8 text-center">
           <p className="text-gray-400 text-sm italic mb-4 font-light">
-            "Security is a people problem wearing a technical costume."
+            "The human factor is the most vulnerable link in the security chain — Kevin Mitnick"
           </p>
           <div className="text-gray-400 text-sm mb-4">
-            © 2025 0xi6r. All rights reserved.
+            © 2026 0xi6r. All rights reserved.
           </div>
           <div className="flex items-center justify-center space-x-4 text-xs">
             <Link to="/Terms" className="text-gray-400 hover:text-cyan-400 transition-colors">
