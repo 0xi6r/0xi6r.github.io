@@ -32,13 +32,13 @@ Checking if the sample is signed using a valid certificate, unfortunately it is 
 
 Check out the next blog post where I load the sample in IDA for further analysis. As for this, I'll solely rely on the string data to make educated guesses about what the stealer does and possibly retrieve sample data that can be used to detect it.
 
-#### Development Environment
+### Development Environment
 
 The debug PDB path ```C:\Users\sheepy\source\repos\SHUYAL_telegram\x64\Release\SHUYAL.pdb``` suggests the project name was `SHUYAL_telegram`, and it was compiled in Release mode. The username `sheepy` is likely the original developer's system username.
 
 ![Shuyal dev env](images/blog/mal/shuyal/dev.png)
 
-#### Persistence & Anti-Analysis
+### Persistence & Anti-Analysis
 
 ![anti-analysis and persistence](images/blog/mal/shuyal/persist.png)
 
@@ -46,7 +46,7 @@ The debug PDB path ```C:\Users\sheepy\source\repos\SHUYAL_telegram\x64\Release\S
 - **Self-Deletion:** It creates and runs a batch file (`util.bat`) that contains commands to delete the program's directory and then delete itself (`del /f /q "%~f0"`).
 - **Defense Evasion:** It disables the Windows Task Manager by modifying a registry key (`DisableTaskMgr` under `Software\Microsoft\Windows\CurrentVersion\Policies\System`).
 
-#### Data Packaging & Exfiltration
+### Data Packaging & Exfiltration
 
 ![exfil data to telegram bot](images/blog/mal/shuyal/exfil.png)
 
@@ -54,7 +54,7 @@ The debug PDB path ```C:\Users\sheepy\source\repos\SHUYAL_telegram\x64\Release\S
 - It exfiltrates this data using the Telegram Bot API, evidenced by the presence of a bot token (`7522684505:AAEODeii83B_nlpLi0bUQTnOtVdjc8yHfjQ`) and API endpoints like `https://api.telegram.org/bot`, `/sendDocument?chat_id=`, and `Sending file: to Telegram...`.
 - The program uses `powershell -Command` to perform actions like zipping, which is a common technique to leverage built-in OS tools and avoid writing its own archival code.
 
-#### Browser Data Extraction
+### Browser Data Extraction
 
 ![browsers targets](images/blog/mal/shuyal/browsers.png)
 
@@ -68,7 +68,7 @@ The most revealing strings are the paths to user data directories for many diffe
 - **Edge:** `\Microsoft\Edge\User Data`
 - **Others:** `Slimjet`, `Comodo`, `CocCoc`, `Maxthon`, `360Browser`, `Waterfox`, `Opera GX`
 
-#### Targeted Data
+### Targeted Data
 
 It specifically looks for browser history (`History`, `history`, `visits`), cookies, and login data (`Login Data`). The presence of `encrypted_key` and `DPAPI decryption` suggests it decrypts browser-stored passwords.
 
