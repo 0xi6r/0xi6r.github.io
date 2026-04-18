@@ -22,23 +22,21 @@ Shuyal Stealer is a sophisticated information-stealing trojan designed to harves
 
 This analysis was performed by running `strings.exe` on the sample binary to extract human-readable strings, providing a non-execution-based method to understand the malware's capabilities and potential indicators of compromise (IOCs).
 
-## Is it signed?
+## Is it signed
 
 Checking if the sample is signed using a valid certificate, unfortunately it is not.
 
 ![signature check](images/blog/mal/shuyal/signed.png)
 
-## Analysis
+## Analysis (strings.exe shuyal.bin > strings.txt)
 
 Check out the next blog post where I load the sample in IDA for further analysis. As for this, I'll solely rely on the string data to make educated guesses about what the stealer does and possibly retrieve sample data that can be used to detect it.
 
-### `strings.exe shuyal.bin > strings.txt`
-
 #### Development Environment
 
-The debug PDB path `C:\Users\sheepy\source\repos\SHUYAL_telegram\x64\Release\SHUYAL.pdb` suggests the project name was `SHUYAL_telegram`, and it was compiled in Release mode. The username `sheepy` is likely the original developer's system username.
+The debug PDB path ```C:\Users\sheepy\source\repos\SHUYAL_telegram\x64\Release\SHUYAL.pdb``` suggests the project name was `SHUYAL_telegram`, and it was compiled in Release mode. The username `sheepy` is likely the original developer's system username.
 
-![Strings from Shuyal](images/blog/mal/shuyal/dev.png)
+![Shuyal dev env](images/blog/mal/shuyal/dev.png)
 
 #### Persistence & Anti-Analysis
 
@@ -58,7 +56,7 @@ The debug PDB path `C:\Users\sheepy\source\repos\SHUYAL_telegram\x64\Release\SHU
 
 #### Browser Data Extraction
 
-![browsers targets](images/blog/mal/shuyal/browser.png)
+![browsers targets](images/blog/mal/shuyal/browsers.png)
 
 The most revealing strings are the paths to user data directories for many different browsers:
 
