@@ -10,11 +10,10 @@ fetured: false
 
 **Basic file info:**
 
-![sample info](images/blog/mal/icarus/info.png)
-
 **Hashes:**
 - MD5: `88e88b718776aca47ca88b140ae30b1a`
 - SHA256: `8e88de63c132f964891dd00501bee5078f27dfcec7ca122f19bd43f9ed933427`
+![sample info](images/blog/mal/icarus/info.png)
 
 ## Looking at the strings
 
@@ -28,7 +27,7 @@ Since this is a .NET sample, I'll use dnSpy to view it. Based on the strings we 
 
 ## Finding the entry point in dnSpy
 
-![malware structure in dnSpy](image/blog/mal/icarus/structure.png)
+![malware structure in dnSpy](images/blog/mal/icarus/structure.png)
 
 Analysis of the DLL section as shown in the image above: the DLL has a class called HVNC which contains our main entry point as well as other functions of the malware. Looking at the main function, the malware first tries to add itself to Microsoft Defender exclusion list.
 
@@ -46,7 +45,7 @@ The DLL HVNC class has other important functionalities we can examine, such as `
 
 As observed earlier, this function is called in the main function. It takes an IP address and port number. This method connects the malware to a remote C2 server, retrying indefinitely until the connection succeeds. Once connected, it sets up an asynchronous read stream to receive incoming commands. It then collects system information from the victim's machine, including the Windows version from the registry, the user's region, and a date stamp stored in or created at `%APPDATA%\temp0923`. It also fetches the victim's public IP address by querying `ipinfo.io/ip`. All of this data, along with a hardcoded identifier (`54321|`), the username, and a version string, is formatted and sent back to the attacker.
 
-![send data](images/blog/icarus/senddata.png)
+![send data](images/blog/mal/icarus/senddata.png)
 
 ### KillAllBrowsers
 
@@ -76,13 +75,13 @@ This method self-destructs the malware. It kills the current process, deletes it
 
 This method downloads and executes a removal tool for the previously installed rootkit. It fetches a file from the same remote server (decoded base64 URL pointing to `remove.jpg`), saves it as `rkd.exe` in the temp folder, runs it, then deletes the executable.
 
-![removal executable for the previously set up rootkit](images/blog/mal/icarus/stopRootkit.png)
+![removal executable for the previously set up rootkit](images/blog/mal/icarus/StopRootkit.png)
 
 ## Other Icarus malware sections
 
 These other functions don't seem to have interesting functionality we can look into. For now, we'll ignore them and be content with the above analysis, as we have gotten the bigger picture of what the malware actually does.
 
-![uninteresting functionalities](image/blog/mal/icarus/pass.png)
+![uninteresting functionalities](images/blog/mal/icarus/pass.png)
 
 ## Conclusion
 
