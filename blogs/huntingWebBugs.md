@@ -1,10 +1,14 @@
-# Web Application Testing Workflow
-
-Before letting AI do everything, this is how I used to start my bug hunting.
+---
+title: "Web Application Testing Workflow"
+image: "images/blog/opsc.png"
+date: "2026-04-18"
+excerpt: " Before letting AI do everything, this is how I used to start my bug hunting.
 Running tools, collecting data, filtering noise, and focusing only on what matters. 
 Over time I realized that most bugs are not found by running more tools, but by following a structured process and knowing where to look.
-Somehow worked for me.
+Somehow worked for me."
+category: "Bug Bounty"
 ---
+
 
 ## 1. Subdomain Enumeration
 
@@ -16,7 +20,6 @@ subfinder -d example.com -all -recursive -silent -o subdomains.txt
 
 This pulls subdomains from multiple sources and builds the foundation of the scope assessment.
 
----
 
 ## 2. Identify Live Subdomains
 
@@ -28,7 +31,7 @@ httpx -l subdomains.txt -silent -status-code -title -tech-detect -status-code -i
 
 This step ensures you only work with subdomains that actually respond.
 
----
+
 
 ## 3. Historical Endpoint Discovery
 
@@ -45,7 +48,6 @@ This finds:
 * old admin panels
 * forgotten functionality
 
----
 
 ## 4. Active Endpoint Discovery (Crawling)
 
@@ -65,7 +67,6 @@ This discovers:
 * JS-based endpoints
 * modern API endpoints
 
----
 
 ## 5. DNS & Infrastructure Information
 
@@ -83,7 +84,6 @@ This helps identify:
 * exposed mail/DNS records
 * possible takeover opportunities
 
----
 
 ## 6. Domain Ownership & WHOIS Information
 
@@ -99,7 +99,6 @@ Useful for:
 * checking domain ownership patterns
 * detecting related domains
 
----
 
 ## 7. Service Discovery & Version Detection
 
@@ -116,7 +115,6 @@ This reveals:
 * misconfigured servers
 * forgotten exposed services
 
----
 
 ## 8. Automated Vulnerability Scanning
 
@@ -133,13 +131,11 @@ This helps quickly detect:
 * misconfigurations
 * weak security headers
 
----
 
 Optional deep scanner: Acunetix
 
 Used for deeper automated analysis and hidden attack surface discovery.
 
----
 
 ## 9. Filter for Parameter Endpoints (High-Value Targets)
 
@@ -157,7 +153,6 @@ Parameter endpoints are usually where:
 * SSRF is possible
 * SQL injection appears
 
----
 
 ## 10. Hidden Endpoint Discovery (Fuzzing)
 
@@ -174,7 +169,6 @@ This finds:
 * forgotten endpoints
 * exposed upload paths
 
----
 
 ## 11. Wordpress Scan
 
@@ -187,7 +181,6 @@ wpscan --url https://example.com --api-token YOUR_API_TOKEN --enumerate ap,at,u 
 wpscan --url https://example.com --api-token YOUR_API_TOKEN --enumerate vp,vt,u --plugins-detection aggressive --random-user-agent -o wpscan_results.txt
 ```
 
----
 
 ## 12. Final Phase: Manual Testing & Exploitation
 
@@ -205,7 +198,6 @@ Focus areas:
 * request manipulation
 * parameter tampering
 
----
 
 This workflow followed a simple strategy:
 
