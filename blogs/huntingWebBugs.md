@@ -2,10 +2,7 @@
 title: "Web Application Testing Workflow"
 image: "images/blog/opsc.png"
 date: "2026-04-18"
-excerpt: " Before letting AI do everything, this is how I used to start my bug hunting.
-Running tools, collecting data, filtering noise, and focusing only on what matters. 
-Over time I realized that most bugs are not found by running more tools, but by following a structured process and knowing where to look.
-Somehow worked for me."
+excerpt: " Before letting AI do everything, this is how I used to start my bug hunting."
 category: "Bug Bounty"
 ---
 
