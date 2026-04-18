@@ -1,7 +1,7 @@
 ---
 title: "Icarus Malware Analysis"
 image: "images/blog/mal/icarus/icarus.png"
-date: "2026-18-04"
+date: "2026-04-18"
 excerpt: "Icarus is a 32-bit .NET RAT (Remote Access Trojan) with HVNC (Hidden Virtual Network Computing) capabilities. It's designed to stealthily control infected machines, steal cryptocurrency wallets, and maintain persistence while evading detection."
 category: "Malware Analysis"
 fetured: false
