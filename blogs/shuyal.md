@@ -26,7 +26,7 @@ This analysis was performed by running `strings.exe` on the sample binary to ext
 
 Checking if the sample is signed using a valid certificate, unfortunately it is not.
 
-![signature check](images/blog/mal/shuyal/singned.png)
+![signature check](images/blog/mal/shuyal/signed.png)
 
 ## Analysis
 
