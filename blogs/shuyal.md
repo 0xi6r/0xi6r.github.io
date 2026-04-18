@@ -1,6 +1,6 @@
 ---
 title: "String Analysis of Shuyal Stealer"
-image: "images/blog/mal/icarus/shuyal.png"
+image: "images/blog/mal/shuyal/dev.png"
 date: "2026-04-18"
 excerpt: "Newly uncovered, Shuyal Stealer redefines the scope of browser-targeted malware. Moving beyond traditional variants that focus on Chrome and Edge, Shuyal targets 19 different browsers. This dramatic expansion makes it a uniquely versatile and dangerous threat for data harvesting."
 category: "Malware Analysis"
