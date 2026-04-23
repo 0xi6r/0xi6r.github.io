@@ -6,7 +6,7 @@ excerpt: " Before letting AI do everything, this is how I used to start my bug h
 category: "Bug Bounty"
 ---
 
-[![hunting workflow](images/blog/web/webhunting.png)]
+![hunting workflow](images/blog/web/webhunting.png)
 
 Before automation and AI-driven tools became the norm, bug hunting required a more manual and methodical approach. I had to rely on structured workflows, curiosity, and hands-on exploration to uncover vulnerabilities. This is the process I used to follow when starting out.
 
