@@ -1,11 +1,12 @@
 ---
 title: "Cracking Encrypted Inno Setup Malware (CastleLoader)"
-image: "images/blog/malware_analysis.png"
+image: "images/blog/mal/casltleloader/castleloader_die.png"
 date: "2026-04-23"
 excerpt: "How to extract files from an encrypted Inno Setup sample without running it – using hashcat and a strings dump."
 category: "Malware Analysis"
 ---
 
+![castle loaer in detect it easy](images/blog/mal/casltleloader/castleloader_die.png)
 
 In this post I’ll show how to extract files from an encrypted Inno Setup sample without running it. The malware is CastleLoader, a loader that uses Inno Setup to drop legitimate-looking DLLs and EXEs for DLL side-loading.
 
