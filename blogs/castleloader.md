@@ -14,7 +14,7 @@ In this post I’ll show how to extract files from an encrypted Inno Setup sampl
 
 Inno Setup can encrypt its internal data using XChaCha20. If you try to extract the files with [innoextract.exe](https://github.com/dscharrer/innoextract) unpacker on the protected installer, you get this:
 
-![inno unable to decrypt without password](images/blog/mal/castleloader/innoextract.png)
+![inno unable to decrypt without password](images/blog/mal/casltleloader/innoextract.png)
 
 All files are listed as encrypted. You need the password which is only known to the malware author, but [innoextract.exe](https://github.com/dscharrer/innoextract) as an option we can utilize to assist us crack the password.
 
