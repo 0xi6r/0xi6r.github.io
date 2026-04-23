@@ -1,10 +1,14 @@
 ---
 title: "Web Application Testing Workflow"
-image: "images/blog/opsc.png"
+image: "images/blog/web/webhunting.png"
 date: "2026-04-18"
 excerpt: " Before letting AI do everything, this is how I used to start my bug hunting."
 category: "Bug Bounty"
 ---
+
+[![hunting workflow](images/blog/web/webhunting.png)]
+
+Before automation and AI-driven tools became the norm, bug hunting required a more manual and methodical approach. I had to rely on structured workflows, curiosity, and hands-on exploration to uncover vulnerabilities. This is the process I used to follow when starting out.
 
 
 ## 1. Subdomain Enumeration
