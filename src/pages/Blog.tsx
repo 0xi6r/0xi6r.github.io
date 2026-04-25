@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import type { Components } from 'react-markdown';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface BlogPost {
   id: string;
@@ -79,6 +80,9 @@ const Blog: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   // Define categories with their colors
   const categories = [
     { name: 'All', color: 'bg-gray-700' },
@@ -104,32 +108,25 @@ const Blog: React.FC = () => {
     }
   }, [selectedCategory, posts]);
 
-  // Handle URL changes and browser back/forward
+  // Handle URL changes using React Router location
   useEffect(() => {
-    const handlePopState = () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const postId = urlParams.get('post');
-      const category = urlParams.get('category');
+    const params = new URLSearchParams(location.search);
+    const postId = params.get('post');
+    const category = params.get('category');
 
-      if (postId && posts.length > 0) {
-        const post = posts.find(p => p.id === postId);
-        setSelectedPost(post || null);
-      } else {
-        setSelectedPost(null);
-      }
+    if (postId && posts.length > 0) {
+      const post = posts.find(p => p.id === postId);
+      setSelectedPost(post || null);
+    } else {
+      setSelectedPost(null);
+    }
 
-      if (category) {
-        setSelectedCategory(category);
-      }
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    handlePopState();
-
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, [posts]);
+    if (category) {
+      setSelectedCategory(category);
+    } else if (!postId) {
+      setSelectedCategory('All');
+    }
+  }, [location, posts]);
 
   const loadBlogPosts = async (): Promise<void> => {
     try {
@@ -204,29 +201,35 @@ const Blog: React.FC = () => {
 
   const handleCategoryClick = (categoryName: string): void => {
     setSelectedCategory(categoryName);
-
-    // Update URL with category
-    const newUrl = categoryName === 'All'
-      ? window.location.pathname
-      : `${window.location.pathname}?category=${encodeURIComponent(categoryName)}`;
-    window.history.pushState({ category: categoryName }, '', newUrl);
-
-    // Scroll to top smoothly
+    const params = new URLSearchParams();
+    
+    if (categoryName !== 'All') {
+      params.set('category', categoryName);
+    }
+    
+    navigate(`/blog?${params.toString()}`, { replace: true });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handlePostClick = (post: BlogPost): void => {
-    const categoryParam = selectedCategory !== 'All' ? `&category=${encodeURIComponent(selectedCategory)}` : '';
-    const newUrl = `${window.location.pathname}?post=${post.id}${categoryParam}`;
-    window.history.pushState({ postId: post.id }, '', newUrl);
+    const params = new URLSearchParams();
+    params.set('post', post.id);
+    if (selectedCategory !== 'All') {
+      params.set('category', selectedCategory);
+    }
+    
+    navigate(`/blog?${params.toString()}`, { replace: true });
     setSelectedPost(post);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBackToList = (): void => {
-    const categoryParam = selectedCategory !== 'All' ? `?category=${encodeURIComponent(selectedCategory)}` : '';
-    const newUrl = `${window.location.pathname}${categoryParam}`;
-    window.history.pushState({}, '', newUrl);
+    const params = new URLSearchParams();
+    if (selectedCategory !== 'All') {
+      params.set('category', selectedCategory);
+    }
+    
+    navigate(`/blog?${params.toString()}`, { replace: true });
     setSelectedPost(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
