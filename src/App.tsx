@@ -16,23 +16,24 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path='/Terms' element={<Terms />} />
-          <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
-          <Route path='/VulnerabilityResearch' element={<VulnerabilityResearch />} />
-          <Route path='/Services' element={<Services />} />
-          <Route path='*' element={<NotFound />} />
-
-        </Routes>
-      </Layout>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path='/Terms' element={<Terms />} />
+            <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
+            <Route path='/VulnerabilityResearch' element={<VulnerabilityResearch />} />
+            <Route path='/Services' element={<Services />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </HelmetProvider>
   );
 }
 
