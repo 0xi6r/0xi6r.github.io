@@ -239,9 +239,15 @@ const Footer = () => {
               Privacy Policy
             </Link>
             <span className="text-gray-600">|</span>
-            <Link to="/sitemap" className="text-gray-400 hover:text-cyan-400 transition-colors">
-              Sitemap
-            </Link>
+
+            <a 
+                href="/sitemap.xml" 
+                className="text-gray-400 hover:text-cyan-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <sitemap className="w-5 h-5" />
+              </a>
           </div>
         </div>
       </div>
