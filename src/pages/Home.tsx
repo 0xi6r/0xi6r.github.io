@@ -56,6 +56,19 @@ const HomePage: React.FC = () => {
     loadBlogPosts();
   }, []);
 
+  const preloadImage = (src: string): Promise<void> => {
+    return new Promise((resolve) => {
+      if (!src) {
+        resolve();
+        return;
+      }
+      const img = new Image();
+      img.onload = () => resolve();
+      img.onerror = () => resolve();
+      img.src = src;
+    });
+  };
+
   const loadBlogPosts = async (): Promise<void> => {
     try {
       setLoading(true);
@@ -89,8 +102,14 @@ const HomePage: React.FC = () => {
       setPosts(loadedPosts);
       setLatestPost(loadedPosts[0] || null);
 
-      // Improved Featured Content Curation
+      // Get featured posts
       const featured = curateFeaturedPosts(loadedPosts);
+      
+      // Preload all featured images before showing them
+      const imagePromises = featured.map(post => preloadImage(post.image || ''));
+      await Promise.all(imagePromises);
+      
+      // Now set featured articles - images are already cached
       setFeaturedArticles(featured);
     } catch (err) {
       setError('Failed to load blog posts');
@@ -100,17 +119,10 @@ const HomePage: React.FC = () => {
     }
   };
 
-  // IMPROVEMENT 3: Featured Content Curation
   const curateFeaturedPosts = (allPosts: BlogPost[]): BlogPost[] => {
-    // Priority order:
-    // 1. Posts explicitly marked as featured
-    // 2. Most recent posts from different categories
-    // 3. Posts with most content (as proxy for depth)
-
     const featuredMarked = allPosts.filter(p => p.featured);
     const remainingPosts = allPosts.filter(p => !p.featured && p.id !== allPosts[0]?.id);
 
-    // Get posts from diverse categories
     const categoriesUsed = new Set<string>();
     const diversePosts: BlogPost[] = [];
 
@@ -121,13 +133,11 @@ const HomePage: React.FC = () => {
       }
     }
 
-    // Fill remaining slots with most recent
     const needed = 3 - featuredMarked.length - diversePosts.length;
     const recentPosts = remainingPosts
       .filter(p => !diversePosts.includes(p))
       .slice(0, Math.max(0, needed));
 
-    // Combine and take top 3
     const combined = [...featuredMarked, ...diversePosts, ...recentPosts].slice(0, 3);
 
     return combined;
@@ -180,7 +190,6 @@ const HomePage: React.FC = () => {
     return colors[category] || colors['General'];
   };
 
-  // IMPROVEMENT 1: Better Image Fallback with Category Icons
   const getCategoryIcon = (category: string) => {
     const iconClass = "w-16 h-16 text-white/80";
     const icons: { [key: string]: JSX.Element } = {
@@ -207,15 +216,12 @@ const HomePage: React.FC = () => {
     return gradients[category] || gradients['General'];
   };
 
-  // IMPROVEMENT 4: Lazy Loading Image Component
   const LazyImage: React.FC<{ src: string; alt: string; category: string }> = ({ src, alt, category }) => {
     const [imageError, setImageError] = useState(false);
-    const [imageLoaded, setImageLoaded] = useState(false);
 
     if (!src || imageError) {
       return (
         <div className={`h-48 bg-gradient-to-br ${getCategoryGradient(category)} flex flex-col items-center justify-center relative overflow-hidden`}>
-          {/* Animated background pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
               backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.05) 10px, rgba(255,255,255,.05) 20px)'
@@ -230,22 +236,10 @@ const HomePage: React.FC = () => {
 
     return (
       <div className="h-48 relative overflow-hidden bg-gray-900">
-        {/* Placeholder - always shown until image loads, fades out smoothly */}
-        <div 
-          className={`absolute inset-0 bg-gradient-to-br ${getCategoryGradient(category)} flex items-center justify-center transition-opacity duration-500 ${
-            imageLoaded ? 'opacity-0' : 'opacity-100'
-          }`}
-        >
-          {getCategoryIcon(category)}
-        </div>
         <img
           src={src}
           alt={alt}
-          loading="lazy"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-            imageLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-          onLoad={() => setImageLoaded(true)}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           onError={() => setImageError(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
@@ -282,25 +276,20 @@ const HomePage: React.FC = () => {
       {/* Hero/Latest Post Section */}
       <section className="bg-black">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          {/* Latest Post - Text Only */}
           {latestPost && (
             <div className="mb-12 sm:mb-16">
               <div className="bg-black rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg">
                 <div className="flex flex-col gap-4 sm:gap-6">
-
-                  {/* Title */}
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2 leading-tight">
                   {latestPost.title}
                   </h1>
 
-                  {/* Subtitle */}
                   {latestPost.subtitle && (
                     <p className="text-base sm:text-lg text-gray-300 mb-4 leading-relaxed font-medium">
                       {latestPost.subtitle}
                     </p>
                   )}
 
-                  {/* Meta: Category + Date + Read Time */}
                   <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
                     <span className={`px-3 py-1 rounded-full text-white text-xs sm:text-sm font-medium ${getCategoryColor(latestPost.category || 'General')}`}>
                       {latestPost.category || 'General'}
@@ -318,12 +307,10 @@ const HomePage: React.FC = () => {
                     </span>
                   </div>
 
-                  {/* Excerpt */}
                   <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6 leading-relaxed">
                     {latestPost.excerpt}
                   </p>
 
-                  {/* Read More Button */}
                   <Link
                     to={`/blog?post=${latestPost.id}`}
                     className="text-cyan-400 hover:text-cyan-300 font-medium flex items-center text-sm sm:text-base"
@@ -354,14 +341,12 @@ const HomePage: React.FC = () => {
           </div>
 
           {featuredArticles.length > 0 ? (
-            // IMPROVEMENT 2: Improved Mobile Responsive Grid
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {featuredArticles.map((article) => (
                 <article
                   key={article.id}
                  className="bg-black rounded-xl overflow-hidden hover:bg-gray-900 transition-all duration-300 group"
                 >
-                  {/* Article Image with Improved Fallback */}
                   <LazyImage
                     src={article.image || ''}
                     alt={article.title}
@@ -414,7 +399,7 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* GitHub Showcase with Lazy Loading */}
+      {/* GitHub Showcase */}
       <div className="pb-12 sm:pb-16">
         <GitHubShowcase
           username="0xi6r"
@@ -423,6 +408,7 @@ const HomePage: React.FC = () => {
           showTopics={true}
         />
       </div>
+
       {/* Infosec Focus Areas Section */}
       <section className="bg-black pb-12 sm:pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -432,7 +418,6 @@ const HomePage: React.FC = () => {
             </h2>
           </div>
       
-          {/* Simple Grid Layout */}
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             <Link
               to="/blog?category=Red%20Team"
