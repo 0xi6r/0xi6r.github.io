@@ -1,104 +1,73 @@
 import fs from 'fs';
 import path from 'path';
-import RSS from 'rss';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const blogsDir = path.join(__dirname, '../blogs');
+const outputPath = path.join(__dirname, '../public/rss.xml');
 
-// Parse frontmatter
+const SITE_URL = 'https://0xi6r.github.io';
+const SITE_TITLE = 'Isaac, Infosec Research';
+const SITE_DESCRIPTION = 'Security research, malware analysis, and red team content';
+
 function parseFrontmatter(content) {
-  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
-  const match = content.match(frontmatterRegex);
-
-  if (match) {
-    const frontmatter = match[1];
-    const body = match[2];
-    const metadata = {};
-
-    frontmatter.split('\n').forEach(line => {
-      const [key, ...valueParts] = line.split(':');
-      if (key && valueParts.length > 0) {
-        metadata[key.trim()] = valueParts.join(':').trim().replace(/^["']|["']$/g, '');
-      }
-    });
-
-    return { metadata, body };
-  }
-
-  return { metadata: {}, body: content };
+  const match = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+  if (!match) return { metadata: {}, body: content };
+  
+  const metadata = {};
+  match[1].split('\n').forEach(line => {
+    const [key, ...parts] = line.split(':');
+    if (key && parts.length) {
+      metadata[key.trim()] = parts.join(':').trim().replace(/^["']|["']$/g, '');
+    }
+  });
+  return { metadata, body: match[2] };
 }
 
-async function generateRSS() {
-  // Initialize feed
-  const feed = new RSS({
-    title: 'Your Blog Name',
-    description: 'Security research, malware analysis, and offensive security insights',
-    feed_url: 'https://yourdomain.com/rss.xml',
-    site_url: 'https://yourdomain.com',
-    image_url: 'https://yourdomain.com/logo.png', // Optional
-    managingEditor: 'your@email.com (Your Name)',
-    webMaster: 'your@email.com (Your Name)',
-    copyright: `${new Date().getFullYear()} Your Name`,
-    language: 'en',
-    categories: ['Security', 'Cybersecurity', 'Research'],
-    pubDate: new Date(),
-    ttl: 60
-  });
-
-  // Read all markdown files
-  const blogsDir = path.join(__dirname, '../src/blogs');
-  const files = fs.readdirSync(blogsDir).filter(file => file.endsWith('.md'));
-
-  const posts = [];
-
-  for (const file of files) {
-    const filePath = path.join(blogsDir, file);
-    const content = fs.readFileSync(filePath, 'utf-8');
-    const { metadata, body } = parseFrontmatter(content);
-
-    const filename = file.replace('.md', '');
-
-    posts.push({
-      id: filename,
-      title: metadata.title || filename.replace(/-/g, ' '),
-      date: metadata.date || new Date().toISOString().split('T')[0],
-      excerpt: metadata.excerpt || body.substring(0, 200) + '...',
-      content: body,
-      category: metadata.category || 'General'
-    });
-  }
-
-  // Sort by date (newest first)
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  // Add posts to feed
-  posts.forEach(post => {
-    feed.item({
-      title: post.title,
-      description: post.excerpt,
-      url: `https://yourdomain.com/blog?post=${post.id}`,
-      guid: post.id,
-      categories: [post.category],
-      date: new Date(post.date),
-      // Optional: Include full content
-      // custom_elements: [
-      //   {'content:encoded': post.content}
-      // ]
-    });
-  });
-
-  // Generate XML
-  const xml = feed.xml({ indent: true });
-
-  // Write to public directory
-  const publicDir = path.join(__dirname, '../public');
-  if (!fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir, { recursive: true });
-  }
-
-  fs.writeFileSync(path.join(publicDir, 'rss.xml'), xml);
-  console.log('✅ RSS feed generated successfully at public/rss.xml');
+function escapeXml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-generateRSS().catch(console.error);
+const files = fs.readdirSync(blogsDir).filter(f => f.endsWith('.md'));
+
+const items = files.map(filename => {
+  const content = fs.readFileSync(path.join(blogsDir, filename), 'utf-8');
+  const { metadata, body } = parseFrontmatter(content);
+  const id = filename.replace('.md', '');
+  
+  return {
+    title: metadata.title || id.replace(/-/g, ' '),
+    date: metadata.date || new Date().toISOString().split('T')[0],
+    description: metadata.excerpt || body.substring(0, 300) + '...',
+    category: metadata.category || 'General',
+    link: `${SITE_URL}/#/blog?post=${id}`,
+    id
+  };
+});
+
+items.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>${escapeXml(SITE_TITLE)}</title>
+    <link>${SITE_URL}</link>
+    <description>${escapeXml(SITE_DESCRIPTION)}</description>
+    <language>en-us</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml"/>
+    ${items.map(item => `
+    <item>
+      <title>${escapeXml(item.title)}</title>
+      <link>${item.link}</link>
+      <guid isPermaLink="true">${item.link}</guid>
+      <pubDate>${new Date(item.date).toUTCString()}</pubDate>
+      <category>${escapeXml(item.category)}</category>
+      <description>${escapeXml(item.description)}</description>
+    </item>`).join('')}
+  </channel>
+</rss>`;
+
+fs.writeFileSync(outputPath, rss);
+console.log(`✅ RSS feed generated: ${outputPath}`);
+console.log(`   ${items.length} posts included`);
