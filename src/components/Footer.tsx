@@ -247,6 +247,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <sitemap className="w-5 h-5" />
+              sitemap
               </a>
           </div>
         </div>
