@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import type { Components } from 'react-markdown';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 interface BlogPost {
   id: string;
@@ -379,6 +380,21 @@ const Blog: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 py-8">
         {selectedPost ? (
           <div className="animate-fade-in">
+            {/* Dynamic Meta Tags for Social Sharing */}
+            <Helmet>
+              <title>{selectedPost.title} - 0xi6r</title>
+              <meta name="description" content={selectedPost.excerpt} />
+              <meta property="og:title" content={selectedPost.title} />
+              <meta property="og:description" content={selectedPost.excerpt} />
+              <meta property="og:type" content="article" />
+              <meta property="og:url" content={`https://0xi6r.github.io/#/blog?post=${selectedPost.id}`} />
+              {selectedPost.image && <meta property="og:image" content={selectedPost.image} />}
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content={selectedPost.title} />
+              <meta name="twitter:description" content={selectedPost.excerpt} />
+              {selectedPost.image && <meta name="twitter:image" content={selectedPost.image} />}
+            </Helmet>
+
             {/* Sticky Back Button */}
             <button
               className="fixed bottom-4 left-4 sm:bottom-8 sm:left-8 z-50 px-3 py-2 sm:px-4 text-sm sm:text-base bg-gray-900 hover:bg-gray-700 text-gray-100 rounded-lg transition-all duration-200 flex items-center gap-2 border border-gray-700 shadow-2xl hover:shadow-blue-500/20 hover:scale-105 backdrop-blur-sm bg-opacity-95"
@@ -432,6 +448,17 @@ const Blog: React.FC = () => {
           </div>
         ) : (
           <div>
+            {/* Default Meta Tags for Blog List */}
+            <Helmet>
+              <title>Blog - 0xi6r</title>
+              <meta name="description" content="Security research, malware analysis, and red team articles" />
+              <meta property="og:title" content="Blog - 0xi6r" />
+              <meta property="og:description" content="Security research, malware analysis, and red team articles" />
+              <meta property="og:type" content="website" />
+              <meta property="og:url" content="https://0xi6r.github.io/#/blog" />
+              <meta name="twitter:card" content="summary_large_image" />
+            </Helmet>
+
             {/* Category Filter Pills */}
             <div className="mb-8 sticky top-16 bg-black pt-4 pb-4 z-40 border-b border-gray-800">
               <div className="flex flex-wrap gap-2 sm:gap-3">
