@@ -1,6 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import {HelmetProvider} from 'react-helmet-async';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -19,15 +19,19 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
-        <HelmetProvider>
+        <ScrollToTop />
+        {/* Default Meta Tags */}
+        <Helmet>
           <title>0xi6r - Infosec Research</title>
           <meta name="description" content="Security research, malware analysis, and red team content" />
           <meta property="og:title" content="0xi6r - Infosec Research" />
           <meta property="og:description" content="Security research, malware analysis, and red team content" />
+          <meta property="og:type" content="website" />
           <meta property="og:url" content="https://0xi6r.github.io" />
           <meta name="twitter:card" content="summary_large_image" />
-        </HelmetProvider>
-        <ScrollToTop />
+          <meta name="twitter:title" content="0xi6r - Infosec Research" />
+          <meta name="twitter:description" content="Security research, malware analysis, and red team content" />
+        </Helmet>
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
