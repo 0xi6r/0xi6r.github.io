@@ -229,23 +229,26 @@ const HomePage: React.FC = () => {
     }
 
     return (
-      <div className="h-48 relative overflow-hidden bg-gray-800">
-        {!imageLoaded && (
-          <div className={`absolute inset-0 bg-gradient-to-br ${getCategoryGradient(category)} flex items-center justify-center animate-pulse`}>
-            {getCategoryIcon(category)}
-          </div>
-        )}
+      <div className="h-48 relative overflow-hidden bg-gray-900">
+        {/* Placeholder - always shown until image loads, fades out smoothly */}
+        <div 
+          className={`absolute inset-0 bg-gradient-to-br ${getCategoryGradient(category)} flex items-center justify-center transition-opacity duration-500 ${
+            imageLoaded ? 'opacity-0' : 'opacity-100'
+          }`}
+        >
+          {getCategoryIcon(category)}
+        </div>
         <img
           src={src}
           alt={alt}
           loading="lazy"
-          className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
             imageLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           onLoad={() => setImageLoaded(true)}
           onError={() => setImageError(true)}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
       </div>
     );
   };
