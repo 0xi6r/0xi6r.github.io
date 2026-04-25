@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-<url>
-<loc>https://0x-i6r.vercel.app/</loc>
-<lastmod>2025-08-21</lastmod>
-<changefreq>weekly</changefreq>
-<priority>1.0</priority>
-</url>
-<url>
-<loc>https://0x-i6r.vercel.app/about</loc>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
-
-<!-- More updates watch out --> </urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://0xi6r.github.io/</loc></url>
+  <url><loc>https://0xi6r.github.io/#/blog</loc></url>
+  <!-- Add each post URL -->
+</urlset>
