@@ -80,6 +80,8 @@ const Blog: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [viewCount, setViewCount] = useState<number>(0);
+  const [shareCopied, setShareCopied] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -118,6 +120,9 @@ const Blog: React.FC = () => {
     if (postId && posts.length > 0) {
       const post = posts.find(p => p.id === postId);
       setSelectedPost(post || null);
+      if (post) {
+        fetchViewCount(post.id);
+      }
     } else {
       setSelectedPost(null);
     }
@@ -128,6 +133,46 @@ const Blog: React.FC = () => {
       setSelectedCategory('All');
     }
   }, [location, posts]);
+
+  const fetchViewCount = async (postId: string) => {
+    try {
+      // Hit the count to increment it
+      await fetch(`https://api.countapi.xyz/hit/0xi6r/${postId}`);
+      // Get the current count
+      const res = await fetch(`https://api.countapi.xyz/get/0xi6r/${postId}`);
+      const data = await res.json();
+      setViewCount(data.value || 0);
+    } catch {
+      setViewCount(0);
+    }
+  };
+
+  const getRelatedPosts = (currentPost: BlogPost): BlogPost[] => {
+    return posts
+      .filter(p => p.id !== currentPost.id && p.category === currentPost.category)
+      .slice(0, 3);
+  };
+
+  const shareUrl = selectedPost 
+    ? `https://0xi6r.github.io/#/blog?post=${selectedPost.id}`
+    : '';
+
+  const handleShare = (platform: 'twitter' | 'linkedin') => {
+    const text = encodeURIComponent(selectedPost?.title || '');
+    const url = encodeURIComponent(shareUrl);
+    
+    if (platform === 'twitter') {
+      window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+    } else if (platform === 'linkedin') {
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+    }
+  };
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(shareUrl);
+    setShareCopied(true);
+    setTimeout(() => setShareCopied(false), 2000);
+  };
 
   const loadBlogPosts = async (): Promise<void> => {
     try {
@@ -416,7 +461,7 @@ const Blog: React.FC = () => {
                   </p>
                 )}
 
-                <div className="text-gray-400 text-sm sm:text-base flex flex-wrap items-center gap-2 sm:gap-4">
+                <div className="text-gray-400 text-sm sm:text-base flex flex-wrap items-center gap-2 sm:gap-4 mb-4">
                   <time
                     className="flex items-center gap-2"
                     dateTime={selectedPost.date}
@@ -433,6 +478,56 @@ const Blog: React.FC = () => {
                     </svg>
                     {selectedPost.readTime}
                   </span>
+                  {viewCount > 0 && (
+                    <>
+                      <span className="hidden sm:inline">•</span>
+                      <span className="flex items-center gap-2">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                          <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                        </svg>
+                        {viewCount} {viewCount === 1 ? 'view' : 'views'}
+                      </span>
+                    </>
+                  )}
+                </div>
+
+                {/* Share Buttons */}
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-500 text-sm">Share:</span>
+                  <button
+                    onClick={() => handleShare('twitter')}
+                    className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
+                    title="Share on Twitter/X"
+                  >
+                    <svg className="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => handleShare('linkedin')}
+                    className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
+                    title="Share on LinkedIn"
+                  >
+                    <svg className="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </button>
+                  <button
+                    onClick={handleCopyLink}
+                    className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
+                    title="Copy link"
+                  >
+                    {shareCopied ? (
+                      <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : (
+                      <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                      </svg>
+                    )}
+                  </button>
                 </div>
               </header>
 
@@ -444,6 +539,28 @@ const Blog: React.FC = () => {
                   {selectedPost.content}
                 </ReactMarkdown>
               </div>
+
+              {/* Related Posts */}
+              {getRelatedPosts(selectedPost).length > 0 && (
+                <div className="mt-12 pt-8 border-t border-gray-700">
+                  <h3 className="text-xl font-bold text-white mb-6">Related Posts</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {getRelatedPosts(selectedPost).map((related) => (
+                      <div
+                        key={related.id}
+                        className="p-4 bg-gray-900 rounded-lg cursor-pointer hover:bg-gray-800 transition-colors"
+                        onClick={() => handlePostClick(related)}
+                      >
+                        <span className={`inline-block px-2 py-1 rounded text-white text-xs font-medium mb-2 ${getCategoryColor(related.category || 'General')}`}>
+                          {related.category}
+                        </span>
+                        <h4 className="text-white font-semibold text-sm mb-1 leading-snug">{related.title}</h4>
+                        <span className="text-gray-500 text-xs">{related.readTime}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </article>
           </div>
         ) : (
