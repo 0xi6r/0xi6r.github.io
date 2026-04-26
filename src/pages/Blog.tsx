@@ -136,9 +136,7 @@ const Blog: React.FC = () => {
 
   const fetchViewCount = async (postId: string) => {
     try {
-      // Hit the count to increment it
       await fetch(`https://api.countapi.xyz/hit/0xi6r/${postId}`);
-      // Get the current count
       const res = await fetch(`https://api.countapi.xyz/get/0xi6r/${postId}`);
       const data = await res.json();
       setViewCount(data.value || 0);
@@ -151,6 +149,19 @@ const Blog: React.FC = () => {
     return posts
       .filter(p => p.id !== currentPost.id && p.category === currentPost.category)
       .slice(0, 3);
+  };
+
+  const getCategoryColor = (category: string): string => {
+    const colors: { [key: string]: string } = {
+      'Red Team': 'bg-red-500',
+      'Vulnerability Research': 'bg-orange-500',
+      'Tool Development': 'bg-green-500',
+      'Threat Intelligence': 'bg-purple-500',
+      'Malware Analysis': 'bg-yellow-500',
+      'Bug Bounty': 'bg-emerald-500',
+      'General': 'bg-cyan-500'
+    };
+    return colors[category] || colors['General'];
   };
 
   const shareUrl = selectedPost 
