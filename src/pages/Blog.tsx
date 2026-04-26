@@ -559,7 +559,7 @@ const Blog: React.FC = () => {
                     {getRelatedPosts(selectedPost).map((related) => (
                       <div
                         key={related.id}
-                        className="p-4 bg-gray-900 rounded-lg cursor-pointer hover:bg-gray-800 transition-colors"
+                        className="p-4 bg-zinc-950 rounded-lg cursor-pointer hover:bg-zinc-900 transition-colors"
                         onClick={() => handlePostClick(related)}
                       >
                         <span className={`inline-block px-2 py-1 rounded text-white text-xs font-medium mb-2 ${getCategoryColor(related.category || 'General')}`}>
