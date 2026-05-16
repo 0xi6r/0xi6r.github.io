@@ -188,7 +188,7 @@ const GitHubShowcase: React.FC<GitHubShowcaseProps> = ({
                 {/* Stats footer */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-800">
                   <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-1 text-gray-300">
+                    {/*<div className="flex items-center gap-1 text-gray-300">
                       <span>⭐</span>
                       <span className="text-sm">{project.stargazers_count}</span>
                     </div>
@@ -196,6 +196,7 @@ const GitHubShowcase: React.FC<GitHubShowcaseProps> = ({
                       <span>🍴</span>
                       <span className="text-sm">{project.forks_count}</span>
                     </div>
+                    */}
                     {showLanguage && project.language && (
                       <div className="flex items-center gap-1">
                         <div className="w-2 h-2 rounded-full bg-cyan-500"></div>
