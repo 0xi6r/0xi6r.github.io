@@ -1,12 +1,16 @@
-# Portfolio Website
+# 0xi6r Labs
+![home]("public/0xi6r.png")
 
-This repository contains the source code for my personal portfolio website with a minimal backend.
+This repository contains the source code for my personal portfolio website and its supporting backend services.
 
 ## Status
-⚠️ **Work in progress** - Still under development
+✅ **Stable** — The portfolio is production-ready and actively maintained.
+
+## Overview
+The site showcases my work, projects, and research with a focus on performance, simplicity, and clean design. Everything currently implemented is functional and tested as intended.
 
 ## Usage
-Feel free to use this code for your own projects. If you encounter any issues or have questions, please shoot me an email - I'd really appreciate the feedback!
+Feel free to explore, learn from, or adapt parts of the code for your own projects. If you run into issues or have suggestions, feel free to reach out.
 
 ## License
-Open for personal use. Please credit if reused significantly.
+Open for personal and educational use. Credit is appreciated for significant reuse.
