@@ -1,4 +1,10 @@
-# 0xi6r Labs
+<div align="center">
+  <h1>
+    <img src="public/0xi6r.png" width="40" style="vertical-align: middle;" />
+    Labs
+  </h1>
+</div>
+
 ![home](public/portfolio.png)
 
 This repository contains the source code for my personal portfolio website and its supporting backend services.
