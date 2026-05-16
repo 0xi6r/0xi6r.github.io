@@ -1,5 +1,5 @@
 # 0xi6r Labs
-![home]("public/0xi6r.png")
+![home](public/portfolio.png)
 
 This repository contains the source code for my personal portfolio website and its supporting backend services.
 
