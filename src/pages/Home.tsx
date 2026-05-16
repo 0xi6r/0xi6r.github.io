@@ -369,9 +369,9 @@ const HomePage: React.FC = () => {
                       </h3>
                     </Link>
 
-                    {article.subtitle && (
+                    {article.excerpt && (
                       <p className="text-gray-400 text-xs sm:text-sm mb-4 leading-relaxed line-clamp-2">
-                        {article.subtitle}
+                        {article.excerpt}
                       </p>
                     )}
 
