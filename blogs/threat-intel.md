@@ -23,7 +23,6 @@ Modern cyber threats are no longer limited to random hackers trying to deface we
 
 This is where threat intelligence becomes important. Threat intelligence gives defenders visibility into the people and infrastructure behind attacks. It helps organizations understand who may target them, why they are being targeted, and how those attacks are likely to happen. Instead of waiting to become victims, organizations can prepare for attacks before they happen.
 
----
 
 # What is Threat Intelligence
 
@@ -37,7 +36,6 @@ The value of threat intelligence is not simply in collecting data. Raw data alon
 
 Without threat intelligence, security teams operate blindly. They defend against threats they do not fully understand. That approach rarely works for long.
 
----
 
 # Why Threat Intelligence Matters
 
@@ -53,7 +51,6 @@ Threat intelligence can also lead to real-world consequences for attackers. Inte
 
 ![sanctions imposed on threat actors](/images/blog/threat-intel/sanctions.png)
 
----
 
 # How Threat Intelligence Works
 
@@ -67,7 +64,6 @@ This process takes time. Intelligence is rarely built from a single observation.
 
 Even something seemingly insignificant can become important later. A simple favicon hash, a reused SSL certificate, or a single email address may connect entirely separate operations together. In threat intelligence, small details matter because attackers often repeat behavior without realizing it.
 
----
 
 # Threat Intelligence and OPSEC
 
@@ -79,7 +75,6 @@ This is one reason threat intelligence teams continuously monitor threat activit
 
 The same principle applies to red team operations. Poor OPSEC during an engagement can expose infrastructure, burn payloads, or reveal the existence of an operation before objectives are achieved. Many offensive operations fail not because the tooling was weak, but because operational mistakes exposed the operators behind them.
 
----
 
 # Final Thoughts
 
