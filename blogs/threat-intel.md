@@ -1,11 +1,15 @@
 ---
-Title: "Threat Intelligence"
-Image: "images/blog/threat-intel/analyst.png"
-Date: "2026-05-15"
-Excerpt: "Understanding how threat intelligence works and why it matters in cybersecurity."
-Category: "Threat Intelligence"
-Featured: false
+title: "Threat Intelligence"
+image: "images/blog/threat-intel/analyst.png"
+date: "2026-05-15"
+excerpt: "Understanding how threat intelligence works and why it matters in cybersecurity."
+category: "Threat Intelligence"
+featured: false
 ---
+
+
+![intel analysts](images/blog/threat-intel/analyst.png)
+
 
 # Introduction
 
