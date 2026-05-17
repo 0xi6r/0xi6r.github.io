@@ -1,17 +1,17 @@
 ---
-title: "AI Offensive Testing: Guide to exploiting LLMs"
-title1: Exploiting LLMs.
-image: "images/blog/ai.png"
-date: "2025-11-11"
-excerpt: "The security of Large Language Models goes far beyond traditional vulnerabilities. We're now dealing with prompt injection, model theft, training data poisoning, and weaponized "agency."
-category: "Red Team"
+Title: "AI Offensive Testing: Guide to exploiting LLMs"
+Image: "images/blog/ai.png"
+Date: "2025-11-11"
+Excerpt: "The security of Large Language Models goes far beyond traditional vulnerabilities. We're now dealing with prompt injection, model theft, training data poisoning, and weaponized agency."
+Category: "Red Team"
+Featured: false
 ---
 
-The integration of Large Language Models (LLMs) into enterprise applications has created a new frontier for security professionals. While these AI systems offer unprecedented capabilities, they also introduce a novel and complex attack surface. This guide serves as a comprehensive playbook for penetration testers and security teams tasked with assessing the security posture of AI-enabled systems. It provides a structured methodology, from initial reconnaissance to advanced exploitation and remediation, to identify and mitigate the unique vulnerabilities inherent in LLMs.
+The integration of Large Language Models (LLMs) into enterprise applications has created a new frontier for us. I guess, "we" are not being replaced after all. While these AI systems offer unprecedented capabilities like we've never seen before, they also introduce a new attack surface that can have devasting impact if not patched in time. This article serves as an introductory overview of this new attack surface from initial recon to exploitation and remediation.
 
 ### **Summary**
 
-A successful AI penetration test involves a systematic approach:
+I believe a successful offensive AI testing involves a systematic approach:
 *   **Scoping and Reconnaissance:** Understand the AI system, its components (LLM, APIs, data sources, plugins), and its business context. Collect technical details about the model, its architecture, and data flows to identify critical assets and potential impacts.
 *   **Vulnerability Assessment:** Employ a mix of automated and manual techniques. Use specialized tools like *garak* and *LLMFuzzer* to probe for common vulnerabilities. Manually craft sophisticated prompts to test for injections, jailbreaks, and biased outputs. Scrutinize the system for data leakage, insecure output handling, insecure plugins, and excessive agency.
 *   **Exploitation and Chaining:** Move beyond identification to active exploitation. Attempt to chain vulnerabilities to achieve a greater impact, such as leveraging a prompt injection to exfiltrate data via a plugin with excessive permissions.
