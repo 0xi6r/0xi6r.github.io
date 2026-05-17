@@ -1,6 +1,6 @@
 ---
 Title: "Threat Intelligence"
-Image: "images/blog/threat-intel/intel.png"
+Image: "images/blog/threat-intel/analyst.png"
 Date: "2026-05-15"
 Excerpt: "Understanding how threat intelligence works and why it matters in cybersecurity."
 Category: "Threat Intelligence"
@@ -11,7 +11,7 @@ Featured: false
 
 *"If you know the enemy and know yourself, you need not fear the result of a hundred battles."* — Sun Tzu, *The Art of War*
 
-![cover the art of war](/images/blog/threat-intel/artofwar.jpg)
+![cover the art of war](images/blog/threat-intel/artofwar.jpg)
 
 Wars are not won with weapons alone. They are won with information. The side that understands its enemy better usually controls the battlefield. Cybersecurity works the same way. You cannot properly defend yourself against an attacker you do not understand. If you do not know how threat actors operate, what tools they use, or what they are targeting, then you are always reacting after the damage has already been done.
 
@@ -46,6 +46,8 @@ Threat intelligence is also heavily used for attribution. Many people wonder how
 Over time, intelligence analysts build profiles around these groups. Eventually, attacks begin to look familiar. Certain malware families, techniques, or operational patterns become signatures associated with specific threat actors. This is why attribution in cybersecurity is often more accurate than people think.
 
 Threat intelligence can also lead to real-world consequences for attackers. Intelligence operations have exposed criminal infrastructure, linked cryptocurrency wallets to threat actors, revealed identities behind ransomware groups, and contributed to arrests and sanctions. Behind many public takedowns is usually years of intelligence collection and analysis.
+
+![sanctions imposed on threat actors](/images/blog/threat-intel/sanctions.png)
 
 ---
 
