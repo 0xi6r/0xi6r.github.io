@@ -1,10 +1,10 @@
 ---
-Title: "Offensive AI Testing: Attacking and Securing LLM Systems"
-Image: "images/blog/ai.png"
-Date: "2025-11-11"
-Excerpt: "Large Language Models introduced an entirely new attack surface where prompts, agents, memory systems, and retrieval pipelines become targets for offensive security operations."
-Category: "Red Team"
-Featured: false
+title: "Offensive AI Testing: Attacking and Securing LLM Systems"
+image: "images/blog/ai.png"
+date: "2025-11-11"
+excerpt: "Large Language Models introduced an entirely new attack surface where prompts, agents, memory systems, and retrieval pipelines become targets for offensive security operations."
+category: "Red Team"
+featured: false
 ---
 
 ![prompt injection](images/blog/ai.png)
