@@ -19,6 +19,7 @@ interface BlogPost {
   readTime?: string;
   subtitle?: string;
   image?: string;
+  youtube?: string;
 }
 
 interface FrontmatterMetadata {
@@ -29,6 +30,7 @@ interface FrontmatterMetadata {
   subtitle?: string;
   readTime?: string;
   image?: string;
+  youtube?: string;
   [key: string]: string | undefined;
 }
 
@@ -206,7 +208,8 @@ const Blog: React.FC = () => {
           category: metadata.category || 'General',
           readTime: metadata.readTime || calculateReadingTime(body),
           subtitle: metadata.subtitle || '',
-          image: metadata.image || ''
+          image: metadata.image || '',
+          youtube: metadata.youtube || ''
         };
       });
 
@@ -542,31 +545,7 @@ const Blog: React.FC = () => {
                 </div>
               </header>
 
-              {/* YouTube Video */}
-              {selectedPost.youtube && (
-                <div className="my-8">
-                  <div className="aspect-video">
-                    <iframe
-                      className="w-full h-full rounded-lg"
-                      src={`https://www.youtube.com/embed/${selectedPost.youtube}`}
-                      title="YouTube Video"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                </div>
-              )}
-
-<div className="prose prose-lg prose-invert max-w-none prose-headings:scroll-mt-20 prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-800">
-  <ReactMarkdown
-    components={markdownComponents}
-    remarkPlugins={[remarkGfm]}
-  >
-    {selectedPost.content}
-  </ReactMarkdown>
-</div>
-
-              
+              {/* Article Content with Optional YouTube Video */}
               <div className="prose prose-lg prose-invert max-w-none prose-headings:scroll-mt-20 prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-800">
                 <ReactMarkdown
                   components={markdownComponents}
@@ -574,6 +553,28 @@ const Blog: React.FC = () => {
                 >
                   {selectedPost.content}
                 </ReactMarkdown>
+
+                {/* YouTube Video Embed */}
+                {selectedPost.youtube && (
+                  <div className="my-8 not-prose">
+                    <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-gray-700 shadow-2xl">
+                      <iframe
+                        className="absolute inset-0 w-full h-full"
+                        src={`https://www.youtube.com/embed/${selectedPost.youtube}`}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                    <p className="text-gray-400 text-sm text-center mt-3">
+                      <svg className="w-4 h-4 inline-block mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                      </svg>
+                      Watch the accompanying video for this article on <a href="https://youtube.com/@0xi6r" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 underline">YouTube @0xi6r</a>
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Related Posts */}
