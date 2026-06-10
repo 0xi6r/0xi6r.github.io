@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Linkedin, Github, Send, AlertCircle, CheckCircle, Rss, Mail } from 'lucide-react';
+import { Shield, Linkedin, Github, Send, AlertCircle, CheckCircle, Rss, Mail, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from '/0xi6r.svg';
 
@@ -78,9 +78,20 @@ const Footer = () => {
                 <MastodonIcon />
               </a>
               <a 
+                href="https://youtube.com/@0xi6r" 
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                aria-label="YouTube"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
+              <a 
                 href="https://github.com/0xi6r" 
                 className="text-gray-400 hover:text-cyan-400 transition-colors"
                 aria-label="GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Github className="w-5 h-5" />
               </a>
@@ -239,15 +250,13 @@ const Footer = () => {
               Privacy Policy
             </Link>
             <span className="text-gray-600">|</span>
-
             <a 
                 href="/sitemap.xml" 
                 className="text-gray-400 hover:text-cyan-400 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <sitemap className="w-5 h-5" />
-              sitemap
+                Sitemap
               </a>
           </div>
         </div>
