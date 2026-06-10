@@ -542,6 +542,31 @@ const Blog: React.FC = () => {
                 </div>
               </header>
 
+              {/* YouTube Video */}
+              {selectedPost.youtube && (
+                <div className="my-8">
+                  <div className="aspect-video">
+                    <iframe
+                      className="w-full h-full rounded-lg"
+                      src={`https://www.youtube.com/embed/${selectedPost.youtube}`}
+                      title="YouTube Video"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              )}
+
+<div className="prose prose-lg prose-invert max-w-none prose-headings:scroll-mt-20 prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-800">
+  <ReactMarkdown
+    components={markdownComponents}
+    remarkPlugins={[remarkGfm]}
+  >
+    {selectedPost.content}
+  </ReactMarkdown>
+</div>
+
+              
               <div className="prose prose-lg prose-invert max-w-none prose-headings:scroll-mt-20 prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-800">
                 <ReactMarkdown
                   components={markdownComponents}
