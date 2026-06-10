@@ -1,6 +1,7 @@
 ---
 title: "Launching My YouTube Channel"
 image: "/images/blog/youtube.png"
+youtube: "vKQXrp_LvKU"
 date: "2026-06-10"
 excerpt: "Today marks the beginning of an exciting new journey as I officially launch my YouTube channel."
 category: "General"
@@ -10,14 +11,7 @@ category: "General"
 
 Over the years, I've spent countless hours learning, researching, building, breaking, fixing, and documenting my experiences across various areas of information security. Through my website, write-ups, and technical notes, I've shared a portion of that knowledge with others. However, I realized that some concepts are easier to understand when demonstrated visually and explained step by step. This realization became one of the driving forces behind the creation of this channel.
 
-<iframe
-    width="100%"
-    height="450"
-    src="https://youtu.be/vKQXrp_LvKU"
-    title="Infosec Lab - Channel Introduction"
-    frameborder="0"
-    allowfullscreen>
-</iframe>
+src={`https://www.youtube.com/embed/${selectedPost.youtube}`}
 
 One of my primary motivations for starting a YouTube channel is to give back to the community. Throughout my career and learning journey, I've benefited immensely from the work of researchers, educators, and security professionals who generously shared their knowledge online. This channel is my way of contributing to that cycle of learning and helping others who are either starting their cybersecurity journey or looking to deepen their existing skills.
 
