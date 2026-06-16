@@ -1,7 +1,7 @@
 ---
 title: "Launching My YouTube Channel"
 image: "/images/blog/youtube.png"
-youtube: "vKQXrp_LvKU"
+youtube: "ikDrcatCPJM"
 date: "2026-06-10"
 excerpt: "Today marks the beginning of an exciting new journey as I officially launch my YouTube channel."
 category: "General"
