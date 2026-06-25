@@ -2,7 +2,7 @@
 title: "So You Want to Write a RAT? Here is the Blueprint in C#"
 image: "/images/blog/mal/rat/rat.png"
 date: "2026-06-25"
-excerpt: "A Remote Access Trojan (RAT) is a piece of malicious software that disguises itself as a legitimate file but, once executed, opens a secret backdoor into your system."
+excerpt: "A Remote Access Trojan (RAT) is a piece of malicious software that disguises itself as a legitimate file but, once executed, opens a secret backdoor into your system. A RAT is built on three pillars: privilege escalation, persistence, and stealth."
 category: "Malware"
 ---
 
