@@ -31,7 +31,7 @@ For a RAT to be effective, it needs the highest possible level of system access.
 * Install kernel-level drivers or hooks
 
 a simple UAC bypass technique
-```
+```bash
 private static bool BypassUACFodHelper()
 {
     try
