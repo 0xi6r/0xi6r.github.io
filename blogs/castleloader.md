@@ -4,6 +4,7 @@ image: "images/blog/mal/casltleloader/castleloader_die.png"
 date: "2026-04-23"
 excerpt: "How to extract files from an encrypted Inno Setup sample without running it – using hashcat and a strings dump."
 category: "Malware Analysis"
+featured: true
 ---
 
 ![castle loaer in detect it easy](images/blog/mal/casltleloader/castleloader_die.png)
