@@ -12,7 +12,7 @@ category: "Malware"
 
 A Remote Access Trojan (RAT) is a piece of malicious software that disguises itself as a legitimate file but, once executed, opens a secret backdoor into your system. Unlike standard malware that causes immediate damage, a RAT sits silently in the background, giving an attacker full remote control over your machine, think of it as a digital puppet string. From that point on, the attacker can steal sensitive files, activate your webcam, log every keystroke you type, and even use your computer as a launchpad for further attacks, all while remaining completely invisible to you.
 
-## Components of a RAT
+## The Anatomy of a RAT
 What makes a RAT?
 
 ### Elevated privileges (run with administrative or SYSTEM-level rights)
@@ -400,3 +400,8 @@ del /f /q ""%~f0""
     }
 }
 ```
+
+### Conclusion
+A RAT is built on three pillars: privilege escalation, persistence, and stealth. You start with UAC bypass to gain admin rights without triggering alerts. Then you ensure survival via scheduled tasks or registry Run keys so the RAT respawns after every reboot. The C2 connection provides the lifeline—a persistent outbound channel that feeds commands to the main loop, where modules handle everything from keylogging to file theft to screen capture. Throughout, stealth is non-negotiable: hide the file with system attributes, deploy self-defense to block termination, and finally self-delete via batch script when the job is done. None of this is theoretical—every technique maps to specific Windows internals that defenders must understand to catch it. Know the code, know the tricks, and you'll know exactly where to look when the RAT comes knocking.
+
+
