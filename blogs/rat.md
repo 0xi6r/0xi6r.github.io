@@ -6,24 +6,24 @@ excerpt: "A Remote Access Trojan (RAT) is a piece of malicious software that dis
 category: "Malware"
 ---
 
-## What is a RAT?
+# What is a RAT?
 
 ![learn to write RATs](/images/blog/mal/ratt.png)
 
 A Remote Access Trojan (RAT) is a piece of malicious software that disguises itself as a legitimate file but, once executed, opens a secret backdoor into your system. Unlike standard malware that causes immediate damage, a RAT sits silently in the background, giving an attacker full remote control over your machine, think of it as a digital puppet string. From that point on, the attacker can steal sensitive files, activate your webcam, log every keystroke you type, and even use your computer as a launchpad for further attacks, all while remaining completely invisible to you.
 
-## The Anatomy of a RAT
+# The Anatomy of a RAT
 What makes a RAT?
 
-### Elevated privileges (run with administrative or SYSTEM-level rights)
+## Elevated privileges (run with administrative or SYSTEM-level rights)
 For a RAT to be effective, it needs the highest possible level of system access. Without elevated privileges, your RAT is essentially handcuffed—it can't access protected system directories, manipulate core processes, or maintain persistence against user interference.
 
-#### Techniques to run with elevated priv:
+## Techniques to run with elevated priv:
 - Social engineering – Tricking the user into right-clicking and selecting "Run as administrator"
 - UAC bypass techniques – Silently escalating without triggering the Windows User Account Control prompt (e.g., using known exploit paths like CMSTP, Fodhelper, or Event Viewer)
   *it's safe to say, if you cant elevate stick to what you have and figure something out, they is always a way*
 
-##### Once elevated, your RAT can:
+## Once elevated, your RAT can:
 * Read and write to any file on the system
 * Modify the Windows Registry freely
 * Inject into system processes (e.g., lsass.exe, winlogon.exe)
@@ -31,7 +31,7 @@ For a RAT to be effective, it needs the highest possible level of system access.
 * Install kernel-level drivers or hooks
 
 a simple UAC bypass technique
-```bash
+```csharp
 private static bool BypassUACFodHelper()
 {
     try
@@ -93,17 +93,17 @@ private static void CleanupRegistryKeys()
 }
 ```
 
-### Initialization Phase/Deployment
-#### Persistence
+## Initialization Phase/Deployment
+### Persistence
 Persistence is the mechanism that ensures a RAT survives system reboots and remains active on the compromised machine. Without persistence, the RAT would only run until the user logs off or restarts their computer, making the attack ephemeral and largely useless for long-term control.
 
-#### Why you should do it:
+### Why you should do it:
 Survive reboots – The RAT should automatically start when Windows boots
 Maintain access – The attacker doesn't need to re-infect the machine after every restart
 Background operation – The RAT runs silently without user interaction
 Redundancy – Multiple persistence mechanisms ensure the RAT stays active even if one is removed
 
-#### How it works:
+### How it works:
 There are numerous ways to achieve persistence on Windows, ranging from simple registry entries to scheduled tasks and Windows services. The most common techniques include:
 Scheduled Tasks – Create a task that runs the RAT at boot, at user login, or on a regular interval
 Registry Run Keys – Add entries to HKCU\Software\Microsoft\Windows\CurrentVersion\Run or HKLM\...\Run
@@ -112,7 +112,7 @@ Startup Folder – Place a shortcut in the user's Startup folder
 WMI Event Subscription – Use WMI to trigger execution on system events
 Boot Execute – Modify HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\BootExecute
 
-#### Why I try Scheduled Tasks:
+### Why I try Scheduled Tasks:
 Less suspicious than Run keys (many legitimate apps use tasks)
 Can run with SYSTEM privileges
 Supports complex triggers (on idle, at login, every X minutes)
@@ -120,7 +120,7 @@ Can be hidden from casual users via schtasks.exe
 Persists across reboots automatically
 
 demo
-```C#
+```csharp
 private static void AddToStartup()
 {
     try
@@ -181,25 +181,25 @@ private static void AddToStartup()
 }
 ```
 
-### Initializing operational activities
-####
+## Initializing operational activities
+###
 <to be continued; functionalities within a rat>
 
-### Run 
-#### Establish Connect to C2
+## Run 
+### Establish Connect to C2
 
 Once the RAT is deployed and running with elevated privileges, its primary objective is to establish a persistent connection to the Command and Control (C2) server. This connection serves as the lifeline between the attacker and the compromised machine. it's how commands are issued, data is exfiltrated, and the RAT is controlled remotely.
 
-#### Why you have to do it:
+### Why you have to do it:
 Remote control – The attacker needs a bidirectional channel to issue commands
 Data exfiltration – Stolen files, credentials, and screenshots need to be sent back
 Persistence – The RAT should automatically reconnect if the connection drops
 Stealth – Outbound connections are less suspicious than inbound ones (firewalls often allow outbound traffic)
 
-#### How it works:
+### How it works:
 The RAT runs in a continuous loop, attempting to connect to a predefined IP address and port (often embedded in the executable's resources or fetched from a remote configuration). Once a connection is established, the RAT sends identifying information about the victim's machine—hostname, username, OS version, and privilege level—so the attacker knows which bot they're controlling. The RAT then enters a main loop where it listens for incoming commands, executes them, and sends back the results. If the connection drops, the RAT logs the failure, disconnects cleanly, and retries after a short delay, ensuring the attacker can regain control at any time.
 
-#### Common techniques include:
+### Common techniques include:
 Hardcoded IP/Port – Embedded in the executable's resources
 Domain Generation Algorithms (DGAs) – Generate new C2 domains to avoid takedown
 Fast-flux networks – Constantly changing IP addresses
@@ -207,7 +207,7 @@ Encrypted traffic – SSL/TLS to hide commands from network monitoring
 HTTP/HTTPS tunneling – Blend in with normal web traffic
 DNS tunneling – Use DNS queries for C2 communication
 
-```C#
+```csharp
 /// <summary>
 /// Main execution loop for the RAT client.
 /// Attempts to connect to the C2 server and maintains the connection.
@@ -325,28 +325,28 @@ private static void Run()
 }
 ```
 
-### CleanUp
+## CleanUp
 
-### SelfDelete
+## SelfDelete
 Once your RAT has completed its mission or when you wants to cut ties and cover tracks, the RAT must disappear without a trace. Self-delete is the mechanism that ensures the executable removes itself from the victim's system, leaving behind no forensic evidence for investigators or AV scanners to find.
 
-#### Why it has to be done:
+### Why it has to be done:
 - OPSEC (Operational Security) – Removing the file eliminates a key piece of evidence
 - Anti-forensics – Makes incident response harder by removing the primary artifact
 - Clean exit – Prevents the user from discovering the file accidentally
 - Burning the bridge – Cuts the connection cleanly after exfiltration or persistence is established
 
-#### How it works:
+### How it works:
 The fundamental challenge is that a running executable cannot delete itself while in memory. To work around this, the RAT spawns a separate process, typically a batch script or PowerShell command—that waits a few seconds, kills the main process (or waits for it to exit), then deletes the original file and finally deletes itself. The batch script runs asynchronously, so the main process can exit normally while the cleanup happens in the background.
 
-#### Common techniques include:
+### Common techniques include:
 Batch scripts with del /f /q commands
 PowerShell one-liners with Remove-Item -Force
 Using cmd.exe /c with delayed execution (timeout or ping delays)
 Scheduled tasks that trigger cleanup on reboot
 
 simple demo
-```C#
+```csharp
 private static void SelfDelete()
 {
     try
@@ -401,7 +401,7 @@ del /f /q ""%~f0""
 }
 ```
 
-### Conclusion
+## Conclusion
 A RAT is built on three pillars: privilege escalation, persistence, and stealth. You start with UAC bypass to gain admin rights without triggering alerts. Then you ensure survival via scheduled tasks or registry Run keys so the RAT respawns after every reboot. The C2 connection provides the lifeline—a persistent outbound channel that feeds commands to the main loop, where modules handle everything from keylogging to file theft to screen capture. Throughout, stealth is non-negotiable: hide the file with system attributes, deploy self-defense to block termination, and finally self-delete via batch script when the job is done. None of this is theoretical—every technique maps to specific Windows internals that defenders must understand to catch it. Know the code, know the tricks, and you'll know exactly where to look when the RAT comes knocking.
 
 
