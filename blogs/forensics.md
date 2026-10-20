@@ -7,7 +7,7 @@ category: "Red Team"
 featured: True
 ---
 
-# Windows Forensic Artifact Analysis: Evidence of User and System Activity
+![Windows Forensics](/images/blog/forensics/windows-forensic-artifacts.png)
 
 Windows systems preserve information about application execution, file access, connected devices, browser activity, user accounts, network connections, and other system events. These records are known as **forensic artifacts**.
 
@@ -61,7 +61,7 @@ Investigative value
 
 Prefetch can help determine whether a suspicious executable was likely run, when it may have run, and which files it accessed during execution.
 
-![Screenshot: Base prefetch directory](/images/blog/pref.png)
+![Screenshot: Base prefetch directory](/images/blog/forensics/pref.png)
 
 "For a file like 7ZG.EXE-997761F6.pf, analysts use tools like PECmd to extract the run count and the last eight execution timestamps, while the hash (997761F6) confirms the specific directory the executable was launched from—a detail that can distinguish a legitimate installation from a copy run out of a Temp folder."
 
@@ -101,7 +101,7 @@ UserAssist can support investigations into interactive application use, especial
 
 Do not try to read the raw binary values manually. Load the NTUSER.DAT file into Eric Zimmerman's Registry Explorer or use RECmd. These tools will automatically navigate to the correct GUIDs, decode the ROT13 names, and parse the binary data so you can see the actual program name and run count.
 
-![Screenshot: registry explorer](/images/blog/RegistryExplorer.png)
+![Screenshot: registry explorer](/images/blog/forensics/RegistryExplorer.png)
 
 ### 1.3 System Resource Usage Monitor (SRUM)
 
@@ -135,7 +135,7 @@ Investigative value
 
 SRUM can help correlate applications with network usage and system resource activity.
 
-![Screenshot: registry explorer](/images/blog/SrumECmd.png)
+![Screenshot: registry explorer](/images/blog/forensics/SrumECmd.png)
 
 SRUDB.dat is a binary ESE (Extensible Storage Engine) database, so you cannot open it with a text editor or Registry Explorer. To read it, you must use a dedicated SRUM parser that understands this format and extracts the records into a readable table (usually CSV or Excel).
 
@@ -172,7 +172,7 @@ Investigative value
 
 LNK files can help establish that Windows tracked access to a particular file and may connect that file to a specific storage volume.
 
-![Screenshot: shortcut files](/images/blog/lnk.png)
+![Screenshot: shortcut files](/images/blog/forensics/lnk.png)
 
 ### 2.2 Jump Lists
 
