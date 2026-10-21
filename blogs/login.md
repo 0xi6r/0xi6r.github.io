@@ -7,6 +7,8 @@ category: "Bug Bounty"
 featured: false
 ---
 
+![login page](/images/blog/bug-bounty/bac.png)
+
 This was the easiest vulnerability I have found. By setting up an account and logging in, I obtained all billing information for the target.
 
 Here is how I did it.
@@ -21,12 +23,19 @@ I selected `billing.example.com` and used Burp Suite Pro to crawl the site while
 
 The site presented a login screen. Standard credentials failed, and I did not want to brute force authentication. I looked for an alternative route.
 
+![default login](/images/blog/bug-bounty/brute.png)
+
 The login page had no signup option. `robots.txt` contained nothing useful. Without credentials, the site appeared to be a dead end.
 
-I returned to Burp Suite and reviewed the site map. I then used Burp's content discovery feature to brute force files and directories. A `signup` endpoint returned a 200 response. I opened it manually in the browser and the page loaded.
+![login page](/images/blog/bug-bounty/login.png)
 
+I returned to Burp Suite and reviewed the site map. I then used Burp's content discovery feature to brute force files and directories. A `register` endpoint returned a 200 response. I opened it manually in the browser and the page loaded.
+
+![register page](/images/blog/bug-bounty/reg.png)
 I registered with my own details and checked my email. No confirmation message arrived. I attempted to log in with the account I had just created. It worked.
 
-The application did not restrict who could sign up. After authentication, the billing portal displayed every transaction the entity had processed from 2019 to 2026, including customer details and tax information.
+The application did not restrict who could register. After authentication, the billing portal displayed every transaction the entity had processed from 2019 to 2026, including customer details and tax information.
+
+![billing dashboard](/images/blog/bug-bounty/das.png)
 
 The root cause was a missing authorization check on account registration. The signup functionality existed but was never restricted, allowing any visitor to create an account and access the full billing dataset.
