@@ -738,8 +738,3 @@ The most useful findings usually come from correlating several artifacts rather 
 This guide is adapted from Windows Artifact Analysis: Evidence of..., a forensic reference poster by Kathryn Hedley, SANS Institute, document code `DFPS_FOR500_10-26`, copyright 2026.
 
 Artifact availability and behavior may vary by Windows version, configuration, and the condition of the evidence.
-
-```
-
-Before publishing, check that `images/blog/windows-forensic-artifacts.png` matches the actual image path in your project. I also corrected `fetured` to `featured` in the frontmatter and used `Digital Forensics` as the category.
-```
