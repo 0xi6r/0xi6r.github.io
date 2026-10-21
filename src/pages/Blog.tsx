@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -75,18 +75,54 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, children }) => {
   );
 };
 
+const preloadImage = (src: string): Promise<void> => new Promise((resolve) => {
+  const image = new Image();
+
+  image.onload = () => {
+    if (typeof image.decode === 'function') {
+      image.decode().catch(() => undefined).finally(resolve);
+      return;
+    }
+
+    resolve();
+  };
+  image.onerror = () => resolve();
+  image.src = src;
+});
+
+const getArticleImageSources = (post: BlogPost): string[] => {
+  const markdownImages = Array.from(
+    post.content.matchAll(/!\[[^\]]*]\(\s*<?([^\s)>]+)>?(?:\s+['"][^)]*['"])?\s*\)/g),
+    ([, source]) => source
+  );
+
+  return [...new Set([post.image, ...markdownImages].filter((source): source is string => Boolean(source)))];
+};
+
 const Blog: React.FC = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [viewCount, setViewCount] = useState<number>(0);
   const [shareCopied, setShareCopied] = useState(false);
+  const [preloadedPostId, setPreloadedPostId] = useState<string | null>(null);
 
   const location = useLocation();
   const navigate = useNavigate();
+  const searchParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
+  const requestedPostId = searchParams.get('post');
+  const selectedCategory = searchParams.get('category') || 'All';
+  const selectedPost = useMemo(
+    () => posts.find((post) => post.id === requestedPostId) || null,
+    [posts, requestedPostId]
+  );
+  const filteredPosts = useMemo(
+    () => selectedCategory === 'All'
+      ? posts
+      : posts.filter((post) => post.category === selectedCategory),
+    [posts, selectedCategory]
+  );
+  const isArticleReady = !selectedPost || preloadedPostId === selectedPost.id;
 
   // Define categories with their colors
   const categories = [
@@ -104,37 +140,33 @@ const Blog: React.FC = () => {
     loadBlogPosts();
   }, []);
 
-  // Filter posts when category or posts change
   useEffect(() => {
-    if (selectedCategory === 'All') {
-      setFilteredPosts(posts);
-    } else {
-      setFilteredPosts(posts.filter(post => post.category === selectedCategory));
+    if (selectedPost) {
+      fetchViewCount(selectedPost.id);
     }
-  }, [selectedCategory, posts]);
+  }, [selectedPost]);
 
-  // Handle URL changes using React Router location
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const postId = params.get('post');
-    const category = params.get('category');
+    let cancelled = false;
 
-    if (postId && posts.length > 0) {
-      const post = posts.find(p => p.id === postId);
-      setSelectedPost(post || null);
-      if (post) {
-        fetchViewCount(post.id);
+    if (!selectedPost) {
+      setPreloadedPostId(null);
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    setPreloadedPostId(null);
+    void Promise.all(getArticleImageSources(selectedPost).map(preloadImage)).then(() => {
+      if (!cancelled) {
+        setPreloadedPostId(selectedPost.id);
       }
-    } else {
-      setSelectedPost(null);
-    }
+    });
 
-    if (category) {
-      setSelectedCategory(category);
-    } else if (!postId) {
-      setSelectedCategory('All');
-    }
-  }, [location, posts]);
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedPost]);
 
   const fetchViewCount = async (postId: string) => {
     try {
@@ -216,7 +248,6 @@ const Blog: React.FC = () => {
       const loadedPosts = await Promise.all(postPromises);
       loadedPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       setPosts(loadedPosts);
-      setFilteredPosts(loadedPosts);
     } catch (err) {
       setError('Failed to load blog posts');
       console.error('Error loading blog posts:', err);
@@ -260,7 +291,6 @@ const Blog: React.FC = () => {
   };
 
   const handleCategoryClick = (categoryName: string): void => {
-    setSelectedCategory(categoryName);
     const params = new URLSearchParams();
     
     if (categoryName !== 'All') {
@@ -279,7 +309,6 @@ const Blog: React.FC = () => {
     }
     
     navigate(`/blog?${params.toString()}`, { replace: true });
-    setSelectedPost(post);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -290,7 +319,6 @@ const Blog: React.FC = () => {
     }
     
     navigate(`/blog?${params.toString()}`, { replace: true });
-    setSelectedPost(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -415,7 +443,9 @@ const Blog: React.FC = () => {
       <div className="min-h-screen pt-20 bg-black">
         <div className="max-w-4xl mx-auto px-4 pt-54 pb-8">
           <div className="text-center py-12 text-lg text-gray-400">
-            <div className="animate-pulse">Loading blog posts...</div>
+            <div className="animate-pulse">
+              {requestedPostId ? 'Loading article...' : 'Loading blog posts...'}
+            </div>
           </div>
         </div>
       </div>
@@ -428,6 +458,18 @@ const Blog: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 py-8">
           <div className="text-center py-12 text-lg text-red-400">
             {error}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (selectedPost && !isArticleReady) {
+    return (
+      <div className="min-h-screen pt-20 bg-black">
+        <div className="max-w-4xl mx-auto px-4 pt-54 pb-8">
+          <div className="text-center py-12 text-lg text-gray-400">
+            <div className="animate-pulse">Preparing article...</div>
           </div>
         </div>
       </div>
