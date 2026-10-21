@@ -6,9 +6,10 @@
   "homepage": "https://0xi6r.github.io",
   "scripts": {
     "dev": "vite",
-    "build": "bun run generate-rss && vite build",
+    "build": "bun run generate-rss && bun run generate-social-pages && vite build",
     "deploy": "gh-pages -b main -d build",
-    "generate-rss": "node scripts/generate-rss.js",
+    "generate-rss": "bun scripts/generate-rss.js",
+    "generate-social-pages": "bun scripts/generate-social-pages.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

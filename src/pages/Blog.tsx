@@ -198,8 +198,8 @@ const Blog: React.FC = () => {
     return colors[category] || colors['General'];
   };
 
-  const shareUrl = selectedPost 
-    ? `https://0xi6r.github.io/#/blog?post=${selectedPost.id}`
+  const shareUrl = selectedPost
+    ? `https://0xi6r.github.io/articles/${encodeURIComponent(selectedPost.id)}/`
     : '';
 
   const handleShare = (platform: 'twitter' | 'linkedin') => {
@@ -488,12 +488,13 @@ const Blog: React.FC = () => {
               <meta property="og:title" content={selectedPost.title} />
               <meta property="og:description" content={selectedPost.excerpt} />
               <meta property="og:type" content="article" />
-              <meta property="og:url" content={`https://0xi6r.github.io/#/blog?post=${selectedPost.id}`} />
+              <meta property="og:url" content={shareUrl} />
               {selectedPost.image && <meta property="og:image" content={selectedPost.image} />}
               <meta name="twitter:card" content="summary_large_image" />
               <meta name="twitter:title" content={selectedPost.title} />
               <meta name="twitter:description" content={selectedPost.excerpt} />
               {selectedPost.image && <meta name="twitter:image" content={selectedPost.image} />}
+              <link rel="canonical" href={shareUrl} />
             </Helmet>
 
             {/* Sticky Back Button */}

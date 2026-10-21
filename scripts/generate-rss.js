@@ -40,7 +40,7 @@ const items = files.map(filename => {
     date: metadata.date || new Date().toISOString().split('T')[0],
     description: metadata.excerpt || body.substring(0, 300) + '...',
     category: metadata.category || 'General',
-    link: `${SITE_URL}/#/blog?post=${id}`,
+    link: `${SITE_URL}/articles/${encodeURIComponent(id)}/`,
     id
   };
 });
