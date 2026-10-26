@@ -29,7 +29,7 @@ body { min-width: 320px; background: #08090b; color: #f5f5f7; }
 .site-nav__menu { display: none; color: #fff; padding: 8px; }
 
 .hero { padding: 166px 0 88px; }
-.hero__grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(290px, .8fr); gap: 32px; align-items: end; }
+.hero__grid { display: block; }
 .hero__title { max-width: 720px; margin: 16px 0 20px; color: #f5f5f7; font-size: clamp(3.2rem, 8vw, 6.8rem); font-weight: 700; letter-spacing: -.075em; line-height: .93; }
 .hero__copy { max-width: 530px; color: #a8afb9; font-size: clamp(1.02rem, 2vw, 1.22rem); line-height: 1.55; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
@@ -38,10 +38,6 @@ body { min-width: 320px; background: #08090b; color: #f5f5f7; }
 .button-primary:hover { background: #e0a563; transform: translateY(-1px); }
 .button-secondary { color: #d9dde4; border: 1px solid rgba(255, 255, 255, .14); background: rgba(255, 255, 255, .04); }
 .button-secondary:hover { background: rgba(255, 255, 255, .1); }
-.hero__note { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; min-height: 230px; padding: 26px; border: 1px solid rgba(255, 255, 255, .1); border-radius: 24px; background: linear-gradient(145deg, rgba(34, 47, 64, .82), rgba(18, 19, 23, .78)); box-shadow: inset 0 1px rgba(255,255,255,.07); }
-.hero__note-label { color: #e0a563; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.hero__note p { margin-top: 13px; color: #e5e9ef; font-size: 1.08rem; font-weight: 550; line-height: 1.35; letter-spacing: -.02em; }
-
 .research-feature { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr); overflow: hidden; margin-bottom: 112px; border: 1px solid rgba(255,255,255,.1); border-radius: 28px; background: #111216; box-shadow: 0 24px 80px rgba(0,0,0,.22); }
 .research-feature__body { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(28px, 5vw, 56px); }
 .research-feature__category, .article-category { color: #e0a563; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
@@ -153,7 +149,6 @@ body { min-width: 320px; background: #08090b; color: #f5f5f7; }
   .site-nav__menu { display: block; }
   .hero { padding: 130px 0 64px; }
   .hero__grid, .research-feature { grid-template-columns: 1fr; }
-  .hero__note { min-height: 180px; }
   .research-feature { margin-bottom: 76px; }
   .research-feature__image { min-height: 220px; order: -1; }
   .article-grid, .focus-grid, .project-grid, .content-grid, .contact-grid { grid-template-columns: 1fr; }

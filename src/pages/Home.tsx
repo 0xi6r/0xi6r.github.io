@@ -134,10 +134,6 @@ const HomePage: React.FC = () => {
                 <Link to="/about" className="button-secondary">About the researcher</Link>
               </div>
             </div>
-            <aside className="hero__note">
-              <span className="hero__note-label">Security research</span>
-              <p>Understand the system. Reduce the risk.</p>
-            </aside>
           </div>
         </section>
 
