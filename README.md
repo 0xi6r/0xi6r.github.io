@@ -1,22 +1,18 @@
-<div align="center">
-  <h1>
-    <img src="public/0xi6r.png" width="40" style="vertical-align: middle;" />
-    Labs
-  </h1>
-</div>
+# 0xi6r
 
-![home](public/portfolio.png)
+Personal security research portfolio and blog.
 
-This repository contains the source code for my personal portfolio website and its supporting backend services.
+Built with React, TypeScript, Vite, and Tailwind CSS.
 
-## Status
-✅ **Stable** — The portfolio is production-ready and actively maintained.
+## Development
 
-## Overview
-The site showcases my work, projects, and research with a focus on performance, simplicity, and clean design. Everything currently implemented is functional and tested as intended.
+```bash
+bun install
+bun run dev
+```
 
-## Usage
-Feel free to explore, learn from, or adapt parts of the code for your own projects. If you run into issues or have suggestions, feel free to reach out.
+## Build
 
-## License
-Open for personal and educational use. Credit is appreciated for significant reuse.
+```bash
+bun run build
+```
