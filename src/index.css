@@ -29,9 +29,9 @@ body { min-width: 320px; background: #08090b; color: #f5f5f7; }
 .site-nav__menu { display: none; color: #fff; padding: 8px; }
 
 .hero { padding: 166px 0 88px; }
-.hero__grid { display: block; }
-.hero__title { max-width: 720px; margin: 16px 0 20px; color: #f5f5f7; font-size: clamp(3.2rem, 8vw, 6.8rem); font-weight: 700; letter-spacing: -.075em; line-height: .93; }
-.hero__copy { max-width: 530px; color: #a8afb9; font-size: clamp(1.02rem, 2vw, 1.22rem); line-height: 1.55; }
+.hero__grid { display: block; width: min(64vw, 760px); }
+.hero__title { max-width: 760px; margin: 16px 0 20px; color: #f5f5f7; font-size: clamp(3.2rem, 8vw, 6.8rem); font-weight: 700; letter-spacing: -.075em; line-height: .93; }
+.hero__copy { max-width: 650px; color: #a8afb9; font-size: clamp(1.02rem, 2vw, 1.22rem); line-height: 1.55; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .button-primary, .button-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 11px 15px; border-radius: 999px; font-size: .88rem; font-weight: 650; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
 .button-primary { background: #c88745; color: #120e09; box-shadow: 0 8px 24px rgba(200, 135, 69, .22); }
@@ -148,7 +148,8 @@ body { min-width: 320px; background: #08090b; color: #f5f5f7; }
   .site-nav__links--open { position: absolute; top: 65px; right: 10px; display: flex; flex-direction: column; align-items: stretch; min-width: 180px; padding: 8px; background: rgba(25,26,31,.96); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; box-shadow: 0 18px 40px rgba(0,0,0,.35); }
   .site-nav__menu { display: block; }
   .hero { padding: 130px 0 64px; }
-  .hero__grid, .research-feature { grid-template-columns: 1fr; }
+  .hero__grid { width: 100%; }
+  .research-feature { grid-template-columns: 1fr; }
   .research-feature { margin-bottom: 76px; }
   .research-feature__image { min-height: 220px; order: -1; }
   .article-grid, .focus-grid, .project-grid, .content-grid, .contact-grid { grid-template-columns: 1fr; }

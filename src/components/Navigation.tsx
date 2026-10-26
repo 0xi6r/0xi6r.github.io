@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Logo from '/0xi6r.svg';
 
 const navItems = [
-  { name: 'Research', href: '/blog' },
+  { name: 'Blog', href: '/blog' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];
