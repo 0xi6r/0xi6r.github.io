@@ -124,7 +124,7 @@ const HomePage: React.FC = () => {
         <section className="hero">
           <div className="hero__grid">
             <div>
-              <p className="page-kicker">Independent security research</p>
+              <p className="page-kicker">Security research</p>
               <h1 className="hero__title">Security, examined.</h1>
               <p className="hero__copy">
                 Field notes on offensive security, vulnerability research, and the systems that shape modern risk.
@@ -135,8 +135,8 @@ const HomePage: React.FC = () => {
               </div>
             </div>
             <aside className="hero__note">
-              <span className="hero__note-label">Research principle</span>
-              <p>Understand the system deeply enough to make it safer.</p>
+              <span className="hero__note-label">Security research</span>
+              <p>Understand the system. Reduce the risk.</p>
             </aside>
           </div>
         </section>

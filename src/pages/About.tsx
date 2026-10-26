@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const stats = [
   { icon: Shield, value: 'Offensive', label: 'Security research' },
   { icon: Award, value: 'OSCP · CEH', label: 'Active certifications' },
-  { icon: Users, value: 'Independent', label: 'Research practice' },
+  { icon: Users, value: 'Security', label: 'Research practice' },
 ];
 
 const About = () => (
@@ -13,7 +13,7 @@ const About = () => (
       <header className="content-hero">
         <p className="page-kicker">About the practice</p>
         <h1>Curiosity, applied with care.</h1>
-        <p>Independent offensive security research focused on finding the weaknesses that matter and communicating how to fix them.</p>
+        <p>Offensive security research focused on finding the weaknesses that matter and communicating how to fix them.</p>
       </header>
 
       <div className="content-grid">
