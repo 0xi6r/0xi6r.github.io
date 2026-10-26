@@ -185,19 +185,6 @@ const Blog: React.FC = () => {
       .slice(0, 3);
   };
 
-  const getCategoryColor = (category: string): string => {
-    const colors: { [key: string]: string } = {
-      'Red Team': 'bg-red-500',
-      'Vulnerability Research': 'bg-orange-500',
-      'Tool Development': 'bg-green-500',
-      'Threat Intelligence': 'bg-purple-500',
-      'Malware Analysis': 'bg-yellow-500',
-      'Bug Bounty': 'bg-emerald-500',
-      'General': 'bg-cyan-500'
-    };
-    return colors[category] || colors['General'];
-  };
-
   const shareUrl = selectedPost
     ? `https://0xi6r.github.io/articles/${encodeURIComponent(selectedPost.id)}/`
     : '';
@@ -477,10 +464,10 @@ const Blog: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen pt-10 bg-black scroll-smooth">
-      <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="site-frame scroll-smooth">
+      <div className="journal-page">
         {selectedPost ? (
-          <div className="animate-fade-in">
+          <div className="reader animate-fade-in">
             {/* Dynamic Meta Tags for Social Sharing */}
             <Helmet>
               <title>{selectedPost.title} - 0xi6r</title>
@@ -497,28 +484,29 @@ const Blog: React.FC = () => {
               <link rel="canonical" href={shareUrl} />
             </Helmet>
 
-            {/* Sticky Back Button */}
             <button
-              className="fixed bottom-4 left-4 sm:bottom-8 sm:left-8 z-50 px-3 py-2 sm:px-4 text-sm sm:text-base bg-gray-900 hover:bg-gray-700 text-gray-100 rounded-lg transition-all duration-200 flex items-center gap-2 border border-gray-700 shadow-2xl hover:shadow-blue-500/20 hover:scale-105 backdrop-blur-sm bg-opacity-95"
+              className="reader-back"
               onClick={handleBackToList}
               type="button"
             >
-              <span>←</span> <span className="hidden sm:inline">Back to</span> Blog
+              <span>←</span> Research archive
             </button>
 
-            <article className="bg-black p-4 sm:p-8 shadow-xl">
-              <header className="mb-8 pb-6 border-b border-gray-700">
-                <h1 className="text-3xl sm:text-4xl font-bold mb-3 text-gray-100 leading-tight">
+            <article>
+              <header className="reader-header">
+                <p className="article-category">{selectedPost.category}</p>
+                <h1 className="reader-title">
                   {selectedPost.title}
                 </h1>
 
                 {selectedPost.subtitle && (
-                  <p className="text-lg text-gray-400 mb-4 leading-relaxed">
+                  <p className="reader-subtitle">
                     {selectedPost.subtitle}
                   </p>
                 )}
 
-                <div className="text-gray-400 text-sm sm:text-base flex flex-wrap items-center gap-2 sm:gap-4 mb-4">
+                <div className="reader-header__footer">
+                  <div className="article-meta" style={{ marginTop: 0 }}>
                   <time
                     className="flex items-center gap-2"
                     dateTime={selectedPost.date}
@@ -528,7 +516,7 @@ const Blog: React.FC = () => {
                     </svg>
                     {selectedPost.date}
                   </time>
-                  <span className="hidden sm:inline">•</span>
+                  <span>•</span>
                   <span className="flex items-center gap-2">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
@@ -537,7 +525,7 @@ const Blog: React.FC = () => {
                   </span>
                   {viewCount > 0 && (
                     <>
-                      <span className="hidden sm:inline">•</span>
+                      <span>•</span>
                       <span className="flex items-center gap-2">
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -547,14 +535,12 @@ const Blog: React.FC = () => {
                       </span>
                     </>
                   )}
-                </div>
+                  </div>
 
-                {/* Share Buttons */}
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-500 text-sm">Share:</span>
+                <div className="share-actions" aria-label="Share article">
                   <button
                     onClick={() => handleShare('twitter')}
-                    className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
+                    className=""
                     title="Share on Twitter/X"
                   >
                     <svg className="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
@@ -563,7 +549,7 @@ const Blog: React.FC = () => {
                   </button>
                   <button
                     onClick={() => handleShare('linkedin')}
-                    className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
+                    className=""
                     title="Share on LinkedIn"
                   >
                     <svg className="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
@@ -572,7 +558,7 @@ const Blog: React.FC = () => {
                   </button>
                   <button
                     onClick={handleCopyLink}
-                    className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
+                    className=""
                     title="Copy link"
                   >
                     {shareCopied ? (
@@ -586,10 +572,10 @@ const Blog: React.FC = () => {
                     )}
                   </button>
                 </div>
+                </div>
               </header>
 
-              {/* Article Content with Optional YouTube Video */}
-              <div className="prose prose-lg prose-invert max-w-none prose-headings:scroll-mt-20 prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-800">
+              <div className="article-prose">
                 <ReactMarkdown
                   components={markdownComponents}
                   remarkPlugins={[remarkGfm]}
@@ -600,7 +586,7 @@ const Blog: React.FC = () => {
                 {/* YouTube Video Embed */}
                 {selectedPost.youtube && (
                   <div className="my-8 not-prose">
-                    <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-gray-700 shadow-2xl">
+                    <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl">
                       <iframe
                         className="absolute inset-0 w-full h-full"
                         src={`https://www.youtube.com/embed/${selectedPost.youtube}`}
@@ -622,19 +608,19 @@ const Blog: React.FC = () => {
 
               {/* Related Posts */}
               {getRelatedPosts(selectedPost).length > 0 && (
-                <div className="mt-12 pt-8 border-t border-gray-700">
-                  <h3 className="text-xl font-bold text-white mb-6">Related Posts</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="related-section">
+                  <h3 className="section-title" style={{ fontSize: '1.45rem', marginBottom: '20px' }}>Related research</h3>
+                  <div className="article-grid">
                     {getRelatedPosts(selectedPost).map((related) => (
                       <div
                         key={related.id}
-                        className="p-4 bg-zinc-950 rounded-lg cursor-pointer hover:bg-zinc-900 transition-colors"
+                        className="article-card__body border border-white/10 rounded-2xl cursor-pointer hover:bg-white/5 transition-colors"
                         onClick={() => handlePostClick(related)}
                       >
-                        <span className={`inline-block px-2 py-1 rounded text-white text-xs font-medium mb-2 ${getCategoryColor(related.category || 'General')}`}>
+                        <span className="article-category">
                           {related.category}
                         </span>
-                        <h4 className="text-white font-semibold text-sm mb-1 leading-snug">{related.title}</h4>
+                        <h4 className="article-card__title">{related.title}</h4>
                         <span className="text-gray-500 text-xs">{related.readTime}</span>
                       </div>
                     ))}
@@ -656,8 +642,13 @@ const Blog: React.FC = () => {
               <meta name="twitter:card" content="summary_large_image" />
             </Helmet>
 
-            {/* Category Filter Pills */}
-            <div className="mb-8 sticky top-16 bg-black pt-4 pb-4 z-40 border-b border-gray-800">
+            <header className="archive-heading">
+              <p className="page-kicker">Research archive</p>
+              <h1>Notes from the field.</h1>
+              <p>Technical investigations, defensive lessons, and practical experiments in offensive security.</p>
+            </header>
+
+            <div className="archive-filters">
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {categories.map((category) => {
                   const count = getCategoryCount(category.name);
@@ -667,34 +658,18 @@ const Blog: React.FC = () => {
                     <button
                       key={category.name}
                       onClick={() => handleCategoryClick(category.name)}
-                      className={`
-                        px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
-                        flex items-center gap-2
-                        ${selectedCategory === category.name
-                          ? `${category.color} text-white shadow-lg scale-105`
-                          : 'bg-white text-gray-800 hover:bg-gray-100 hover:scale-105 border border-gray-300'
-                        }
-                      `}
+                      className={`archive-filter ${selectedCategory === category.name ? 'archive-filter--active' : ''}`}
                       type="button"
                     >
                       <span>{category.name}</span>
-                      <span className={`
-                        text-xs px-2 py-0.5 rounded-full
-                        ${selectedCategory === category.name
-                          ? 'bg-black/30'
-                          : 'bg-gray-200 text-gray-700'
-                        }
-                      `}>
-                        {count}
-                      </span>
+                      <span>({count})</span>
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            {/* Posts List */}
-            <div className="space-y-6">
+            <div className="archive-list">
               {filteredPosts.length === 0 ? (
                 <div className="text-center py-12 text-gray-500 italic">
                   <div className="text-6xl mb-4">📝</div>
@@ -710,7 +685,7 @@ const Blog: React.FC = () => {
                 filteredPosts.map((post) => (
                   <article
                     key={post.id}
-                    className="p-6 bg-black hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1 hover:border-gray-600 transition-all duration-300 cursor-pointer group border border-gray-800 rounded-lg"
+                    className="archive-item group"
                     onClick={() => handlePostClick(post)}
                     role="button"
                     tabIndex={0}
@@ -720,17 +695,13 @@ const Blog: React.FC = () => {
                       }
                     }}
                   >
-                    <h2 className="text-2xl font-bold mb-3 text-gray-100 group-hover:text-blue-400 transition-colors duration-200">
-                      {post.title}
-                    </h2>
-
-                    {post.subtitle && (
-                      <p className="text-gray-400 text-sm mb-3 leading-relaxed">
-                        {post.subtitle}
-                      </p>
-                    )}
-
-                    <div className="text-gray-500 text-sm flex flex-wrap items-center gap-2 sm:gap-4 mb-4">
+                    <time className="archive-item__date" dateTime={post.date}>
+                      {post.date}
+                    </time>
+                    <div>
+                      <h2 className="archive-item__title">{post.title}</h2>
+                      <p className="archive-item__copy">{post.subtitle || post.excerpt}</p>
+                      <div className="article-meta" style={{ marginTop: '14px' }}>
                       <time
                         className="flex items-center gap-2"
                         dateTime={post.date}
@@ -747,11 +718,9 @@ const Blog: React.FC = () => {
                         </svg>
                         {post.readTime}
                       </span>
+                      </div>
                     </div>
-
-                    <p className="text-gray-300 leading-relaxed">
-                      {post.excerpt}
-                    </p>
+                    <span className="archive-item__type">{post.category}</span>
                   </article>
                 ))
               )}
