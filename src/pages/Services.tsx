@@ -200,7 +200,6 @@ const ServicesPage: React.FC = () => {
   return (
     <div className="min-h-screen pt-20 bg-black">
       <div className="max-w-6xl mx-auto px-4 py-12">
-        {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Offensive Security <span className="text-amber-400">Expertise</span>
@@ -219,7 +218,6 @@ const ServicesPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Services List */}
         <div className="space-y-6 mb-20">
           {services.map((service) => (
             <div 
@@ -230,7 +228,6 @@ const ServicesPage: React.FC = () => {
                   : 'border-gray-800 hover:border-gray-700'
               }`}
             >
-              {/* Service Header - Always Visible */}
               <button
                 onClick={() => toggleExpand(service.id)}
                 className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors"
@@ -263,11 +260,9 @@ const ServicesPage: React.FC = () => {
                 </div>
               </button>
 
-              {/* Expandable Content */}
               {expandedId === service.id && (
                 <div className="p-6 pt-0 border-t border-gray-800">
                   <div className="grid md:grid-cols-2 gap-8">
-                    {/* Left Column - Description & Key Points */}
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-4">Detailed Overview</h4>
                       <p className="text-gray-300 mb-6 leading-relaxed">
@@ -287,7 +282,6 @@ const ServicesPage: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Right Column - Deliverables & Technologies */}
                     <div className="space-y-6">
                       {service.deliverables && (
                         <div>
@@ -321,7 +315,6 @@ const ServicesPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Footer with CTA */}
                   <div className="mt-8 pt-6 border-t border-gray-800">
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                       <p className="text-gray-400 text-sm">
@@ -342,7 +335,6 @@ const ServicesPage: React.FC = () => {
           ))}
         </div>
 
-        {/* Contact CTA Section */}
         <div className="bg-gradient-to-r from-gray-900 to-black border border-gray-800 rounded-2xl p-8 md:p-12 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Want To Talk Security?
@@ -359,7 +351,7 @@ const ServicesPage: React.FC = () => {
               Hire me!
             </Link>
             <a
-              href="https://github.com/0xi6r" // Replace with your GitHub
+              href="https://github.com/0xi6r"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 border border-gray-700 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition-colors inline-flex items-center justify-center"

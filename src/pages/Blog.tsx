@@ -124,7 +124,6 @@ const Blog: React.FC = () => {
   );
   const isArticleReady = !selectedPost || preloadedPostId === selectedPost.id;
 
-  // Define categories with their colors
   const categories = [
     { name: 'All', color: 'bg-gray-700' },
     { name: 'Red Team', color: 'bg-red-500' },
@@ -309,7 +308,6 @@ const Blog: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Enhanced markdown components with syntax highlighting
   const markdownComponents: Components = {
     h1: ({ children }) => (
       <h1 className="text-3xl font-bold mt-8 mb-4 text-gray-100 scroll-mt-20">
@@ -468,7 +466,6 @@ const Blog: React.FC = () => {
       <div className="journal-page">
         {selectedPost ? (
           <div className="reader animate-fade-in">
-            {/* Dynamic Meta Tags for Social Sharing */}
             <Helmet>
               <title>{selectedPost.title} - 0xi6r</title>
               <meta name="description" content={selectedPost.excerpt} />
@@ -583,7 +580,6 @@ const Blog: React.FC = () => {
                   {selectedPost.content}
                 </ReactMarkdown>
 
-                {/* YouTube Video Embed */}
                 {selectedPost.youtube && (
                   <div className="my-8 not-prose">
                     <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl">
@@ -606,7 +602,6 @@ const Blog: React.FC = () => {
                 )}
               </div>
 
-              {/* Related Posts */}
               {getRelatedPosts(selectedPost).length > 0 && (
                 <div className="related-section">
                   <h3 className="section-title" style={{ fontSize: '1.45rem', marginBottom: '20px' }}>Related research</h3>
@@ -631,7 +626,6 @@ const Blog: React.FC = () => {
           </div>
         ) : (
           <div>
-            {/* Default Meta Tags for Blog List */}
             <Helmet>
               <title>Blog - 0xi6r</title>
               <meta name="description" content="Security research, malware analysis, and red team articles" />

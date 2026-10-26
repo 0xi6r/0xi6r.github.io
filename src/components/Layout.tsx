@@ -10,7 +10,6 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   
-  // Define ALL pages that should NOT have a footer
   const pagesWithoutFooter = [
     '/blog',
     '/contact',
@@ -21,11 +20,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     '/PrivacyPolicy',
     '/VulnResearch',
     '/sitemap',
-    // Add services page if you create it
-    // Add more pages as needed
   ];
   
-  // Check if current path is in the excluded list
   const shouldShowFooter = !pagesWithoutFooter.includes(location.pathname);
   
   return (

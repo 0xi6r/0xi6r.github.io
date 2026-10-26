@@ -20,7 +20,6 @@ function App() {
     <HelmetProvider>
       <Router>
         <ScrollToTop />
-        {/* Default Meta Tags */}
         <Helmet>
           <title>0xi6r - Infosec Research</title>
           <meta name="description" content="Security research, malware analysis, and red team content" />

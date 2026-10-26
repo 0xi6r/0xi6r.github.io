@@ -19,7 +19,6 @@ const TermsOfService = () => {
   const [activeSection, setActiveSection] = useState('introduction');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Update activeSection as user scrolls
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100;
@@ -68,12 +67,10 @@ const TermsOfService = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Header */}
       <div className="bg-black border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <h1 className="text-3xl font-bold text-white">Terms of Service</h1>
-            {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-300 hover:bg-gray-800"
@@ -87,7 +84,6 @@ const TermsOfService = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-80">
           <div className="fixed inset-y-0 left-0 w-80 bg-gray-900 shadow-xl overflow-y-auto border-r border-gray-800">
@@ -109,7 +105,6 @@ const TermsOfService = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="flex gap-8">
-          {/* Sidebar Navigation - Desktop */}
           <div className="hidden lg:block w-80 flex-shrink-0">
             <div className="sticky top-8">
               <div className="bg-black rounded-lg border border-gray-800 p-6">
@@ -118,11 +113,9 @@ const TermsOfService = () => {
             </div>
           </div>
 
-          {/* Main Content */}
           <div className="flex-1 min-w-0">
             <div className="bg-black rounded-lg border border-black">
               <div className="p-8 space-y-12">
-                {/* Each Section */}
                 <section id="introduction">
                   <h2 className="text-2xl font-bold text-white mb-4">Introduction</h2>
                   <p className="text-gray-300 leading-relaxed mb-2">
