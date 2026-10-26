@@ -34,7 +34,7 @@ const PrivacyPolicy = () => (
           For any privacy requests or questions, email&nbsp;
           <a
             href="mailto:0xi6r@tutamail.com"
-            className="text-cyan-400 underline hover:text-cyan-300"
+            className="text-amber-400 underline hover:text-amber-300"
           >
             0xi6r@tutamail.com
           </a>.

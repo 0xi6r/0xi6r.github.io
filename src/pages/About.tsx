@@ -33,7 +33,7 @@ const About = () => (
         <aside style={{ display: 'grid', gap: '12px' }}>
           {stats.map((stat) => (
             <div className="content-stat" key={stat.label}>
-              <stat.icon size={18} color="#7db8ff" />
+              <stat.icon size={18} color="#e0a563" />
               <p className="content-stat__value" style={{ marginTop: '14px' }}>{stat.value}</p>
               <p className="content-stat__label">{stat.label}</p>
             </div>

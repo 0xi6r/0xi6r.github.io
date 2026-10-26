@@ -203,16 +203,16 @@ const ServicesPage: React.FC = () => {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Offensive Security <span className="text-cyan-400">Expertise</span>
+            Offensive Security <span className="text-amber-400">Expertise</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
             Comprehensive offensive security services designed to identify, exploit, and help remediate vulnerabilities. Each service is tailored to meet specific security testing requirements.
           </p>
-          <div className="inline-flex items-center space-x-2 text-cyan-400 font-medium">
+          <div className="inline-flex items-center space-x-2 text-amber-400 font-medium">
             <Mail className="w-5 h-5" />
             <Link 
               to="/contact" 
-              className="hover:text-cyan-300 transition-colors"
+              className="hover:text-amber-300 transition-colors"
             >
               Contact for Inquiries, collaboration & Engagement
             </Link>
@@ -226,7 +226,7 @@ const ServicesPage: React.FC = () => {
               key={service.id}
               className={`bg-black border rounded-xl overflow-hidden transition-all duration-300 ${
                 expandedId === service.id 
-                  ? 'border-cyan-500/50 shadow-lg shadow-cyan-500/10' 
+                  ? 'border-amber-500/50 shadow-lg shadow-amber-500/10'
                   : 'border-gray-800 hover:border-gray-700'
               }`}
             >
@@ -237,10 +237,10 @@ const ServicesPage: React.FC = () => {
               >
                 <div className="flex items-start space-x-4">
                   <div className={`p-3 rounded-lg ${
-                    expandedId === service.id ? 'bg-cyan-500/20' : 'bg-gray-800'
+                    expandedId === service.id ? 'bg-amber-500/20' : 'bg-gray-800'
                   }`}>
                     <div className={`${
-                      expandedId === service.id ? 'text-cyan-400' : 'text-gray-300'
+                      expandedId === service.id ? 'text-amber-400' : 'text-gray-300'
                     }`}>
                       {service.icon}
                     </div>
@@ -256,7 +256,7 @@ const ServicesPage: React.FC = () => {
                 </div>
                 <div className="ml-4">
                   {expandedId === service.id ? (
-                    <ChevronUp className="w-5 h-5 text-cyan-400" />
+                    <ChevronUp className="w-5 h-5 text-amber-400" />
                   ) : (
                     <ChevronDown className="w-5 h-5 text-gray-400" />
                   )}
@@ -279,7 +279,7 @@ const ServicesPage: React.FC = () => {
                         <ul className="space-y-2">
                           {service.keyPoints.map((point, index) => (
                             <li key={index} className="flex items-start">
-                              <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2 mr-3 flex-shrink-0" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 mr-3 flex-shrink-0" />
                               <span className="text-gray-300">{point}</span>
                             </li>
                           ))}
@@ -329,7 +329,7 @@ const ServicesPage: React.FC = () => {
                       </p>
                       <Link
                         to="/contact"
-                        className="inline-flex items-center px-6 py-3 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 transition-colors"
+                        className="inline-flex items-center px-6 py-3 bg-amber-600 text-white font-medium rounded-lg hover:bg-amber-700 transition-colors"
                       >
                         <Mail className="w-4 h-4 mr-2" />
                         Discuss This Service
@@ -353,7 +353,7 @@ const ServicesPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="px-8 py-4 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 transition-colors inline-flex items-center justify-center"
+              className="px-8 py-4 bg-amber-600 text-white font-medium rounded-lg hover:bg-amber-700 transition-colors inline-flex items-center justify-center"
             >
               <Mail className="w-5 h-5 mr-2" />
               Hire me!

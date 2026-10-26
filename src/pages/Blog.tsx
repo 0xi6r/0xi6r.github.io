@@ -133,7 +133,7 @@ const Blog: React.FC = () => {
     { name: 'Threat Intelligence', color: 'bg-purple-500' },
     { name: 'Malware Analysis', color: 'bg-yellow-500' },
     { name: 'Bug Bounty', color: 'bg-emerald-500' },
-    { name: 'General', color: 'bg-cyan-500' }
+    { name: 'General', color: 'bg-amber-500' }
   ];
 
   useEffect(() => {
@@ -355,7 +355,7 @@ const Blog: React.FC = () => {
           {codeString}
         </CodeBlock>
       ) : (
-        <code className="bg-gray-800 text-blue-300 px-2 py-1 rounded text-sm font-mono" {...props}>
+        <code className="bg-gray-800 text-amber-200 px-2 py-1 rounded text-sm font-mono" {...props}>
           {children}
         </code>
       );
@@ -366,7 +366,7 @@ const Blog: React.FC = () => {
       </div>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-blue-500 bg-gray-800 pl-4 py-2 my-4 italic text-gray-300 rounded-r">
+      <blockquote className="border-l-4 border-amber-500 bg-gray-800 pl-4 py-2 my-4 italic text-gray-300 rounded-r">
         {children}
       </blockquote>
     ),
@@ -383,7 +383,7 @@ const Blog: React.FC = () => {
     a: ({ children, href }) => (
       <a
         href={href}
-        className="text-blue-400 hover:text-blue-300 underline transition-colors duration-200"
+        className="text-amber-400 hover:text-amber-300 underline transition-colors duration-200"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -676,7 +676,7 @@ const Blog: React.FC = () => {
                   <p>No blog posts found in this category.</p>
                   <button
                     onClick={() => handleCategoryClick('All')}
-                    className="mt-4 text-cyan-400 hover:text-cyan-300 underline"
+                    className="mt-4 text-amber-400 hover:text-amber-300 underline"
                   >
                     View all posts
                   </button>

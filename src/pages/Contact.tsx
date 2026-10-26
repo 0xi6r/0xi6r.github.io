@@ -42,12 +42,12 @@ const Contact = () => {
             <div className="content-panel">
               <h2>Direct channels</h2>
               <div className="contact-list">
-                <a className="contact-item" href="mailto:0xi6r@tutamail.com"><Mail size={18} color="#7db8ff" /><span><strong>Email</strong>0xi6r@tutamail.com</span></a>
-                <div className="contact-item"><MapPin size={18} color="#7db8ff" /><span><strong>Location</strong>Remote / East Africa</span></div>
-                <div className="contact-item"><Clock size={18} color="#7db8ff" /><span><strong>Response time</strong>Usually within 24–48 hours</span></div>
+                <a className="contact-item" href="mailto:0xi6r@tutamail.com"><Mail size={18} color="#e0a563" /><span><strong>Email</strong>0xi6r@tutamail.com</span></a>
+                <div className="contact-item"><MapPin size={18} color="#e0a563" /><span><strong>Location</strong>Remote / East Africa</span></div>
+                <div className="contact-item"><Clock size={18} color="#e0a563" /><span><strong>Response time</strong>Usually within 24–48 hours</span></div>
               </div>
             </div>
-            <a className="content-panel contact-item" href="https://github.com/0xi6r" target="_blank" rel="noopener noreferrer"><Github size={18} color="#7db8ff" /><span><strong>GitHub</strong>Open-source tools and experiments</span></a>
+            <a className="content-panel contact-item" href="https://github.com/0xi6r" target="_blank" rel="noopener noreferrer"><Github size={18} color="#e0a563" /><span><strong>GitHub</strong>Open-source tools and experiments</span></a>
           </aside>
 
           <section className="content-panel">
