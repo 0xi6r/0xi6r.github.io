@@ -124,14 +124,13 @@ const HomePage: React.FC = () => {
         <section className="hero">
           <div className="hero__grid">
             <div>
-              <p className="page-kicker">Security research</p>
-              <h1 className="hero__title">Security, examined.</h1>
+              <h1 className="hero__title">Dev & Security, examined.</h1>
               <p className="hero__copy">
-                Field notes on offensive security, vulnerability research, and the systems that shape modern risk.
+                Field notes on Web Development, offensive security, Malware Analysis, Threat Intel  and the systems that shape modern risk.
               </p>
               <div className="hero__actions">
                 <Link to="/blog" className="button-primary">Explore research <ArrowRight size={16} /></Link>
-                <Link to="/about" className="button-secondary">About the researcher</Link>
+                <Link to="/about" className="button-secondary">whoami</Link>
               </div>
             </div>
           </div>
@@ -190,7 +189,7 @@ const HomePage: React.FC = () => {
 
         <section className="focus-section">
           <p className="page-kicker">Areas of focus</p>
-          <h2 className="section-title" style={{ marginTop: '8px' }}>A practical security practice.</h2>
+          <h2 className="section-title" style={{ marginTop: '8px' }}>A practical Dev & security practice.</h2>
           <div className="focus-grid">
             {focusAreas.map((area) => (
               <Link key={area} to={`/blog?category=${encodeURIComponent(area)}`} className="focus-link">
