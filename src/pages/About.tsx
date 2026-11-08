@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const stats = [
   { icon: Shield, value: 'Offensive', label: 'Research & red team' },
   { icon: Award, value: 'OSCP · CEH', label: 'Ongoing Certifications' },
-  { icon: Code2, value: 'Full-stack', label: 'Bun · Go · Typescript' },
+  { icon: Code2, value: 'Full-stack', label: 'Bun · Go · Next.js · Python3' },
 ];
 
 const About = () => (
@@ -13,7 +13,7 @@ const About = () => (
       <header className="content-hero">
         <h1>Curiosity, applied with care.</h1>
         <p>
-          Full-stack developer in offensive security. I find the weaknesses that matter and explain how to fix them.
+          Full-stack developer in offensive security. I build, test, deploy & find weaknesses that matter and explain how to fix them.
         </p>
       </header>
 
