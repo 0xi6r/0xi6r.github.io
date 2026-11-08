@@ -126,6 +126,7 @@ const Blog: React.FC = () => {
 
   const categories = [
     { name: 'All', color: 'bg-gray-700' },
+    { name: 'Web Dev', color: 'bg-gray-700' },
     { name: 'Red Team', color: 'bg-red-500' },
     { name: 'Vulnerability Research', color: 'bg-orange-500' },
     { name: 'Tool Development', color: 'bg-green-500' },
