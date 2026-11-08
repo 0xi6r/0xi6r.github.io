@@ -1,5 +1,7 @@
-import { Clock, Github, Linkedin, Mail, MapPin, Send } from 'lucide-react';
+import { Github, Linkedin, Mail, Send } from 'lucide-react';
 import React, { useState } from 'react';
+
+const ACCENT = '#e0a563';
 
 const XIcon = ({ size = 18, color = 'currentColor' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill={color} aria-hidden="true">
@@ -13,9 +15,7 @@ const MastodonIcon = ({ size = 18, color = 'currentColor' }) => (
   </svg>
 );
 
-const ACCENT = '#e0a563';
-
-const socials = [
+const channels = [
   { icon: Github, name: 'GitHub', desc: 'Open-source tools and experiments', href: 'https://github.com/0xi6r' },
   { icon: XIcon, name: 'X', desc: 'Short updates and research notes', href: 'https://x.com/0xi6r' },
   { icon: MastodonIcon, name: 'Mastodon', desc: 'Infosec community discussion', href: 'https://infosec.exchange/@0x_i6r', rel: 'me noopener noreferrer' },
@@ -62,24 +62,24 @@ const Contact = () => {
             <div className="content-panel">
               <h2>Direct channels</h2>
               <div className="contact-list">
-                <a className="contact-item" href="mailto:0xi6r@tutamail.com"><Mail size={18} color={ACCENT} /><span><strong>Email</strong>0xi6r@tutamail.com</span></a>
-                <div className="contact-item"><MapPin size={18} color={ACCENT} /><span><strong>Location</strong>Remote / East Africa</span></div>
-                <div className="contact-item"><Clock size={18} color={ACCENT} /><span><strong>Response time</strong>Usually within 24–48 hours</span></div>
+                <a className="contact-item" href="mailto:0xi6r@tutamail.com">
+                  <Mail size={18} color={ACCENT} aria-hidden="true" />
+                  <span><strong>Email</strong>0xi6r@tutamail.com</span>
+                </a>
+                {channels.map(({ icon: Icon, name, desc, href, rel }) => (
+                  <a
+                    key={name}
+                    className="contact-item"
+                    href={href}
+                    target="_blank"
+                    rel={rel ?? 'noopener noreferrer'}
+                  >
+                    <Icon size={18} color={ACCENT} aria-hidden="true" />
+                    <span><strong>{name}</strong>{desc}</span>
+                  </a>
+                ))}
               </div>
             </div>
-
-            {socials.map(({ icon: Icon, name, desc, href, rel }) => (
-              <a
-                key={name}
-                className="content-panel contact-item"
-                href={href}
-                target="_blank"
-                rel={rel ?? 'noopener noreferrer'}
-              >
-                <Icon size={18} color={ACCENT} />
-                <span><strong>{name}</strong>{desc}</span>
-              </a>
-            ))}
           </aside>
 
           <section className="content-panel">
