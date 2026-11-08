@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Send } from 'lucide-react';
+import { Github, Linkedin, Youtube , Mail, Send } from 'lucide-react';
 import React, { useState } from 'react';
 
 const ACCENT = '#e0a563';
@@ -17,9 +17,10 @@ const MastodonIcon = ({ size = 18, color = 'currentColor' }) => (
 
 const channels = [
   { icon: Github, name: 'GitHub', desc: 'Open-source tools and experiments', href: 'https://github.com/0xi6r' },
-  { icon: XIcon, name: 'X', desc: 'Short updates and research notes', href: 'https://x.com/0xi6r' },
+  { icon: XIcon, name: 'X', desc: 'tweets are my own opinions', href: 'https://x.com/0xi6r' },
   { icon: MastodonIcon, name: 'Mastodon', desc: 'Infosec community discussion', href: 'https://infosec.exchange/@0x_i6r', rel: 'me noopener noreferrer' },
   { icon: Linkedin, name: 'LinkedIn', desc: 'Professional background', href: 'https://www.linkedin.com/in/itsisaac' },
+  { icon: Youtube, name: 'Youtube', desc: 'Sharing video content and memes', href: 'https://youtube.com/@0xi6r' },
 ];
 
 const Contact = () => {
