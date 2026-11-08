@@ -17,8 +17,8 @@ const Footer = () => (
   <footer className="site-footer">
     <div className="site-footer__inner">
       <div>
-        <p className="site-footer__brand">0xi6r / Security Research</p>
-        <p className="site-footer__copy">Dev, Offensive research, practical analysis, and considered disclosure.</p>
+        <p className="site-footer__brand">0xi6r / Dev & Security Research</p>
+        <p className="site-footer__copy">Web Dev, Offensive ops, malware analysis, and considered disclosure.</p>
       </div>
       <div className="site-footer__links">
         <Link to="/about">About</Link>
